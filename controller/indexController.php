@@ -8,7 +8,15 @@ class indexController extends index
         require_once ('view/all/footer.php');
     }
 
+    public function insertions(){
+        require_once ('view/all/head.php');
+        require_once ('view/insertion/insertions.php');
+        require_once ('view/all/footer.php');
+    }
+
     public function InsertMak(){
-        echo $_POST['nameMaker'];
+        $array = array("MAKER_NAME" => $_REQUEST['make']);
+        self::insertMaker($array);
+        echo 'Insertado correctamente';
     }
 }

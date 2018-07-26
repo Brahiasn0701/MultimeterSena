@@ -1002,6 +1002,7 @@
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="257" parent="252" name="FUNCTION_NAME">
@@ -1014,48 +1015,53 @@
       <ColNames>FUNCTION_ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="259" parent="253" name="function_FUNCTION_ID">
+    <column id="259" parent="253" name="FUNCTION_FUNCTION_ID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="253" name="reference_REFERENCE_ID">
+    <column id="260" parent="253" name="REFERENCE_REFERENCE_ID">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="261" parent="253" name="fk_function_has_reference_function1_idx">
-      <ColNames>function_FUNCTION_ID</ColNames>
+      <ColNames>FUNCTION_FUNCTION_ID</ColNames>
       <Type>btree</Type>
     </index>
     <index id="262" parent="253" name="fk_function_has_reference_reference1_idx">
-      <ColNames>reference_REFERENCE_ID</ColNames>
+      <ColNames>REFERENCE_REFERENCE_ID</ColNames>
       <Type>btree</Type>
     </index>
     <key id="263" parent="253" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>function_FUNCTION_ID
-reference_REFERENCE_ID</ColNames>
+      <ColNames>FUNCTION_FUNCTION_ID
+REFERENCE_REFERENCE_ID</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="264" parent="253" name="fk_function_has_reference_function1">
-      <ColNames>function_FUNCTION_ID</ColNames>
+      <ColNames>FUNCTION_FUNCTION_ID</ColNames>
       <RefSchemaName>db_multimeter_sena</RefSchemaName>
       <RefTableName>function</RefTableName>
       <RefColNames>FUNCTION_ID</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <foreign-key id="265" parent="253" name="fk_function_has_reference_reference1">
-      <ColNames>reference_REFERENCE_ID</ColNames>
+      <ColNames>REFERENCE_REFERENCE_ID</ColNames>
       <RefSchemaName>db_multimeter_sena</RefSchemaName>
       <RefTableName>reference</RefTableName>
       <RefColNames>REFERENCE_ID</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="266" parent="254" name="MAKER_ID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="267" parent="254" name="MAKER_NAME">
@@ -1073,6 +1079,7 @@ reference_REFERENCE_ID</ColNames>
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="270" parent="255" name="REFERENCE_NAME">
@@ -1110,6 +1117,8 @@ reference_REFERENCE_ID</ColNames>
       <RefSchemaName>db_multimeter_sena</RefSchemaName>
       <RefTableName>maker</RefTableName>
       <RefColNames>MAKER_ID</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
   </database-model>
 </dataSource>
