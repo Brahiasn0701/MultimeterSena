@@ -1,12 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: brahi
- * Date: 23/07/2018
- * Time: 19:04
- */
 
 class database
 {
-
+    public static function conexion(){
+        try {
+            $pdo = new PDO('mysql:host=localhost;dbname=db_multimeter_sena;charset=utf8', 'root','');
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $pdo;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 }

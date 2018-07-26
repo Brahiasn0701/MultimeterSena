@@ -1,6 +1,13 @@
 <div class="container">
     <div class="row justify-content-center pt-5">
         <p class="lead pr-5">Buscador de Multimetros</p>
+        <form action="?c=index&m=InsertMak" method="POST">            
+            <div class="form-group">
+                <label for="">Nombre fabricante</label>
+                <input type="text" class="form-control" name="nameMaker">
+                <button type="submit" class="form-control">Insertar</button>
+            </div>
+        </form>
         <div class="col-3" id="sectionForSearch">
             <div class="form-group">
                 <label for="maker ">Fabricante</label>

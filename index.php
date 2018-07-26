@@ -1,5 +1,5 @@
 <?php
-
+require_once ('core/core.php');
 if(!isset($_REQUEST['c'])){
     $controller = 'index';
     require_once ('controller/'.$controller.'Controller.php');
@@ -7,7 +7,7 @@ if(!isset($_REQUEST['c'])){
     $controller = new $controller();
     $controller -> index();
 } else {
-    $controller = $_REQUEST['m'];
+    $controller = $_REQUEST['c'];
     require_once ('controller/'.$controller.'Controller.php');
     $controller = $controller.'Controller';
     $controller = new $controller();
