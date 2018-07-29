@@ -19,4 +19,8 @@ class indexController extends index
         self::insertMaker($array);
         echo 'Insertado correctamente';
     }
+
+    public function InsertReference(){
+        echo 'Hola';
+    }
 }

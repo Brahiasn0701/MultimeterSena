@@ -28,22 +28,45 @@
                     <h5 class="card-title">Insercion de Referencias</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Formulario Referencias</h6>
                     <div class="card-text">
-                        <div class="form-group">
-                            <label for="referenceName">Nombre de la Referencia</label>
-                            <input type="text" name="referenceName" id="referenceName" class="form-control">
-                            <small class="form-text text-muted">Escribe el nombre de la referencia</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="referenceDescription">Descripcion de la referencia</label>
-                            <textarea name="referenceDescription" rows="10" id="referenceDescription" class="form-control"></textarea>
-                            <small class="form-text text-muted">Escribe la descripcion de la referencia</small>
-                        </div>
-                        <div class="form-control">
-                            <label for=""></label>
-                        </div>
+                            <div class="form-group">
+                                <label for="referenceName">Nombre de la Referencia</label>
+                                <input type="text" name="referenceName" id="referenceName" class="form-control">
+                                <small class="form-text text-muted">Escribe el nombre de la referencia</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="referenceDescription">Descripcion de la referencia</label>
+                                <textarea name="referenceDescription" rows="10" id="referenceDescription" class="form-control"></textarea>
+                                <small class="form-text text-muted">Escribe la descripcion de la referencia</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="imgReference">Imagen de Referencia</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="imgReference" id="imgReference">
+                                    <label class="custom-file-label" for="imgReference">Seleccionar Archivo</label>
+                                </div>
+                                <small class="form-text text-muted">Imagen de la referencia</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="doucumentReference">Documento de la referencia</label>
+                                <input type="text" name="doucumentReference" id="doucumentReference" class="form-control">
+                                <small class="form-text text-muted">Pega la url del archivo</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="nameMaker">Nombre del Fabricante</label>
+                                <select name="nameMaker" id="nameMaker" class="form-control">
+                                    <option value="">Fabricante</option>
+                                    <?php
+                                    foreach (self::queryMaker() as $resultMakerAll) {
+                                        ?>
+                                        <option value="<?php echo $resultMakerAll->MAKER_ID; ?>"><?php echo ucwords($resultMakerAll->MAKER_NAME); ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                                <small class="form-text text-muted">Selecciona el Fabricante</small>
+                            </div>
                     </div>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <button class="btn btn-outline-primary" id="btnInsertReference">Insertar</button>
                 </div>
             </div>
         </div>
