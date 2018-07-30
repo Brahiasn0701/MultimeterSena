@@ -1,10 +1,7 @@
 <div class="container">
     <div class="row justify-content-start pt-5">
-        <div id="searchTitle">
-            <p class="lead pr-5">Buscador de Multimetros</p>
-        </div>
         <div id="buttonBack">
-            <button class="btn btn-outline-danger" id="btnBackSearch">Volver</button>
+            <button class="btn btn-outline-info" id="btnBackSearch">Volver</button>
         </div>          
         <div class="col-3" id="sectionForSearch">
             <div class="form-group">
@@ -64,7 +61,7 @@
                 </div>
                 <small class="form-text text-muted">Funcion</small>
             </div>
-            <button class="btn btn-outline-primary" id="btnSearch">Buscar</button>    
+            <button class="btn btn-outline-success" id="btnSearch">Buscar</button>    
         </div>
         <div id="resultSearchCard">
             <div class="row justify-content-center">

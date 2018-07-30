@@ -13,7 +13,6 @@ $(function(){
     $('#btnSearch').click(function(){
         $('#sectionForSearch').hide();
         $('#resultSearchCard').show();
-        $('#searchTitle').hide();
         $('#buttonBack').show();
     });
 
@@ -25,7 +24,6 @@ $(function(){
         $('#resultSearchCard').hide();
         $('#sectionForSearch').show();
         $('#buttonBack').hide();
-        $('#searchTitle').show();
     });
 
     // Insercion para no hacer todo manualmente
