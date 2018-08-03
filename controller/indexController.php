@@ -22,6 +22,6 @@ class indexController extends index
     }
 
     public function InsertReference(){
-        echo 'Hola';
+        echo $_REQUEST['myFile'];
     }
 }
