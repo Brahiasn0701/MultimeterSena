@@ -26,6 +26,24 @@ $(function(){
         $('#buttonBack').hide();
     });
 
+    /*
+    *  Funcion que muestra tabReference al dar click
+    *  @BrahianSánchez
+    * */
+
+    $('#MakerList').children('.list-group-item').on("click", function () {
+      $('#referenceTabs').tab('show');
+    });
+
+    /*
+        Funcion que muestra tabMultimeter al dar CLick
+        @BrahianSánchez
+     */
+
+    $('#referenceList').children('.list-group-item').on("click", function () {
+        $('#mutlimeterTabs').tab('show');
+    });
+
     // Insercion para no hacer todo manualmente
     // @BrahianSánchez
 
@@ -52,14 +70,19 @@ $(function(){
     //@BrahianSánchez
 
 
-    $(':file').change(function(e){
+    $(':file').change(function(){
         var file = $('#imgReference')[0].files[0];
         var fileName = file.name;
         var FileExtension = fileName.substring(fileName.lastIndexOf('.') + 1);
         var fileSize = file.size;
         var fileType = file.type;
-        var fileRute = URL.createObjectURL(e.target.files[0]);
-        console.log("Nombre del Archivo " + fileName + " Tamaño del Archivo " + fileSize + " Bytes " + "Route " + fileRute );
+        console.log("Nombre del Archivo " + fileName + " Tamaño del Archivo " + fileSize + " Bytes" );
     });
 
+    $('#btnInsertReference').on("click", function () {
+        let formData = new FormData();
+        formData.append("valor", "123");
+        formData.append("valor", "456");
+        console.log(formData.getAll("valor"));
+    });
 });

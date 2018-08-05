@@ -28,7 +28,7 @@
                     <h5 class="card-title">Insercion de Referencias</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Formulario Referencias</h6>
                     <div class="card-text">
-                        <form id="formReference">
+                        <form id="formReference" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="referenceName">Nombre de la Referencia</label>
                                 <input type="text" name="referenceName" id="referenceName" class="form-control">
@@ -66,8 +66,8 @@
                                 </select>
                                 <small class="form-text text-muted">Selecciona el Fabricante</small>
                             </div>
-                            <button class="btn btn-outline-primary" id="btnInsertReference">Insertar</button>
                         </form>
+                            <button class="btn btn-outline-primary" id="btnInsertReference">Insertar</button>
                     </div>
                 </div>
             </div>
