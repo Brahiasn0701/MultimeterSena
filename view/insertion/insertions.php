@@ -28,7 +28,7 @@
                     <h5 class="card-title">Insercion de Referencias</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Formulario Referencias</h6>
                     <div class="card-text">
-                        <form id="formReference" enctype="multipart/form-data">
+                        <form id="formReference" action="?c=index&m=InsertReferenceIndexController" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="referenceName">Nombre de la Referencia</label>
                                 <input type="text" name="referenceName" id="referenceName" class="form-control">
@@ -66,8 +66,8 @@
                                 </select>
                                 <small class="form-text text-muted">Selecciona el Fabricante</small>
                             </div>
+                            <button type="submit" class="btn btn-outline-primary" id="btnInsertReference">Insertar</button>
                         </form>
-                            <button class="btn btn-outline-primary" id="btnInsertReference">Insertar</button>
                     </div>
                 </div>
             </div>
@@ -75,11 +75,22 @@
         <div class="col">
             <div class="card" style="width: 20rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another links</a>
+                    <h5 class="card-title">Funciones</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Formulario para añadir funciones</h6>
+                    <div id="contentInsertFunction">
+                        <div class="alert alert-success" role="alert">
+                           <div id="resultInsertFunction">
+                           </div>
+                        </div>
+                    </div>  
+                    <div class="card-text">
+                        <div class="form-group">
+                            <label for="">Nombre de Funcion</label>
+                            <input type="text" name="inpNameFunctionMultimeter" id="inpNameFunctionMultimeter" class="form-control">
+                            <small class="form-text text-muted">Escribe el nombre de la funcion</small>
+                        </div>                
+                    </div>
+                    <button class="btn btn-outline-primary" id="btnInsertNewFunctionMultimeter">Insertar</button>
                 </div>
             </div>
         </div>

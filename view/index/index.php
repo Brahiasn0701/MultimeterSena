@@ -22,10 +22,13 @@
                 <label for="reference">Referencia</label>
                 <select name="reference" id="reference" class="form-control">
                     <option value="" selected>Referencia</option>
-                    <option value="">Opcion</option>
-                    <option value="">Opcion</option>
-                    <option value="">Opcion</option>
-                    <option value="">Opcion</option>
+                    <?php
+                        foreach (parent::queryReference() as $resultQueryReference) {
+                            ?>
+                            <option value="<?php echo $resultQueryReference->REFERENCE_ID; ?>"><?php echo $resultQueryReference->REFERENCE_NAME; ?></option>
+                            <?php
+                        }
+                    ?>
                 </select>
                 <small class="form-text text-muted">Referencia</small>
             </div>
@@ -33,30 +36,18 @@
                 <label for="function">Funcion</label>
                 <div class="card">
                     <div class="card-body">
-                        <div class="custom-control custom-checkbox custom-control-inline">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">Funcion</label>
-                        </div>
-                        <div class="custom-control custom-checkbox custom-control-inline">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2">
-                            <label class="custom-control-label" for="customCheck2">Funcion</label>
-                        </div>
-                        <div class="custom-control custom-checkbox custom-control-inline">
-                            <input type="checkbox" class="custom-control-input" id="customCheck3">
-                            <label class="custom-control-label" for="customCheck3">Funcion</label>
-                        </div>
-                        <div class="custom-control custom-checkbox custom-control-inline">
-                            <input type="checkbox" class="custom-control-input" id="customCheck4">
-                            <label class="custom-control-label" for="customCheck4">Funcion</label>
-                        </div>
-                        <div class="custom-control custom-checkbox custom-control-inline">
-                            <input type="checkbox" class="custom-control-input" id="customCheck5">
-                            <label class="custom-control-label" for="customCheck5">Funcion</label>
-                        </div>
-                        <div class="custom-control custom-checkbox custom-control-inline">
-                            <input type="checkbox" class="custom-control-input" id="customCheck6">
-                            <label class="custom-control-label" for="customCheck6">Funcion</label>
-                        </div>
+                        <?php
+                             foreach (parent::queryFunction() as $resultQueryFunction) {
+                                ?>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="<?php echo $resultQueryFunction->FUNCTION_NAME; ?>"  name="1" class="custom-control-input">
+                                    <label class="custom-control-label" for="<?php echo $resultQueryFunction->FUNCTION_NAME; ?>"><?php echo $resultQueryFunction->FUNCTION_NAME; ?></label>
+                                </div>
+                                <?php
+                               
+                             }
+                        ?>
+                       
                     </div>
                 </div>
                 <small class="form-text text-muted">Funcion</small>
@@ -89,13 +80,14 @@
                         </div>
                         <div class="tab-pane fade" id="referenceMultimeterShow" role="tabpanel" aria-labelledby="referenceMultimeterShow">
                             <div class="list-group" id="referenceList">
-                                <a href="#" class="list-group-item list-group-item-action" id="Valor1">Referencia</a>
-                                <a href="#" class="list-group-item list-group-item-action" id="Valor2">Referencia</a>
-                                <a href="#" class="list-group-item list-group-item-action" id="Valor3">Referencia</a>
-                                <a href="#" class="list-group-item list-group-item-action" id="Valor4">Referencia</a>
-                                <a href="#" class="list-group-item list-group-item-action" id="Valor5">Referencia</a>
-                                <a href="#" class="list-group-item list-group-item-action" id="Valor6">Referencia</a>
-
+                                <?php
+                                    foreach (parent::queryReference() as $resultQueryReferenceSearch) {
+                                        ?>
+                                        <a href="#" class="list-group-item list-group-item-action"
+                                           id="<?php echo $resultQueryReferenceSearch->REFERENCE_ID; ?>"><?php echo $resultQueryReferenceSearch->REFERENCE_NAME; ?></a>
+                                        <?php
+                                    }
+                                ?>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="multimeterShow" role="tabpanel" aria-labelledby="multimeterShow">
