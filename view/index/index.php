@@ -39,9 +39,9 @@
                         <?php
                              foreach (parent::queryFunction() as $resultQueryFunction) {
                                 ?>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="<?php echo $resultQueryFunction->FUNCTION_NAME; ?>"  name="1" class="custom-control-input">
-                                    <label class="custom-control-label" for="<?php echo $resultQueryFunction->FUNCTION_NAME; ?>"><?php echo $resultQueryFunction->FUNCTION_NAME; ?></label>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="<?php echo $resultQueryFunction->FUNCTION_ID; ?>" class="custom-control-input">
+                                    <label class="custom-control-label" for="<?php echo $resultQueryFunction->FUNCTION_ID; ?>"><?php echo $resultQueryFunction->FUNCTION_NAME; ?></label>
                                 </div>
                                 <?php
                                

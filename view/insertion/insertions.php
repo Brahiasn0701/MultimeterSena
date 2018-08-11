@@ -3,28 +3,6 @@
         <div class="col">
             <div class="card" style="width: 20rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Insercion de Fabricantes</h5>
-                    <h6 class="card-subtitle mb-3 text-muted">Formulario Fabricantes</h6>
-                    <div id="contentInsertMaker">
-                        <div class="alert alert-success" role="alert">
-                           <div id="resultInsertMaker">
-                           </div>
-                        </div>
-                    </div>  
-                    <div class="card-text">
-                        <div class="form-group">
-                            <label for="Maker">Fabricante</label>
-                            <input type="text" name="Maker" id="Maker" class="form-control">
-                            <small class="form-text text-muted">Escribe el Fabricante</small>    
-                        </div>
-                    </div>
-                    <button class="btn btn-outline-primary" id="btnInsertMaker">Insertar</button>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card" style="width: 20rem;">
-                <div class="card-body">
                     <h5 class="card-title">Insercion de Referencias</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Formulario Referencias</h6>
                     <div class="card-text">
@@ -75,24 +53,84 @@
         <div class="col">
             <div class="card" style="width: 20rem;">
                 <div class="card-body">
+                    <h5 class="card-title">Insercion de Fabricantes</h5>
+                    <h6 class="card-subtitle mb-3 text-muted">Formulario Fabricantes</h6>
+                    <div id="contentInsertMaker">
+                        <div class="alert alert-success" role="alert">
+                            <div id="resultInsertMaker">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-text">
+                        <div class="form-group">
+                            <label for="Maker">Fabricante</label>
+                            <input type="text" name="Maker" id="Maker" class="form-control">
+                            <small class="form-text text-muted">Escribe el Fabricante</small>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-primary" id="btnInsertMaker">Insertar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
                     <h5 class="card-title">Funciones</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Formulario para añadir funciones</h6>
                     <div id="contentInsertFunction">
                         <div class="alert alert-success" role="alert">
-                           <div id="resultInsertFunction">
-                           </div>
+                            <div id="resultInsertFunction">
+                            </div>
                         </div>
-                    </div>  
+                    </div>
                     <div class="card-text">
                         <div class="form-group">
                             <label for="">Nombre de Funcion</label>
                             <input type="text" name="inpNameFunctionMultimeter" id="inpNameFunctionMultimeter" class="form-control">
                             <small class="form-text text-muted">Escribe el nombre de la funcion</small>
-                        </div>                
+                        </div>
                     </div>
                     <button class="btn btn-outline-primary" id="btnInsertNewFunctionMultimeter">Insertar</button>
                 </div>
             </div>
         </div>
+            <div class="col pt-5">
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Asginacion de functiones por referencia</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Formulario para asignar funciones</h6>
+                        <div class="card-text">
+                            <div class="form-group">
+                                <label for="">Funcion</label>
+                                <select name="slcNameFunction" id="slcNameFunction" class="form-control">
+                                    <option value="" selected>Selecciona</option>
+                                    <?php
+                                        foreach (parent::queryFunction() as $resultQueryAsignFunction) {
+                                            ?>
+                                            <option value="<?php echo $resultQueryAsignFunction->FUNCTION_ID; ?>"><?php echo $resultQueryAsignFunction->FUNCTION_NAME; ?></option>
+                                            <?php
+                                        }
+                                    ?>
+                                </select>
+                                <small class="form-text text-muted">Selecciona la funcion</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="slcReference">Referencia</label>
+                                <select name="slcReference" id="slcReference" class="form-control">
+                                    <option value="" selected>Selecciona</option>
+                                    <?php
+                                        foreach (parent::queryReference() as $resultQueryAsignReference) {
+                                            ?>
+                                            <option value="<?php echo $resultQueryAsignReference->REFERENCE_ID; ?>"><?php echo $resultQueryAsignReference->REFERENCE_NAME; ?></option>
+                                            <?php
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-primary" id="btnAsignFunction">Insertar</button>
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
