@@ -99,6 +99,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Asginacion de functiones por referencia</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Formulario para asignar funciones</h6>
+                        <div id="contentAsignReference">
+                        <div class="alert alert-success" role="alert">
+                            <div id="resultAsignFunction">
+                            </div>
+                        </div>
+                    </div>
                         <div class="card-text">
                             <div class="form-group">
                                 <label for="">Funcion</label>

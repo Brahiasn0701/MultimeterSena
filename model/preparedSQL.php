@@ -8,4 +8,9 @@ class preparedSQL
     const insertFunction = "INSERT INTO function (FUNCTION_NAME) VALUE (?)";
     const queryFunction = "SELECT * FROM function";
     const queryReference = "SELECT REFERENCE_ID, REFERENCE_NAME FROM reference";
+    const insertFunctionReference = "INSERT INTO function_has_reference (FUNCTION_FUNCTION_ID, REFERENCE_REFERENCE_ID) VALUES (?,?)";
+
+    //Querys
+    const queryMakersForSelect = "SELECT * FROM maker WHERE MAKER_ID = ?";
+    const queryReferenceForMaker = "SELECT * FROM reference WHERE maker_MAKER_ID= ?";
 }

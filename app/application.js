@@ -1,3 +1,5 @@
+
+
 $(function(){
 
     $(document).ready(function(){
@@ -5,18 +7,8 @@ $(function(){
         $('#contentInsertMaker').hide();
         $('#buttonBack').hide();
         $('#contentInsertFunction').hide();
+        $('#contentAsignReference').hide();
     });
-
-    /*
-        Boton para mostrar el resultado de la busqueda
-        @BrahianSánchez
-    */
-    $('#btnSearch').click(function(){
-        $('#sectionForSearch').hide();
-        $('#resultSearchCard').show();
-        $('#buttonBack').show();
-    });
-
     /*
         Boton para volver a atras y realizar nueva busqueda
         @BrahianSánchez
@@ -77,4 +69,65 @@ $(function(){
             $('#inpNameFunctionMultimeter').val("");
         });
     });
+
+    $('#btnAsignFunction').on("click", function () {
+       $.ajax({
+        type: 'POST',
+           url: '?c=index&m=insertFunctionReferenceIndexController',
+           data: {nameFunction : $('#slcNameFunction').val(),
+                    nameReference : $('#slcReference').val()}
+       }).done(function (response) {
+           $('#contentAsignReference').show();
+           $('#resultAsignFunction').html(response);
+           setTimeout(function () {
+               $('#contentAsignReference') .hide("slow");
+           }, 1000);
+           $('#slcNameFunction').val('');
+           $('#slcReference').val('');
+       });
+    });
+
+    /*
+        QUERYS
+        ------------------------------------
+        Boton para mostrar el resultado de la busqueda
+        @BrahianSánchez
+    */
+
+    $('#maker').on("change", function () {
+        if ($(this).val() == 0){
+            $.ajax({
+               type: 'POST',
+               url: '?c=index&m=queryAllReferences',
+               data: null
+            }).done(function (response) {
+                $('#responseQueryReferenceForMaker').html(response);
+            });
+        } else {
+            $.ajax({
+               type: 'POST',
+               url: '?c=index&m=queryReferenceForMaker',
+               data: {value: $(this).val()}
+            }).done(function (response) {
+                $('#responseQueryReferenceForMaker').html(response);
+            });
+        }
+    });
+
+    $('#btnSearch').on("click", function(){
+        $.ajax({
+           type: 'POST',
+            url: '?c=index&m=querySearch',
+            data: {valueMaker : $('#maker').val(),
+                    valueReference : $('#reference').val()}
+        }).done(function (response) {
+            alert(response);
+            $('#responseSearch').html(response);
+        });
+       // $('#sectionForSearch').hide();
+       // $('#resultSearchCard').show();
+        // $('#buttonBack').show();
+    });
+
+
 });

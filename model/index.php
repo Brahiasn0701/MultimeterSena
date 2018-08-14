@@ -65,4 +65,46 @@ class index extends  database
             die($e->getMessage());
         }
     }
+
+    public function insertFunctionReference(array $array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::insertFunctionReference);
+            $stm->bindParam(1, $array['nameFunction'], PDO::PARAM_INT);
+            $stm->bindParam(2, $array['nameReference'], PDO::PARAM_INT);
+            $stm->execute();
+        } catch (Exception $e){
+            die($e->getMessage());
+        }
+    }
+
+    public function queryMakersForSelect($date){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryMakersForSelect);
+            $stm->bindParam(1, $date, PDO::PARAM_INT);
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryRefrenceFormaker($date){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryReferenceForMaker);
+            $stm->bindParam(1, $date, PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+    public function SuperQueryRobinsonAndresCortes($query,$join,$condicion){
+        try {
+            $stm = parent::conexion()->prepare($query.' '.$join.' '.$condicion);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 }
