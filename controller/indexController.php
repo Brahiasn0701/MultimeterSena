@@ -60,6 +60,27 @@ class indexController extends index
             }
             ?>
         </select>
+        <script>
+            $('#reference').on('change', function () {
+                if($(this).val() == 0){
+                    $.ajax({
+                        type: 'POST',
+                        url: '?c=index&m=queryFunctionForReferenceDefault',
+                        data: null
+                    }).done(function (response) {
+                        $('#resultQueryOnlyFunction').html(response);
+                    });
+                } else {
+                    $.ajax({
+                        type: 'POST',
+                        url: '?c=index&m=queryFunctionForReferenceIndexController',
+                        data: {valueReference : $('#reference').val()}
+                    }).done(function (response) {
+                        $('#resultQueryOnlyFunction').html(response);
+                    });
+                }
+            });
+        </script>
         <?php
     }
 
@@ -78,6 +99,28 @@ class indexController extends index
         <?php
     }
 
+    public function queryFunctionForReferenceDefault(){
+        foreach (parent::queryFunction() as $resultQueryFunction) {
+            ?>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="<?php echo $resultQueryFunction->FUNCTION_ID; ?>" class="custom-control-input">
+                <label class="custom-control-label" for="<?php echo $resultQueryFunction->FUNCTION_ID; ?>"><?php echo $resultQueryFunction->FUNCTION_NAME; ?></label>
+            </div>
+            <?php
+        }
+    }
+
+    public function queryFunctionForReferenceIndexController()
+    {
+        foreach (parent::queryFunctionForReference($_REQUEST['valueReference']) as $resultQueryFunctionForReference) {
+            ?>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="<?php echo $resultQueryFunctionForReference->FUNCTION_ID; ?>" class="custom-control-input">
+                <label class="custom-control-label" for="<?php echo $resultQueryFunctionForReference->FUNCTION_ID; ?>"><?php echo $resultQueryFunctionForReference->FUNCTION_NAME; ?></label>
+            </div>
+            <?php
+        }
+    }
 
     public function querySearch()
     {
@@ -87,6 +130,7 @@ class indexController extends index
             <?php
             foreach (parent::queryRefrenceFormaker($_REQUEST['valueMaker']) as $resultSearchQueryReferenceForMaker) {
                 ?>
+
                     <div class="card col ml-3 mt-3" style="width: 18rem;">
                         <img class="card-img-top" src="files/<?php echo $resultSearchQueryReferenceForMaker->REFERENCE_IMG; ?>.png" alt="Multimetro Crash">
                         <div class="card-body">
@@ -105,9 +149,55 @@ class indexController extends index
             </div>
             <?php
         } else  if($_REQUEST['valueMaker'] != 0 and  $_REQUEST['valueReference'] != 0){
-            echo 'Selecciono los dos select';
+            ?>
+            <div class="row justify-content-center">
+                <?php
+                $array = array(
+                        'valueMaker' => $_REQUEST['valueMaker'],
+                        'valueReference' => $_REQUEST['valueReference']
+                );
+                foreach (parent::queryReferenceOnlyForAMaker($array) as $resultSearchQueryReferenceOnlyAMaker) {
+                    ?>
+                    <div class="card col ml-3 mt-3" style="width: 18rem;">
+                        <img class="card-img-top" src="files/<?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_IMG; ?>.png" alt="Multimetro Crash">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_NAME; ?></h5>
+                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
+                            <p class="card-text"><?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_DESCRIPTION; ?></p>
+                            <div class="row">
+                                <a href="<?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
+                                <div class="p-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
+            <?php
         } else if($_REQUEST['valueMaker'] == 0 and $_REQUEST['valueReference'] != 0){
-            echo 'Selecciono solo Referencia';
+            ?>
+            <div class="row justify-content-center">
+                <?php
+                foreach (parent::queryOnlyReference($_REQUEST['valueReference']) as $resultQueryOnlyReference) {
+                    ?>
+                    <div class="card col ml-3 mt-3" style="width: 18rem;">
+                        <img class="card-img-top" src="files/<?php echo $resultQueryOnlyReference->REFERENCE_IMG; ?>.png" alt="Multimetro Crash">
+                        <div class="card-body">
+                            <h5 class="card-title">(<?php echo ucwords($resultQueryOnlyReference->MAKER_NAME).') '.$resultQueryOnlyReference->REFERENCE_NAME?></h5>
+                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
+                            <p class="card-text"><?php echo $resultQueryOnlyReference->REFERENCE_DESCRIPTION; ?></p>
+                            <div class="row">
+                                <a href="<?php echo $resultQueryOnlyReference->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
+                                <div class="p-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
+            <?php
         }
         /*
          * Lo que hizo Andres

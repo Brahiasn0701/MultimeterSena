@@ -97,6 +97,41 @@ class index extends  database
             die($e->getMessage());
         }
     }
+
+    public function queryReferenceOnlyForAMaker(array $array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryReferenceOnlyForAMaker);
+            $stm->bindParam(2,$array['valueMaker'], PDO::PARAM_INT);
+            $stm->bindParam(1, $array['valueReference'], PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryOnlyReference($date){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryOnlyReference);
+            $stm->bindParam(1, $date, PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryFunctionForReference($data){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryFunctionForReference);
+            $stm->bindParam(1, $data, PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function SuperQueryRobinsonAndresCortes($query,$join,$condicion){
         try {
             $stm = parent::conexion()->prepare($query.' '.$join.' '.$condicion);

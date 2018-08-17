@@ -7,7 +7,6 @@
     <script src="assets/jquery/jquery.js"></script>
     <script src="assets/bootstrap/js/bootstrap.js"></script>
     <script src="app/application.js"></script>
-    <script src="app/andresjs.js"></script>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="app/app.css">
     <title>Busqueda Multimetros Sena</title>

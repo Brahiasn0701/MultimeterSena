@@ -101,7 +101,7 @@ $(function(){
                url: '?c=index&m=queryAllReferences',
                data: null
             }).done(function (response) {
-                $('#responseQueryReferenceForMaker').html(response);
+                $('#responseQueryReferenceForMaker').load( response);
             });
         } else {
             $.ajax({
@@ -114,14 +114,34 @@ $(function(){
         }
     });
 
+    $('#reference').on("change", function () {
+        if($(this).val() == 0){
+            $.ajax({
+               type: 'POST',
+               url: '?c=index&m=queryFunctionForReferenceDefault',
+               data: null
+            }).done(function (response) {
+                $('#resultQueryOnlyFunction').html(response);
+            });
+       } else {
+            $.ajax({
+               type: 'POST',
+               url: '?c=index&m=queryFunctionForReferenceIndexController',
+               data: {valueReference : $('#reference').val()}
+            }).done(function (response) {
+                $('#resultQueryOnlyFunction').html(response);
+            });
+       }
+    });
+
     $('#btnSearch').on("click", function(){
         $.ajax({
            type: 'POST',
             url: '?c=index&m=querySearch',
             data: {valueMaker : $('#maker').val(),
+                    nameMaker : $('#maker option:selected').text(),
                     valueReference : $('#reference').val()}
         }).done(function (response) {
-            alert(response);
             $('#responseSearch').html(response);
         });
        // $('#sectionForSearch').hide();

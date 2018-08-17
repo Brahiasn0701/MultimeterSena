@@ -12,5 +12,9 @@ class preparedSQL
 
     //Querys
     const queryMakersForSelect = "SELECT * FROM maker WHERE MAKER_ID = ?";
-    const queryReferenceForMaker = "SELECT * FROM reference WHERE maker_MAKER_ID= ?";
+    const queryReferenceForMaker = "SELECT * FROM reference  WHERE maker_MAKER_ID= ?";
+    const queryReferenceOnlyForAMaker = "SELECT * FROM reference WHERE  REFERENCE_ID = ? and maker_MAKER_ID = ?";
+    const queryOnlyReference = "SELECT * FROM reference INNER JOIN maker ON maker.MAKER_ID = reference.maker_MAKER_ID WHERE REFERENCE_ID = ?";
+    const queryFunctionForReference = "SELECT * FROM function INNER JOIN function_has_reference INNER JOIN reference ON function.FUNCTION_ID = function_has_reference.FUNCTION_FUNCTION_ID and reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID
+      WHERE REFERENCE_ID = ?";
 }
