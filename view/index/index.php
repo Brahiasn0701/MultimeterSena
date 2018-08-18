@@ -1,5 +1,5 @@
 <div class="container">
-    <p class="text-left lead ml-3">Buscador de Multimetros</p>
+    <p class="text-left lead pt-5 ">Buscador de Multimetros</p>
     <div class="row justify-content-start pt-5 float-xl-left">
         <div id="buttonBack">
             <button class="btn btn-outline-info" id="btnBackSearch">Volver</button>

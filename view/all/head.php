@@ -9,6 +9,7 @@
     <script src="app/application.js"></script>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="app/app.css">
+    <link rel="shortcut icon" href="assets/img/logoSena.ico" type="image/x-icon">
     <title>Busqueda Multimetros Sena</title>
 </head>
 <body>

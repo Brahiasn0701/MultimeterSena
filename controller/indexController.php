@@ -107,6 +107,29 @@ class indexController extends index
             }
             ?>
         </select>
+        <script>
+            $('#reference').on('change', function () {
+                if($(this).val() == 0 || $(this).val() == 'null'){
+                    $.ajax({
+                        type: 'POST',
+                        url: '?c=index&m=queryFunctionForReferenceDefault',
+                        data: null
+                    }).done(function (response) {
+                        $('#resultQueryOnlyFunction').html(response);
+                        $('.custom-control-input').prop('disabled', false);
+                    });
+                } else {
+                    $.ajax({
+                        type: 'POST',
+                        url: '?c=index&m=queryFunctionForReferenceIndexController',
+                        data: {valueReference : $('#reference').val()}
+                    }).done(function (response) {
+                        $('#resultQueryOnlyFunction').html(response);
+                        $('.custom-control-input').prop('disabled', true);
+                    });
+                }
+            });
+        </script>
         <?php
     }
 
