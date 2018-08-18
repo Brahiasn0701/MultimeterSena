@@ -8,33 +8,8 @@ $(function(){
         $('#buttonBack').hide();
         $('#contentInsertFunction').hide();
         $('#contentAsignReference').hide();
-    });
-    /*
-        Boton para volver a atras y realizar nueva busqueda
-        @BrahianSánchez
-    */
-    $('#btnBackSearch').click(function(){
-        $('#resultSearchCard').hide();
-        $('#sectionForSearch').show();
-        $('#buttonBack').hide();
-    });
-
-    /*
-    *  Funcion que muestra tabReference al dar click
-    *  @BrahianSánchez
-    * */
-
-    $('#MakerList').children('.list-group-item').on("click", function () {
-      $('#referenceTabs').tab('show');
-    });
-
-    /*
-        Funcion que muestra tabMultimeter al dar CLick
-        @BrahianSánchez
-     */
-
-    $('#referenceList').children('.list-group-item').on("click", function () {
-        $('#mutlimeterTabs').tab('show');
+        $('#loginEdit').hide();
+        $('.custom-control-input').prop('disabled', true);
     });
 
     // Insercion para no hacer todo manualmente
@@ -101,7 +76,8 @@ $(function(){
                url: '?c=index&m=queryAllReferences',
                data: null
             }).done(function (response) {
-                $('#responseQueryReferenceForMaker').load( response);
+                $('#responseQueryReferenceForMaker').html( response);
+                $('.custom-control-input').prop('disabled', true);
             });
         } else {
             $.ajax({
@@ -110,6 +86,7 @@ $(function(){
                data: {value: $(this).val()}
             }).done(function (response) {
                 $('#responseQueryReferenceForMaker').html(response);
+                $('.custom-control-input').prop('disabled', false);
             });
         }
     });
@@ -122,6 +99,7 @@ $(function(){
                data: null
             }).done(function (response) {
                 $('#resultQueryOnlyFunction').html(response);
+                $('.custom-control-input').prop('disabled', false);
             });
        } else {
             $.ajax({
@@ -130,24 +108,31 @@ $(function(){
                data: {valueReference : $('#reference').val()}
             }).done(function (response) {
                 $('#resultQueryOnlyFunction').html(response);
+                $('.custom-control-input').prop('disabled', true);
             });
        }
     });
 
     $('#btnSearch').on("click", function(){
+        $('#loginEdit').hide();
+        var valueCheck = [];
+       $('input:checkbox[class=custom-control-input]:checked').each(function () {
+           valueCheck.push($(this).val());
+       });
         $.ajax({
            type: 'POST',
             url: '?c=index&m=querySearch',
             data: {valueMaker : $('#maker').val(),
                     nameMaker : $('#maker option:selected').text(),
-                    valueReference : $('#reference').val()}
+                    valueReference : $('#reference').val(),
+                    valueCheckBox: valueCheck}
         }).done(function (response) {
             $('#responseSearch').html(response);
         });
-       // $('#sectionForSearch').hide();
-       // $('#resultSearchCard').show();
-        // $('#buttonBack').show();
     });
 
-
+    $('#btnEdit').on('click', function () {
+        $('#responseSearch').hide();
+        $('#loginEdit').show();
+    });
 });

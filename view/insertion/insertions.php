@@ -1,4 +1,6 @@
 <div class="container mt-5">
+    <p class="text-left lead ml-3 pb-3">Modulo de Administradores, Bienvenid@ <b><?php echo $_SESSION['NAME'].' '.$_SESSION['LASTNAME']; ?></b></p>
+    <a href="?c=login&m=destroySession" class="btn btn-outline-success mb-3" role="button">Cerrar Sesion</a>
     <div class="row justify-content-center">
         <div class="col">
             <div class="card" style="width: 20rem;">
@@ -97,7 +99,7 @@
             <div class="col pt-5">
                 <div class="card" style="width: 20rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Asginacion de functiones por referencia</h5>
+                        <h5 class="card-title">Asginacion de funciones por referencia</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Formulario para asignar funciones</h6>
                         <div id="contentAsignReference">
                         <div class="alert alert-success" role="alert">

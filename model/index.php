@@ -142,4 +142,16 @@ class index extends  database
             die($e->getMessage());
         }
     }
+
+    public function queryForFunctionAndMaker(array $array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryForFunctionAndMaker);
+            $stm->bindParam(1, $array['valueCheck'], PDO::PARAM_INT);
+            $stm->bindParam(2, $array['valueMaker'], PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 }

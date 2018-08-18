@@ -17,4 +17,5 @@ class preparedSQL
     const queryOnlyReference = "SELECT * FROM reference INNER JOIN maker ON maker.MAKER_ID = reference.maker_MAKER_ID WHERE REFERENCE_ID = ?";
     const queryFunctionForReference = "SELECT * FROM function INNER JOIN function_has_reference INNER JOIN reference ON function.FUNCTION_ID = function_has_reference.FUNCTION_FUNCTION_ID and reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID
       WHERE REFERENCE_ID = ?";
+    const queryForFunctionAndMaker = "SELECT * FROM reference INNER JOIN function_has_reference ON reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID WHERE function_has_reference.FUNCTION_FUNCTION_ID = ? AND reference.maker_MAKER_ID = ?";
 }

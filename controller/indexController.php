@@ -2,6 +2,7 @@
 
 class indexController extends index
 {
+
     public function index(){
         require_once ('view/all/head.php');
         require_once ('view/all/navbar.php');
@@ -10,6 +11,7 @@ class indexController extends index
     }
 
     public function insertions(){
+        security::validateSession();
         require_once ('view/all/head.php');
         require_once ('view/insertion/insertions.php');
         require_once ('view/all/footer.php');
@@ -53,22 +55,30 @@ class indexController extends index
         <select name="reference" id="reference" class="form-control">
             <option value="0" selected>Referencia</option>
             <?php
+            $count = 0;
             foreach (parent::queryRefrenceFormaker($_REQUEST['value']) as $resultQueryReferenceForMaker) {
+                $count++;
                 ?>
                 <option value="<?php echo $resultQueryReferenceForMaker->REFERENCE_ID; ?>"><?php echo $resultQueryReferenceForMaker->REFERENCE_NAME; ?></option>
                 <?php
+            }
+            if($count === 0){
+            ?>
+                <option value="null">No se encontraron referencias</option>
+            <?php
             }
             ?>
         </select>
         <script>
             $('#reference').on('change', function () {
-                if($(this).val() == 0){
+                if($(this).val() == 0 || $(this).val() == 'null'){
                     $.ajax({
                         type: 'POST',
                         url: '?c=index&m=queryFunctionForReferenceDefault',
                         data: null
                     }).done(function (response) {
                         $('#resultQueryOnlyFunction').html(response);
+                        $('.custom-control-input').prop('disabled', false);
                     });
                 } else {
                     $.ajax({
@@ -77,6 +87,7 @@ class indexController extends index
                         data: {valueReference : $('#reference').val()}
                     }).done(function (response) {
                         $('#resultQueryOnlyFunction').html(response);
+                        $('.custom-control-input').prop('disabled', true);
                     });
                 }
             });
@@ -112,7 +123,9 @@ class indexController extends index
 
     public function queryFunctionForReferenceIndexController()
     {
+        $count = 0;
         foreach (parent::queryFunctionForReference($_REQUEST['valueReference']) as $resultQueryFunctionForReference) {
+            $count++;
             ?>
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" id="<?php echo $resultQueryFunctionForReference->FUNCTION_ID; ?>" class="custom-control-input">
@@ -120,27 +133,78 @@ class indexController extends index
             </div>
             <?php
         }
+        if($count === 0){
+            ?>
+                <blockquote class="blockquote text-center">
+                    <p class="m-5">No se encontraron funciones</p>
+                </blockquote>
+            <?php
+        }
+    }
+
+    public function queryForFunctionAndMakerIndexController(){
+
     }
 
     public function querySearch()
     {
-        if($_REQUEST['valueMaker'] != 0 and $_REQUEST['valueReference'] == 0){
+        if ($_REQUEST['valueMaker'] != 0 and isset($_REQUEST['valueCheckBox'])){
+            if(strpbrk(',', implode(',',$_REQUEST['valueCheckBox'])) === false){
+                ?>
+                <div class="row justify-content-center">
+                    <?php
+                    $array = array("valueCheck" => implode($_REQUEST['valueCheckBox']),
+                                    "valueMaker" => $_REQUEST['valueMaker']);
+                    $count = 0;
+                    foreach (parent::queryForFunctionAndMaker($array) as $resultForFunctionAndMaker) {
+                        $count++;
+                        ?>
+                        <div class="card col ml-3 mt-3" style="width: 18rem;">
+                            <img class="card-img-top" src="files/<?php echo $resultForFunctionAndMaker->REFERENCE_IMG; ?>" alt="Multimetro Crash">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $resultForFunctionAndMaker->REFERENCE_NAME; ?></h5>
+                                <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
+                                <p class="card-text"><?php echo $resultForFunctionAndMaker->REFERENCE_DESCRIPTION; ?></p>
+                                <div class="row col">
+                                    <a href="<?php echo $resultForFunctionAndMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
+                                    <div class="p-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+                <?php
+                if($count === 0){
+                    ?>
+                    <blockquote class="blockquote text-center">
+                        <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                    </blockquote>
+                    <?php
+                }
+            } else {
+                echo 'Se selecciono varias opciones';
+            }
+        } elseif($_REQUEST['valueMaker'] != 0 and $_REQUEST['valueReference'] == 0){
             ?>
             <div class="row justify-content-center">
             <?php
+            $count = 0;
             foreach (parent::queryRefrenceFormaker($_REQUEST['valueMaker']) as $resultSearchQueryReferenceForMaker) {
+                $count++;
                 ?>
 
                     <div class="card col ml-3 mt-3" style="width: 18rem;">
-                        <img class="card-img-top" src="files/<?php echo $resultSearchQueryReferenceForMaker->REFERENCE_IMG; ?>.png" alt="Multimetro Crash">
+                        <img class="card-img-top" src="files/<?php echo $resultSearchQueryReferenceForMaker->REFERENCE_IMG; ?>" alt="Multimetro Crash">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $resultSearchQueryReferenceForMaker->REFERENCE_NAME; ?></h5>
                             <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                             <p class="card-text"><?php echo $resultSearchQueryReferenceForMaker->REFERENCE_DESCRIPTION; ?></p>
-                            <div class="row">
-                                <a href="<?php echo $resultSearchQueryReferenceForMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
-                                <div class="p-1"></div>
-                            </div>
+                                <div class="row justify-content-center">
+                                    <a href="<?php echo $resultSearchQueryReferenceForMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary">Descargar PDF</a>
+                                    <div class="p-1"></div>
+                                </div>
                         </div>
                     </div>
                 <?php
@@ -148,6 +212,13 @@ class indexController extends index
             ?>
             </div>
             <?php
+            if($count === 0){
+                ?>
+                <blockquote class="blockquote text-center">
+                    <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                </blockquote>
+                <?php
+            }
         } else  if($_REQUEST['valueMaker'] != 0 and  $_REQUEST['valueReference'] != 0){
             ?>
             <div class="row justify-content-center">
@@ -156,15 +227,17 @@ class indexController extends index
                         'valueMaker' => $_REQUEST['valueMaker'],
                         'valueReference' => $_REQUEST['valueReference']
                 );
+                $count = 0;
                 foreach (parent::queryReferenceOnlyForAMaker($array) as $resultSearchQueryReferenceOnlyAMaker) {
+                    $count++;
                     ?>
                     <div class="card col ml-3 mt-3" style="width: 18rem;">
-                        <img class="card-img-top" src="files/<?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_IMG; ?>.png" alt="Multimetro Crash">
+                        <img class="card-img-top" src="files/<?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_IMG; ?>" alt="Multimetro Crash">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_NAME; ?></h5>
                             <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                             <p class="card-text"><?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_DESCRIPTION; ?></p>
-                            <div class="row">
+                            <div class="row justify-content-center">
                                 <a href="<?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                                 <div class="p-1"></div>
                             </div>
@@ -175,6 +248,13 @@ class indexController extends index
                 ?>
             </div>
             <?php
+            if ($count === 0){
+                ?>
+                <blockquote class="blockquote text-center">
+                    <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                </blockquote>
+                <?php
+            }
         } else if($_REQUEST['valueMaker'] == 0 and $_REQUEST['valueReference'] != 0){
             ?>
             <div class="row justify-content-center">
@@ -182,15 +262,15 @@ class indexController extends index
                 foreach (parent::queryOnlyReference($_REQUEST['valueReference']) as $resultQueryOnlyReference) {
                     ?>
                     <div class="card col ml-3 mt-3" style="width: 18rem;">
-                        <img class="card-img-top" src="files/<?php echo $resultQueryOnlyReference->REFERENCE_IMG; ?>.png" alt="Multimetro Crash">
+                        <img class="card-img-top" src="files/<?php echo $resultQueryOnlyReference->REFERENCE_IMG; ?>" alt="Multimetro Crash">
                         <div class="card-body">
                             <h5 class="card-title">(<?php echo ucwords($resultQueryOnlyReference->MAKER_NAME).') '.$resultQueryOnlyReference->REFERENCE_NAME?></h5>
                             <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                             <p class="card-text"><?php echo $resultQueryOnlyReference->REFERENCE_DESCRIPTION; ?></p>
-                            <div class="row">
+                            <div class="row justify-content-center">
                                 <a href="<?php echo $resultQueryOnlyReference->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
-                                <div class="p-1"></div>
                             </div>
+                            <div class="p-1"></div>
                         </div>
                     </div>
                     <?php
@@ -199,52 +279,5 @@ class indexController extends index
             </div>
             <?php
         }
-        /*
-         * Lo que hizo Andres
-         * -----------------------------------------------
-         *
-            $id_fabricante=$_REQUEST['id_fabricante'];
-            $id_referencia=$_REQUEST['id_referencia'];
-
-            if($id_fabricante!=0 and $id_referencia==0){
-                echo $badge="<span class='badge badge-secondary'>FABRICANTE</span>";
-                $query="SELECT * FROM  reference";
-                $condicion="WHERE maker_MAKER_ID=".$id_fabricante;
-                $inner_join="";
-            }
-            else if($id_fabricante!=0 and $id_referencia!=0){
-               echo  $badge="<span class='badge badge-secondary'>FABRICANTE</span>";
-                echo $badge2="<span class='badge badge-secondary'>REFERENCIA</span>";
-                $query="SELECT * FROM  reference";
-                $inner_join="";
-                $condicion="WHERE maker_MAKER_ID=".$id_fabricante.' and REFERENCE_ID='.$id_referencia;
-
-            } else if($id_fabricante==0 and $id_referencia!=0){
-                $query="SELECT * FROM  reference";
-                $inner_join="";
-                $condicion="WHERE REFERENCE_ID=".$id_referencia;
-            }else{
-                $query="SELECT * FROM  reference";
-                $inner_join="";
-                $condicion="";
-            }
-             $c=0;
-            echo '<br>';
-           foreach (parent::SuperQueryRobinsonAndresCortes($query,$inner_join,$condicion) as $r){
-               ?>
-               <div class="card" style="width: 18rem;">'
-                   <img class="card-img-top" src="files/<?php echo $r->REFERENCE_IMG ?>.png" alt="Card image cap">
-                   <div class="card-body">
-                       <h5 class="card-title"><?php  echo $r->REFERENCE_NAME; ?></h5>
-                       <p class="card-text"><?php echo $r->REFERENCE_DESCRIPTION?></p>
-                       <a href="#" class="btn btn-primary">Go somewhere</a>
-                   </div>
-               </div>
-              <?php
-               $c++;
-           }
-           if($c<=0)
-           echo "no hay resultados para la consulta";
-       */
     }
 }

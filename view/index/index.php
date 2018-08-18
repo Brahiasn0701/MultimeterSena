@@ -1,9 +1,10 @@
 <div class="container">
-    <div class="row justify-content-start pt-5">
+    <p class="text-left lead ml-3">Buscador de Multimetros</p>
+    <div class="row justify-content-start pt-5 float-xl-left">
         <div id="buttonBack">
             <button class="btn btn-outline-info" id="btnBackSearch">Volver</button>
         </div>          
-        <div class="col-3" id="sectionForSearch">
+        <div class="col">
                 <div class="form-group">
                     <label for="maker ">Fabricante</label>
                         <select name="maker" id="maker" class="form-control">
@@ -42,7 +43,7 @@
                                 foreach (parent::queryFunction() as $resultQueryFunction) {
                                     ?>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" id="<?php echo $resultQueryFunction->FUNCTION_ID; ?>" class="custom-control-input">
+                                        <input type="checkbox" id="<?php echo $resultQueryFunction->FUNCTION_ID; ?>" class="custom-control-input" value="<?php echo $resultQueryFunction->FUNCTION_ID; ?>">
                                         <label class="custom-control-label" for="<?php echo $resultQueryFunction->FUNCTION_ID; ?>"><?php echo $resultQueryFunction->FUNCTION_NAME; ?></label>
                                     </div>
                                     <?php
@@ -55,165 +56,34 @@
                     <small class="form-text text-muted">Funcion</small>
                 </div>
                 <button class="btn btn-outline-success" id="btnSearch">Buscar</button>
-        </div> 
+                <button class="btn btn-outline-info" id="btnEdit">Editar</button>
+            </div>
             <div id="responseSearch">
             </div>
-            </div>
         </div>
-    </div>
-    <div id="resultSearchCard">
-        <div class="row justify-content-center mt-5">
-                <div class="col-3">
-                    <div class="nav flex-column nav-pills" id="#myList" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active" id="homeTabs" data-toggle="pill" href="#makersMultimeterShow" role="tab" aria-controls="home" aria-selected="true">Fabricantes</a>
-                        <a class="nav-link" id="referenceTabs" data-toggle="pill" href="#referenceMultimeterShow" role="tab" aria-controls="referenceTabs" aria-selected="false">Referencias</a>
-                        <a class="nav-link" id="mutlimeterTabs" data-toggle="pill" href="#multimeterShow" role="tab" aria-controls="mutlimeterTabs" aria-selected="false">Multimetros</a>                    </div>
-                </div>
-                <div class="col-9">
-                    <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade show active" id="makersMultimeterShow" role="tabpanel" aria-labelledby="makersMultimeterShow">
-                            <div class="list-group" id="MakerList">
-                                <?php
-                                    foreach (parent::queryMaker() as $resultMaker) {
-                                        ?>
-                                            <a id="<?php echo $resultMaker->MAKER_NAME; ?>"  class="list-group-item list-group-item-action">
-                                                <?php echo $resultMaker->MAKER_NAME; ?>
-                                            </a>
-                                        <?php
-                                    }
-                                ?>
-                            </div>
+    <div class="row justify-content-center m-3" id="loginEdit">
+        <div class="card" style="width: 24rem;">
+            <div class="card-body">
+                <h5 class="card-title">Inicio de Sesion</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Administradores de Sistema</h6>
+                <div class="card-text">
+                    <form action="?c=login&m=loginUsersLoginController" method="POST">
+                        <div class="form-group">
+                            <label for="">Usuario</label>
+                            <input type="text" id="inpUserLoginAdmin" name="inpUserLoginAdmin" class="form-control">
+                            <small class="form-text text-muted">Digita tu usuario</small>
                         </div>
-                        <div class="tab-pane fade" id="referenceMultimeterShow" role="tabpanel" aria-labelledby="referenceMultimeterShow">
-                            <div class="list-group" id="referenceList">
-                                <?php
-                                    foreach (parent::queryReference() as $resultQueryReferenceSearch) {
-                                        ?>
-                                        <a href="#" class="list-group-item list-group-item-action"
-                                           id="<?php echo $resultQueryReferenceSearch->REFERENCE_ID; ?>"><?php echo $resultQueryReferenceSearch->REFERENCE_NAME; ?></a>
-                                        <?php
-                                    }
-                                ?>
-                            </div>
+                        <div class="form-group">
+                            <label for="">Contraseña</label>
+                            <input type="password" id="inpPassLoginAdmin" name="inpPassLoginAdmin" class="form-control">
+                            <small class="form-text text-muted">Digita tu contraseña</small>
                         </div>
-                        <div class="tab-pane fade" id="multimeterShow" role="tabpanel" aria-labelledby="multimeterShow">
-                            <div class="row justify-content-center">
-                                <div class="ml-5 mb-5">            
-                                    <div class="card col" style="width: 16rem;">
-                                        <img class="card-img-top" src="assets/img/multimetro.jpg" alt="Multimetro Crash">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Nombre Multimetro (Referencia)</h5>
-                                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <div class="row">
-                                                <a href="#" class="btn btn-primary col">Descargar PDF</a>
-                                                <div class="p-1"></div>
-                                            </div>
-                                        </div>   
-                                    </div>
-                                </div>             
-                                <div class="ml-5 mb-5">            
-                                    <div class="card col" style="width: 40rem;">
-                                        <img class="card-img-top" src="assets/img/multimetro.jpg" alt="Multimetro Crash">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Nombre Multimetro (Referencia)</h5>
-                                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <div class="row">
-                                                <a href="#" class="btn btn-primary col">Descargar PDF</a>
-                                                <div class="p-1"></div>
-                                            </div>
-                                        </div>   
-                                    </div>
-                                </div>
-                                <div class="ml-5 mb-5">            
-                                    <div class="card col" style="width: 16rem;">
-                                        <img class="card-img-top" src="assets/img/multimetro.jpg" alt="Multimetro Crash">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Nombre Multimetro (Referencia)</h5>
-                                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <div class="row">
-                                                <a href="#" class="btn btn-primary col">Descargar PDF</a>
-                                                <div class="p-1"></div>
-                                            </div>
-                                        </div>   
-                                    </div>
-                                </div>  
-                                <div class="ml-5 mb-5">            
-                                    <div class="card col" style="width: 16rem;">
-                                        <img class="card-img-top" src="assets/img/multimetro.jpg" alt="Multimetro Crash">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Nombre Multimetro (Referencia)</h5>
-                                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <div class="row">
-                                                <a href="#" class="btn btn-primary col">Descargar PDF</a>
-                                                <div class="p-1"></div>
-                                            </div>
-                                        </div>   
-                                    </div>
-                                </div>  
-                                <div class="ml-5 mb-5">            
-                                    <div class="card col" style="width: 16rem;">
-                                        <img class="card-img-top" src="assets/img/multimetro.jpg" alt="Multimetro Crash">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Nombre Multimetro (Referencia)</h5>
-                                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <div class="row">
-                                                <a href="#" class="btn btn-primary col">Descargar PDF</a>
-                                                <div class="p-1"></div>
-                                            </div>
-                                        </div>   
-                                    </div>
-                                </div>  
-                                <div class="ml-5 mb-5">            
-                                    <div class="card col" style="width: 16rem;">
-                                        <img class="card-img-top" src="assets/img/multimetro.jpg" alt="Multimetro Crash">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Nombre Multimetro (Referencia)</h5>
-                                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <div class="row">
-                                                <a href="#" class="btn btn-primary col">Descargar PDF</a>
-                                                <div class="p-1"></div>
-                                            </div>
-                                        </div>   
-                                    </div>
-                                </div>  
-                                <div class="ml-5 mb-5">            
-                                    <div class="card col" style="width: 16rem;">
-                                        <img class="card-img-top" src="assets/img/multimetro.jpg" alt="Multimetro Crash">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Nombre Multimetro (Referencia)</h5>
-                                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <div class="row">
-                                                <a href="#" class="btn btn-primary col">Descargar PDF</a>
-                                                <div class="p-1"></div>
-                                            </div>
-                                        </div>   
-                                    </div>
-                                </div>  
-                                <div class="ml-5 mb-5">            
-                                    <div class="card col" style="width: 16rem;">
-                                        <img class="card-img-top" src="assets/img/multimetro.jpg" alt="Multimetro Crash">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Nombre Multimetro (Referencia)</h5>
-                                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <div class="row">
-                                                <a href="#" class="btn btn-primary col">Descargar PDF</a>
-                                                <div class="p-1"></div>
-                                            </div>
-                                        </div>   
-                                    </div>
-                                </div>    
-                            </div>  
-                        </div>
+                        <button type="submit" class="btn btn-outline-primary">Iniciar Sesion</button>
+                    </form>
                     </div>
-                </div>
             </div>
         </div>
     </div>
+</div>
+
+    
