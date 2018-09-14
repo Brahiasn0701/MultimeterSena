@@ -1,7 +1,35 @@
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="?c=index&m=index">
-      <img src="assets/img/LOGOCEET.png" width="350" height="70" class="img-fluid" alt="">
-      <img src="assets/img/SENA_SENNOVA.png" width="200" height="55" class=" img-fluid" alt="">
-      <img src="assets/img/GICS-LOGO.png" width="150" height="55" class="img-fluid" alt="">
-  </a>
-</nav>
+<style>
+    
+    
+   
+    .andresfront{
+        text-align: center; 
+        margin-top: 15px;
+    }
+    @media(max-width:580px){
+        #sennova_img{
+            width: 30%;
+            float: left;
+        }
+        #gics_img{
+            width: 30%;
+            float: right;
+            transform: translateY(-80px);    
+        }
+    }
+</style>
+<br>
+<div class="container-fluid" style="text-align: center">
+<div class="row">
+    <div class="col-md-4 col-sm-12 col-xs-12">
+        <img src="assets/img/LOGOCEET.png"  id="ceet_img" class="img-fluid" alt="" >
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-6">
+        <img src="assets/img/SENA_SENNOVA.png" style="height:80px"  id="sennova_img" class=" img-fluid" alt="">
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-6">
+        <img src="assets/img/GICS-LOGO.png" style="height:80px" id="gics_img" class="img-fluid" alt="">
+    </div>
+
+</div>
+</div>

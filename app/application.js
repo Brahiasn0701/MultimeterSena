@@ -121,8 +121,12 @@ $(function(){
     $('#btnSearch').on("click", function(){
         $('#loginEdit').hide();
         var valueCheck = [];
+        
+  
+        
        $('input:checkbox[class=custom-control-input]:checked').each(function () {
            valueCheck.push($(this).val());
+           
        });
         $.ajax({
            type: 'POST',
@@ -133,6 +137,7 @@ $(function(){
                     valueCheckBox: valueCheck}
         }).done(function (response) {
             $('#responseSearch').html(response);
+             alert(valueCheck);
         });
     });
 

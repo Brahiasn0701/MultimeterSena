@@ -1,10 +1,10 @@
 <div class="container">
-    <p class="text-left lead pt-5 ">Buscador de Multimetros</p>
+    <p class="text-left lead pt-5 "></p>
     <div class="row justify-content-start pt-5 float-xl-left">        
         <div class="col">
                 <div class="form-group">
                     <label for="maker ">Fabricante</label>
-                        <select name="maker" id="maker" class="form-control">
+                        <select  name="maker" id="maker" class="form-control">
                             <option value="0" selected>Fabricante</option>
                             <?php
                                 foreach (self::queryMaker() as $resultMakerAll) {

@@ -155,4 +155,19 @@ class index extends  database
             die($e->getMessage());
         }
     }
+    
+    public function queryandres($where,$id){
+        try {
+            echo $where;
+            $stm = parent::conexion()->prepare("SELECT * FROM reference
+                                                         INNER JOIN function_has_reference ON
+                                                         reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID
+                                                         WHERE 
+                                                         ".$where." AND reference.maker_MAKER_ID =".$id."");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 }

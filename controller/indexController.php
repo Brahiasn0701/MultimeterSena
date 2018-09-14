@@ -182,6 +182,7 @@ class indexController extends index
 
     public function querySearch()
     {
+        
         if ($_REQUEST['valueMaker'] != 0 and isset($_REQUEST['valueCheckBox'])){
             if(strpbrk(',', implode(',',$_REQUEST['valueCheckBox'])) === false){
                 ?>
@@ -219,7 +220,48 @@ class indexController extends index
                     <?php
                 }
             } else {
-                echo 'Se selecciono varias opciones';
+               // var_dump($_REQUEST['valueCheckBox']);
+                $array=$_REQUEST['valueCheckBox'];
+                $count=count($_REQUEST['valueCheckBox']);
+                $sql="";
+                    for ($i = 0; $i < $count; $i++) {
+                        $la=$i+1;
+                          if($count<=$la){
+                              $or="";
+                          }else{
+                              $or=" or ";
+                          }
+                          $sql=$sql."function_has_reference.FUNCTION_FUNCTION_ID = ".$array[$i]."".$or  ;
+                    }
+                    //en for
+    
+           
+                
+                    foreach (parent::queryandres($sql,$_REQUEST['valueMaker']) as $resultForFunctionAndMaker) {
+                        $count++;
+                        ?>
+                        <div class="card col ml-3 mt-3" style="width: 18rem;">
+                            <img class="card-img-top" src="files/<?php echo $resultForFunctionAndMaker->REFERENCE_IMG; ?>" alt="Multimetro Crash">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $resultForFunctionAndMaker->REFERENCE_NAME; ?></h5>
+                                <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
+                                <p class="card-text"><?php echo $resultForFunctionAndMaker->REFERENCE_DESCRIPTION; ?></p>
+                                <p class="lead">Costo <strong><?php echo $resultForFunctionAndMaker->REFERENCE_PRICE; ?></strong></p>
+                                <div class="row col">
+                                    <a href="<?php echo $resultForFunctionAndMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
+                                    <div class="p-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }    
+                    
+                    
+                    
+                    
+                    
+                    
+                  
             }
         } elseif($_REQUEST['valueMaker'] != 0 and $_REQUEST['valueReference'] == 0){
             ?>
