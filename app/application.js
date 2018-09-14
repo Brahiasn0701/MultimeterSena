@@ -1,7 +1,4 @@
-
-
 $(function(){
-
     $(document).ready(function(){
         $('#resultSearchCard').hide();
         $('#contentInsertMaker').hide();
@@ -77,6 +74,14 @@ $(function(){
                data: null
             }).done(function (response) {
                 $('#responseQueryReferenceForMaker').html( response);
+                $.ajax({
+                    type: 'POST',
+                    url: '?c=index&m=queryFunctionDefaultIndexController',
+                    data: null,
+                }).done(function (response) {
+                    $('#resultQueryOnlyFunction').html( response);
+                    $('.custom-control-input').prop('disabled', true)
+                });
                 $('.custom-control-input').prop('disabled', true);
             });
         } else {

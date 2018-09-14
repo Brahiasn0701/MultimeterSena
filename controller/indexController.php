@@ -95,6 +95,16 @@ class indexController extends index
         </script>
         <?php
     }
+    public function queryFunctionDefaultIndexController(){
+        foreach (parent::queryFunction() as $resultQueryFunction) {
+        ?>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="<?php echo $resultQueryFunction->FUNCTION_ID; ?>" class="custom-control-input" value="<?php echo $resultQueryFunction->FUNCTION_ID; ?>">
+                <label class="custom-control-label" for="<?php echo $resultQueryFunction->FUNCTION_ID; ?>"><?php echo $resultQueryFunction->FUNCTION_NAME; ?></label>
+            </div>
+        <?php
+            }
+    }
 
     public function queryAllReferences(){
         ?>
