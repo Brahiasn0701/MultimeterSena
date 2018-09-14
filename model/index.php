@@ -29,7 +29,8 @@ class index extends  database
             $stm->bindParam(2, $array['descriptionReference'], PDO::PARAM_STR);
             $stm->bindParam(3, $array['imageReference'], PDO::PARAM_STR);
             $stm->bindParam(4, $array['fileUrlReference'], PDO::PARAM_STR);
-            $stm->bindParam(5, $array['nameMaker'], PDO::PARAM_STR);
+            $stm->bindParam(5, $array['priceReference'], PDO::PARAM_STR);
+            $stm->bindParam(6, $array['nameMaker'], PDO::PARAM_STR);
             $stm->execute();
         } catch (Exception $e){
             die($e->getMessage());

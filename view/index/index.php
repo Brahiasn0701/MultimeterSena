@@ -1,9 +1,6 @@
 <div class="container">
     <p class="text-left lead pt-5 ">Buscador de Multimetros</p>
-    <div class="row justify-content-start pt-5 float-xl-left">
-        <div id="buttonBack">
-            <button class="btn btn-outline-info" id="btnBackSearch">Volver</button>
-        </div>          
+    <div class="row justify-content-start pt-5 float-xl-left">        
         <div class="col">
                 <div class="form-group">
                     <label for="maker ">Fabricante</label>
@@ -85,5 +82,3 @@
         </div>
     </div>
 </div>
-
-    

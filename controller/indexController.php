@@ -31,6 +31,7 @@ class indexController extends index
                         "descriptionReference" => $_POST['referenceDescription'],
                         "imageReference" => $name,
                         "fileUrlReference" => $_POST['doucumentReference'],
+                        "priceReference" => $_POST['inpPriceReference'],
                         "nameMaker" => $_POST['nameMaker']
         );
         parent::insertReference($array);
@@ -188,6 +189,7 @@ class indexController extends index
                                 <h5 class="card-title"><?php echo $resultForFunctionAndMaker->REFERENCE_NAME; ?></h5>
                                 <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                                 <p class="card-text"><?php echo $resultForFunctionAndMaker->REFERENCE_DESCRIPTION; ?></p>
+                                <p class="lead">Costo <strong><?php echo $resultForFunctionAndMaker->REFERENCE_PRICE; ?></strong></p>
                                 <div class="row col">
                                     <a href="<?php echo $resultForFunctionAndMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                                     <div class="p-1"></div>
@@ -224,10 +226,11 @@ class indexController extends index
                             <h5 class="card-title"><?php echo $resultSearchQueryReferenceForMaker->REFERENCE_NAME; ?></h5>
                             <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                             <p class="card-text"><?php echo $resultSearchQueryReferenceForMaker->REFERENCE_DESCRIPTION; ?></p>
-                                <div class="row justify-content-center">
-                                    <a href="<?php echo $resultSearchQueryReferenceForMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary">Descargar PDF</a>
-                                    <div class="p-1"></div>
-                                </div>
+                            <p class="lead">Costo <strong><?php echo $resultSearchQueryReferenceForMaker->REFERENCE_PRICE; ?></strong></p>
+                            <div class="row justify-content-center">
+                                <a href="<?php echo $resultSearchQueryReferenceForMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary">Descargar PDF</a>
+                                <div class="p-1"></div>
+                            </div>
                         </div>
                     </div>
                 <?php
@@ -260,6 +263,7 @@ class indexController extends index
                             <h5 class="card-title"><?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_NAME; ?></h5>
                             <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                             <p class="card-text"><?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_DESCRIPTION; ?></p>
+                            <p class="lead">Costo <strong><?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_PRICE; ?></strong></p>
                             <div class="row justify-content-center">
                                 <a href="<?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                                 <div class="p-1"></div>
@@ -290,6 +294,7 @@ class indexController extends index
                             <h5 class="card-title">(<?php echo ucwords($resultQueryOnlyReference->MAKER_NAME).') '.$resultQueryOnlyReference->REFERENCE_NAME?></h5>
                             <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                             <p class="card-text"><?php echo $resultQueryOnlyReference->REFERENCE_DESCRIPTION; ?></p>
+                            <p class="lead">Costo <strong><?php echo $resultQueryOnlyReference->REFERENCE_PRICE; ?></strong></p>
                             <div class="row justify-content-center">
                                 <a href="<?php echo $resultQueryOnlyReference->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                             </div>

@@ -2,7 +2,7 @@
     <p class="text-left lead ml-3 pb-3">Modulo de Administradores, Bienvenid@ <b><?php echo $_SESSION['NAME'].' '.$_SESSION['LASTNAME']; ?></b></p>
     <a href="?c=login&m=destroySession" class="btn btn-outline-success mb-3" role="button">Cerrar Sesion</a>
     <div class="row justify-content-center">
-        <div class="col">
+        <div class="col mt-5">
             <div class="card" style="width: 20rem;">
                 <div class="card-body">
                     <h5 class="card-title">Insercion de Referencias</h5>
@@ -33,6 +33,11 @@
                                 <small class="form-text text-muted">Pega la url del archivo</small>
                             </div>
                             <div class="form-group">
+                              <label for="inpPriceReference">Precio de referencia</label>
+                              <input type="text" name="inpPriceReference" id="inpPriceReference" class="form-control">
+                              <small class="form-text text-muted">Escribe el precio de la refrencia</small>
+                            </div>
+                            <div class="form-group">
                                 <label for="nameMaker">Nombre del Fabricante</label>
                                 <select name="nameMaker" id="nameMaker" class="form-control">
                                     <option value="">Fabricante</option>
@@ -52,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col mt-5">
             <div class="card" style="width: 20rem;">
                 <div class="card-body">
                     <h5 class="card-title">Insercion de Fabricantes</h5>
@@ -74,7 +79,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col mt-5">
             <div class="card" style="width: 20rem;">
                 <div class="card-body">
                     <h5 class="card-title">Funciones</h5>
