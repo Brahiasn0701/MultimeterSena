@@ -30,7 +30,8 @@ class index extends  database
             $stm->bindParam(3, $array['imageReference'], PDO::PARAM_STR);
             $stm->bindParam(4, $array['fileUrlReference'], PDO::PARAM_STR);
             $stm->bindParam(5, $array['priceReference'], PDO::PARAM_STR);
-            $stm->bindParam(6, $array['nameMaker'], PDO::PARAM_STR);
+            $stm->bindParam(6, $array['precisionReference'], PDO::PARAM_STR);
+            $stm->bindParam(7, $array['nameMaker'], PDO::PARAM_STR);
             $stm->execute();
         } catch (Exception $e){
             die($e->getMessage());
@@ -111,6 +112,17 @@ class index extends  database
         }
     }
 
+    public function queryPrecisionForReference(array $array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryPrecisionForReference);
+            $stm->bindParam(1, $array['reference'], PDO::PARAM_STR);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function queryOnlyReference($date){
         try {
             $stm = parent::conexion()->prepare(preparedSQL::queryOnlyReference);
@@ -158,12 +170,12 @@ class index extends  database
     
     public function queryandres($where,$id){
         try {
-            echo $where;
+            //echo $where;
             $stm = parent::conexion()->prepare("SELECT * FROM reference
                                                          INNER JOIN function_has_reference ON
                                                          reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID
                                                          WHERE 
-                                                         ".$where." AND reference.maker_MAKER_ID =".$id."");
+                                                         ".$where." AND reference.maker_MAKER_ID =".$id." GROUP BY REFERENCE_ID");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {

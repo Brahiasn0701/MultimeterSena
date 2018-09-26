@@ -105,6 +105,10 @@ $(function(){
             }).done(function (response) {
                 $('#resultQueryOnlyFunction').html(response);
                 $('.custom-control-input').prop('disabled', false);
+                $('#inpCostInitial').prop('disabled', false);
+                $('#inpCostFinal').prop('disabled', false);
+                $('#inpPrecisionReference').prop('disabled', false).empty().append('<option value="0" selected="selected">Precisión</option>');
+
             });
        } else {
             $.ajax({
@@ -114,6 +118,18 @@ $(function(){
             }).done(function (response) {
                 $('#resultQueryOnlyFunction').html(response);
                 $('.custom-control-input').prop('disabled', true);
+                $('#inpCostInitial').prop('disabled', true);
+                $('#inpCostFinal').prop('disabled', true);
+                $.ajax({
+                   type: 'POST',
+                   url: '?c=index&m=queryPresicionForReferenceIndexController',
+                   data: {
+                       reference: $('#reference').val()
+                   }
+                }).done(function (response) {
+                    $('#resultQueryPrecisionForReference').html(response);
+                    $('#inpPrecisionReference').prop('disabled', true);
+                });
             });
        }
     });
@@ -121,12 +137,8 @@ $(function(){
     $('#btnSearch').on("click", function(){
         $('#loginEdit').hide();
         var valueCheck = [];
-        
-  
-        
        $('input:checkbox[class=custom-control-input]:checked').each(function () {
            valueCheck.push($(this).val());
-           
        });
         $.ajax({
            type: 'POST',
@@ -137,7 +149,6 @@ $(function(){
                     valueCheckBox: valueCheck}
         }).done(function (response) {
             $('#responseSearch').html(response);
-             alert(valueCheck);
         });
     });
 

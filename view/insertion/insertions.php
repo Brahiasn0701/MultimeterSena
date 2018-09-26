@@ -1,7 +1,7 @@
-<div class="container mt-5">
+<div class="container mt-5"> <!-- Inicio de Contenedor -->
     <p class="text-left lead ml-3 pb-3">Modulo de Administradores, Bienvenid@ <b><?php echo $_SESSION['NAME'].' '.$_SESSION['LASTNAME']; ?></b></p>
     <a href="?c=login&m=destroySession" class="btn btn-outline-success mb-3" role="button">Cerrar Sesion</a>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center"> <!-- Incio de columna encargada de alineamiento -->
         <div class="col mt-5">
             <div class="card" style="width: 20rem;">
                 <div class="card-body">
@@ -36,6 +36,11 @@
                               <label for="inpPriceReference">Precio de referencia</label>
                               <input type="text" name="inpPriceReference" id="inpPriceReference" class="form-control">
                               <small class="form-text text-muted">Escribe el precio de la refrencia</small>
+                            </div>
+                            <div class="form-group">
+                              <label for="inpPrecision">Presición de la referencia</label>
+                              <input type="text" name="inpPrecision" id="inpPrecision" class="form-control">
+                              <small class="form-text text-muted">Escribe la precisión de la refrencia</small>
                             </div>
                             <div class="form-group">
                                 <label for="nameMaker">Nombre del Fabricante</label>
@@ -145,5 +150,5 @@
                     </div>
                 </div>
             </div>
-    </div>
-</div>
+    </div> <!-- Fin de Columna -->
+</div> <!-- Fin de Contentedor -->
