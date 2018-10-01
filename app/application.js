@@ -107,8 +107,13 @@ $(function(){
                 $('.custom-control-input').prop('disabled', false);
                 $('#inpCostInitial').prop('disabled', false);
                 $('#inpCostFinal').prop('disabled', false);
-                $('#inpPrecisionReference').prop('disabled', false).empty().append('<option value="0" selected="selected">Precisión</option>');
-
+                $.ajax({
+                    type: 'POST',
+                    url: '?c=index&m=queryPrecisionForReferenceDefaultIndexController',
+                    data: null
+                }).done(function (response) {
+                    $('#resultQueryPresicionForReference').html(response);
+                })
             });
        } else {
             $.ajax({
@@ -122,13 +127,13 @@ $(function(){
                 $('#inpCostFinal').prop('disabled', true);
                 $.ajax({
                    type: 'POST',
-                   url: '?c=index&m=queryPresicionForReferenceIndexController',
+                   url: '?c=index&m=queryPrecisionForReferenceIndexController',
                    data: {
-                       reference: $('#reference').val()
+                       valueReference: $('#reference').val()
                    }
                 }).done(function (response) {
-                    $('#resultQueryPrecisionForReference').html(response);
-                    $('#inpPrecisionReference').prop('disabled', true);
+                    $('#resultQueryPresicionForReference').html(response);
+                    $('.custom-control-input').prop('disabled', true);
                 });
             });
        }

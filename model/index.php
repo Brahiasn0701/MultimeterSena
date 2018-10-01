@@ -112,10 +112,10 @@ class index extends  database
         }
     }
 
-    public function queryPrecisionForReference(array $array){
+    public function queryPrecisionForReference($array){
         try {
             $stm = parent::conexion()->prepare(preparedSQL::queryPrecisionForReference);
-            $stm->bindParam(1, $array['reference'], PDO::PARAM_STR);
+            $stm->bindParam(1, $array['valueReference'], PDO::PARAM_STR);
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {

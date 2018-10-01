@@ -83,7 +83,6 @@ class indexController extends index
                         $('.custom-control-input').prop('disabled', false);
                         $('#inpCostInitial').prop('disabled', false);
                         $('#inpCostFinal').prop('disabled', false);
-                        $('#inpPrecisionReference').prop('disabled', false).empty().append('<option value="0" selected="selected">Precisión</option>');
                     });
                 } else {
                     $.ajax({
@@ -95,16 +94,6 @@ class indexController extends index
                         $('.custom-control-input').prop('disabled', true);
                         $('#inpCostInitial').prop('disabled', true);
                         $('#inpCostFinal').prop('disabled', true);
-                        $.ajax({
-                            type: 'POST',
-                            url: '?c=index&m=queryPresicionForReferenceIndexController',
-                            data: {
-                                reference: $('#reference').val()
-                            }
-                        }).done(function (response) {
-                            $('#resultQueryPrecisionForReference').html(response);
-                            $('#inpPrecisionReference').prop('disabled', true);
-                        });
                     });
                 }
             });
@@ -112,18 +101,23 @@ class indexController extends index
         <?php
     }
 
-    public function queryPresicionForReferenceIndexController(){
-        $array = array("reference" => $_REQUEST['reference']);
-        ?>
-        <select name="inpPrecisionReference" id="inpPrecisionReference" class="form-control">
-            <?php
-                foreach (parent::queryPrecisionForReference($array) as $resultQueryPrecisionForReference) {
-                    ?>
-                        <option value="<?php echo $resultQueryPrecisionForReference->REFERENCE_ID; ?>" selected><?php echo $resultQueryPrecisionForReference->REFERENCE_PRECISION; ?></option>
-                    <?php
-                }
+    public function queryPrecisionForReferenceIndexController(){
+        $array = array("valueReference" => $_REQUEST['valueReference']);
+        foreach (parent::queryPrecisionForReference($array) as $resultQueryPrecisionForReference) {
             ?>
-        </select>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="<?php echo $resultQueryPrecisionForReference->FUNCTION_ID * -1; ?>" class="custom-control-input" value="<?php echo $resultQueryPrecisionForReference->FUNCTION_PRECISION; ?>">
+                <label class="custom-control-label" for="<?php echo $resultQueryPrecisionForReference->FUNCTION_ID * -1; ?>"><?php echo $resultQueryPrecisionForReference->FUNCTION_NAME.' '.'<b>'.$resultQueryPrecisionForReference->FUNCTION_PRECISION.'</b>'; ?></label>
+            </div>
+            <?php
+        }
+    }
+
+    public function queryPrecisionForReferenceDefaultIndexController(){
+        ?>
+        <div class="custom-control custom-checkbox">
+            <b> Precisión por Referencia </b>
+        </div>
         <?php
     }
     public function queryFunctionDefaultIndexController(){

@@ -44,41 +44,6 @@
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label for="">Precisión</label>
-                <div  id="resultQueryPrecisionForReference">
-                    <select name="inpPrecisionReference" id="inpPrecisionReference" class="form-control">
-                        <option value="0" selected>Precisión</option>
-                    </select>
-                </div>
-                <small class="form-text text-muted">Precisión</small>
-            </div>
-        </div>
-    </div> <!-- Fin de la primera Columna -->
-
-    <div class="row align-items-start">  <!-- Segunda Columna encargada de alineamiento -->
-        <div class="col-md-3">
-            <div class="form-group">
-                <label for="resultQueryOnlyFunction">Variables de Medida</label>
-                <div class="card">
-                    <div class="card-body" id="resultQueryOnlyFunction">
-                        <?php
-                            foreach (parent::queryFunction() as $resultQueryFunction) {
-                                ?>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" id="<?php echo $resultQueryFunction->FUNCTION_ID; ?>" class="custom-control-input" value="<?php echo $resultQueryFunction->FUNCTION_ID; ?>">
-                                    <label class="custom-control-label" for="<?php echo $resultQueryFunction->FUNCTION_ID; ?>"><?php echo $resultQueryFunction->FUNCTION_NAME; ?></label>
-                                </div>
-                                <?php
-                            
-                            }
-                        ?>        
-                    </div>
-                </div>
-                <small class="form-text text-muted">Variables de Medida</small> 
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="form-group">
                 <label for="">Precio Inicial</label>
                 <div  id="">
                     <select name="inpCostInitial" id="inpCostInitial" class="form-control">
@@ -107,6 +72,43 @@
                     </select>
                 </div>
                 <small class="form-text text-muted">Precio Final</small>
+            </div>
+        </div>
+    </div> <!-- Fin de la primera Columna -->
+
+    <div class="row align-items-start">  <!-- Segunda Columna encargada de alineamiento -->
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="resultQueryOnlyFunction">Variables de Medida</label>
+                <div class="card">
+                    <div class="card-body" id="resultQueryOnlyFunction">
+                        <?php
+                            foreach (parent::queryFunction() as $resultQueryFunction) {
+                                ?>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="<?php echo $resultQueryFunction->FUNCTION_ID; ?>" class="custom-control-input" value="<?php echo $resultQueryFunction->FUNCTION_ID; ?>">
+                                    <label class="custom-control-label" for="<?php echo $resultQueryFunction->FUNCTION_ID; ?>"><?php echo $resultQueryFunction->FUNCTION_NAME; ?></label>
+                                </div>
+                                <?php
+                            
+                            }
+                        ?>        
+                    </div>
+                </div>
+                <small class="form-text text-muted">Variables de Medida</small> 
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="resultQueryPresicionForReference">Presición</label>
+                <div class="card">
+                    <div class="card-body" id="resultQueryPresicionForReference">
+                        <div class="custom-control custom-checkbox">
+                            <b> Precisión por Referencia </b>
+                        </div>
+                    </div>
+                </div>
+                <small class="form-text text-muted">Precisión</small> 
             </div>
         </div>
     </div> <!-- Fin de la segunda Columna -->

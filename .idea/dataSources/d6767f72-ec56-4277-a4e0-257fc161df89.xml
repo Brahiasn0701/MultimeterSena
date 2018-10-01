@@ -1081,21 +1081,26 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="270" parent="255" name="fk_function_has_reference_function1_idx">
+    <column id="270" parent="255" name="FUNCTION_PRECISION">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="271" parent="255" name="fk_function_has_reference_function1_idx">
       <ColNames>FUNCTION_FUNCTION_ID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="271" parent="255" name="fk_function_has_reference_reference1_idx">
+    <index id="272" parent="255" name="fk_function_has_reference_reference1_idx">
       <ColNames>REFERENCE_REFERENCE_ID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="272" parent="255" name="PRIMARY">
+    <key id="273" parent="255" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>FUNCTION_FUNCTION_ID
 REFERENCE_REFERENCE_ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="273" parent="255" name="fk_function_has_reference_function1">
+    <foreign-key id="274" parent="255" name="fk_function_has_reference_function1">
       <ColNames>FUNCTION_FUNCTION_ID</ColNames>
       <RefSchemaName>db_multimeter_sena</RefSchemaName>
       <RefTableName>function</RefTableName>
@@ -1103,7 +1108,7 @@ REFERENCE_REFERENCE_ID</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="274" parent="255" name="fk_function_has_reference_reference1">
+    <foreign-key id="275" parent="255" name="fk_function_has_reference_reference1">
       <ColNames>REFERENCE_REFERENCE_ID</ColNames>
       <RefSchemaName>db_multimeter_sena</RefSchemaName>
       <RefTableName>reference</RefTableName>
@@ -1111,77 +1116,77 @@ REFERENCE_REFERENCE_ID</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="275" parent="256" name="MAKER_ID">
+    <column id="276" parent="256" name="MAKER_ID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="276" parent="256" name="MAKER_NAME">
+    <column id="277" parent="256" name="MAKER_NAME">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="277" parent="256" name="PRIMARY">
+    <key id="278" parent="256" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>MAKER_ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="278" parent="257" name="REFERENCE_ID">
+    <column id="279" parent="257" name="REFERENCE_ID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="279" parent="257" name="REFERENCE_NAME">
+    <column id="280" parent="257" name="REFERENCE_NAME">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="280" parent="257" name="REFERENCE_DESCRIPTION">
+    <column id="281" parent="257" name="REFERENCE_DESCRIPTION">
       <Position>3</Position>
       <DataType>varchar(500)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="281" parent="257" name="REFERENCE_IMG">
+    <column id="282" parent="257" name="REFERENCE_IMG">
       <Position>4</Position>
       <DataType>varchar(300)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="282" parent="257" name="REFERENCE_FILE_URL">
+    <column id="283" parent="257" name="REFERENCE_FILE_URL">
       <Position>5</Position>
       <DataType>varchar(500)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="283" parent="257" name="REFERENCE_PRICE">
+    <column id="284" parent="257" name="REFERENCE_PRICE">
       <Position>6</Position>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="284" parent="257" name="REFERENCE_PRECISION">
+    <column id="285" parent="257" name="REFERENCE_PRECISION">
       <Position>7</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="285" parent="257" name="maker_MAKER_ID">
+    <column id="286" parent="257" name="maker_MAKER_ID">
       <Position>8</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="286" parent="257" name="fk_reference_maker_idx">
+    <index id="287" parent="257" name="fk_reference_maker_idx">
       <ColNames>maker_MAKER_ID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="287" parent="257" name="PRIMARY">
+    <key id="288" parent="257" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>REFERENCE_ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="288" parent="257" name="fk_reference_maker">
+    <foreign-key id="289" parent="257" name="fk_reference_maker">
       <ColNames>maker_MAKER_ID</ColNames>
       <RefSchemaName>db_multimeter_sena</RefSchemaName>
       <RefTableName>maker</RefTableName>
