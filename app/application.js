@@ -6,7 +6,6 @@ $(function(){
         $('#contentInsertFunction').hide();
         $('#contentAsignReference').hide();
         $('#loginEdit').hide();
-        $('.custom-control-input').prop('disabled', true);
     });
 
     // Insercion para no hacer todo manualmente
@@ -47,7 +46,8 @@ $(function(){
         type: 'POST',
            url: '?c=index&m=insertFunctionReferenceIndexController',
            data: {nameFunction : $('#slcNameFunction').val(),
-                    nameReference : $('#slcReference').val()}
+                    nameReference : $('#slcReference').val(),
+                    valuePrecision: $('#inpPrecision').val()}
        }).done(function (response) {
            $('#contentAsignReference').show();
            $('#resultAsignFunction').html(response);
@@ -56,6 +56,7 @@ $(function(){
            }, 1000);
            $('#slcNameFunction').val('');
            $('#slcReference').val('');
+           $('#inpPrecision').val('');
        });
     });
 
@@ -80,9 +81,9 @@ $(function(){
                     data: null,
                 }).done(function (response) {
                     $('#resultQueryOnlyFunction').html( response);
-                    $('.custom-control-input').prop('disabled', true)
+
                 });
-                $('.custom-control-input').prop('disabled', true);
+
             });
         } else {
             $.ajax({

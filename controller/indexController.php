@@ -47,7 +47,8 @@ class indexController extends index
     public function insertFunctionReferenceIndexController()
     {
         $array = array("nameFunction" => $_REQUEST['nameFunction'],
-                        "nameReference" => $_REQUEST['nameReference']);
+                        "nameReference" => $_REQUEST['nameReference'],
+                        "valuePrecision" => $_REQUEST['valuePrecision']);
         parent::insertFunctionReference($array);
         echo 'Asignacion correcta';
     }
@@ -203,7 +204,7 @@ class indexController extends index
 
     public function querySearch()
     {
-        if ($_REQUEST['valueMaker'] != 0 and isset($_REQUEST['valueCheckBox'])){
+        if ($_REQUEST['valueMaker'] == 0 and isset($_REQUEST['valueCheckBox'])){
             if(strpbrk(',', implode(',',$_REQUEST['valueCheckBox'])) === false){
                 ?>
                 <div class="container row justify-content-center">
@@ -265,7 +266,7 @@ class indexController extends index
                                 <h5 class="card-title"><?php echo $resultForFunctionAndMaker->REFERENCE_NAME; ?></h5>
                                 <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                                 <p class="card-text"><?php echo $resultForFunctionAndMaker->REFERENCE_DESCRIPTION; ?></p>
-                                <p class="lead">Costo <strong><?php echo number_format($resultForFunctionAndMaker->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                                <p class="lead">Costo <strong><?php echo number_format($resultForFunctionAndMaker->REFERENCE_PRICE,     -1, '.', '.'); ?></strong></p>
                                 <div class="row col">
                                     <a href="<?php echo $resultForFunctionAndMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                                     <div class="p-1"></div>

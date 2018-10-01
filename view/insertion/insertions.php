@@ -38,11 +38,6 @@
                               <small class="form-text text-muted">Escribe el precio de la refrencia</small>
                             </div>
                             <div class="form-group">
-                              <label for="inpPrecision">Presición de la referencia</label>
-                              <input type="text" name="inpPrecision" id="inpPrecision" class="form-control">
-                              <small class="form-text text-muted">Escribe la precisión de la refrencia</small>
-                            </div>
-                            <div class="form-group">
                                 <label for="nameMaker">Nombre del Fabricante</label>
                                 <select name="nameMaker" id="nameMaker" class="form-control">
                                     <option value="">Fabricante</option>
@@ -144,6 +139,12 @@
                                         }
                                     ?>
                                 </select>
+                                <small class="text-muted form-text">Selecciona la referencia</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="inpPrecision">Precisión</label>
+                                <input type="text" name="inpPrecision" id="inpPrecision" class="form-control">
+                                <small class="text-muted form-text">Escribe la precision de la Funcion</small>
                             </div>
                         </div>
                         <button class="btn btn-outline-primary" id="btnAsignFunction">Insertar</button>

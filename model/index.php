@@ -30,8 +30,7 @@ class index extends  database
             $stm->bindParam(3, $array['imageReference'], PDO::PARAM_STR);
             $stm->bindParam(4, $array['fileUrlReference'], PDO::PARAM_STR);
             $stm->bindParam(5, $array['priceReference'], PDO::PARAM_STR);
-            $stm->bindParam(6, $array['precisionReference'], PDO::PARAM_STR);
-            $stm->bindParam(7, $array['nameMaker'], PDO::PARAM_STR);
+            $stm->bindParam(6, $array['nameMaker'], PDO::PARAM_STR);
             $stm->execute();
         } catch (Exception $e){
             die($e->getMessage());
@@ -73,6 +72,7 @@ class index extends  database
             $stm = parent::conexion()->prepare(preparedSQL::insertFunctionReference);
             $stm->bindParam(1, $array['nameFunction'], PDO::PARAM_INT);
             $stm->bindParam(2, $array['nameReference'], PDO::PARAM_INT);
+            $stm->bindParam(3, $array['valuePrecision'], PDO::PARAM_STR);
             $stm->execute();
         } catch (Exception $e){
             die($e->getMessage());
