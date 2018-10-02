@@ -81,9 +81,7 @@ $(function(){
                     data: null,
                 }).done(function (response) {
                     $('#resultQueryOnlyFunction').html( response);
-
                 });
-
             });
         } else {
             $.ajax({

@@ -156,6 +156,16 @@ class index extends  database
         }
     }
 
+    public function superQueryForMakerAndFunction($query, $join, $condition){
+        try {
+            $stm = parent::conexion()->prepare($query.' '.$join.' '.$condition);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function queryForFunctionAndMaker(array $array){
         try {
             $stm = parent::conexion()->prepare(preparedSQL::queryForFunctionAndMaker);
@@ -167,7 +177,18 @@ class index extends  database
             die($e->getMessage());
         }
     }
-    
+
+    public function queryForAllReferenceFunction($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryForAllReferenceFunction);
+            $stm->bindParam(1, $array['valueCheck'], PDO::PARAM_STR);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function queryandres($where,$id){
         try {
             //echo $where;

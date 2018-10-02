@@ -84,6 +84,13 @@ class indexController extends index
                         $('.custom-control-input').prop('disabled', false);
                         $('#inpCostInitial').prop('disabled', false);
                         $('#inpCostFinal').prop('disabled', false);
+                        $.ajax({
+                            type: 'POST',
+                            url: '?c=index&m=queryPrecisionForReferenceDefaultIndexController',
+                            data: null
+                        }).done(function (response) {
+                            $('#resultQueryPresicionForReference').html(response);
+                        })
                     });
                 } else {
                     $.ajax({
@@ -95,6 +102,16 @@ class indexController extends index
                         $('.custom-control-input').prop('disabled', true);
                         $('#inpCostInitial').prop('disabled', true);
                         $('#inpCostFinal').prop('disabled', true);
+                        $.ajax({
+                            type: 'POST',
+                            url: '?c=index&m=queryPrecisionForReferenceIndexController',
+                            data: {
+                                valueReference: $('#reference').val()
+                            }
+                        }).done(function (response) {
+                            $('#resultQueryPresicionForReference').html(response);
+                            $('.custom-control-input').prop('disabled', true);
+                        });
                     });
                 }
             });
@@ -209,21 +226,20 @@ class indexController extends index
                 ?>
                 <div class="container row justify-content-center">
                     <?php
-                    $array = array("valueCheck" => implode($_REQUEST['valueCheckBox']),
-                                    "valueMaker" => $_REQUEST['valueMaker']);
+                    $array = array("valueCheck" => implode($_REQUEST['valueCheckBox']));
                     $count = 0;
-                    foreach (parent::queryForFunctionAndMaker($array) as $resultForFunctionAndMaker) {
+                    foreach (parent::queryForAllReferenceFunction($array) as $resultqueryForAllReferenceFunction) {
                         $count++;
                         ?>
                         <div class="card col-md-3 ml-3 mt-5">
-                            <img class="card-img-top" src="files/<?php echo $resultForFunctionAndMaker->REFERENCE_IMG; ?>" alt="Multimetro Crash">
+                            <img class="card-img-top" src="files/<?php echo $resultqueryForAllReferenceFunction->REFERENCE_IMG; ?>" alt="Multimetro Crash">
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo $resultForFunctionAndMaker->REFERENCE_NAME; ?></h5>
+                                <h5 class="card-title"><?php echo $resultqueryForAllReferenceFunction->REFERENCE_NAME; ?></h5>
                                 <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
-                                <p class="card-text"><?php echo $resultForFunctionAndMaker->REFERENCE_DESCRIPTION; ?></p>
-                                <p class="lead">Costo <strong><?php echo number_format($resultForFunctionAndMaker->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                                <p class="card-text"><?php echo $resultqueryForAllReferenceFunction->REFERENCE_DESCRIPTION; ?></p>
+                                <p class="lead">Costo <strong><?php echo number_format($resultqueryForAllReferenceFunction->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
                                 <div class="row col">
-                                    <a href="<?php echo $resultForFunctionAndMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
+                                    <a href="<?php echo $resultqueryForAllReferenceFunction->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                                     <div class="p-1"></div>
                                 </div>
                             </div>
@@ -278,6 +294,50 @@ class indexController extends index
                     ?>
                      </div>
                     <?php
+            }
+        } elseif($_REQUEST['valueMaker'] != 0 and isset($_REQUEST['valueCheckBox'])){
+            if(strpbrk(',', implode(',',$_REQUEST['valueCheckBox'])) === false) {
+                ?>
+                <div class="container row justify-content-center">
+                    <?php
+                    $array = array("valueCheck" => implode($_REQUEST['valueCheckBox']),
+                        "valueMaker" => $_REQUEST['valueMaker']);
+                    $count = 0;
+                    foreach (parent::queryForFunctionAndMaker($array) as $resultForFunctionAndMaker) {
+                        $count++;
+                        ?>
+                        <div class="card col-md-3 ml-3 mt-5">
+                            <img class="card-img-top"
+                                 src="files/<?php echo $resultForFunctionAndMaker->REFERENCE_IMG; ?>"
+                                 alt="Multimetro Crash">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $resultForFunctionAndMaker->REFERENCE_NAME; ?></h5>
+                                <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
+                                <p class="card-text"><?php echo $resultForFunctionAndMaker->REFERENCE_DESCRIPTION; ?></p>
+                                <p class="lead">Costo
+                                    <strong><?php echo number_format($resultForFunctionAndMaker->REFERENCE_PRICE, -1, '.', '.'); ?></strong>
+                                </p>
+                                <div class="row col">
+                                    <a href="<?php echo $resultForFunctionAndMaker->REFERENCE_FILE_URL; ?>"
+                                       class="btn btn-primary col">Descargar PDF</a>
+                                    <div class="p-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+                <?php
+                if ($count === 0) {
+                    ?>
+                    <blockquote class="blockquote text-center">
+                        <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                    </blockquote>
+                    <?php
+                }
+            } else {
+
             }
         } elseif($_REQUEST['valueMaker'] != 0 and $_REQUEST['valueReference'] == 0){
             ?>
