@@ -171,6 +171,15 @@ class indexController extends index
                     }).done(function (response) {
                         $('#resultQueryOnlyFunction').html(response);
                         $('.custom-control-input').prop('disabled', false);
+                        $('#inpCostInitial').prop('disabled', false);
+                        $('#inpCostFinal').prop('disabled', false);
+                        $.ajax({
+                            type: 'POST',
+                            url: '?c=index&m=queryPrecisionForReferenceDefaultIndexController',
+                            data: null
+                        }).done(function (response) {
+                            $('#resultQueryPresicionForReference').html(response);
+                        })
                     });
                 } else {
                     $.ajax({
@@ -180,6 +189,18 @@ class indexController extends index
                     }).done(function (response) {
                         $('#resultQueryOnlyFunction').html(response);
                         $('.custom-control-input').prop('disabled', true);
+                        $('#inpCostInitial').prop('disabled', true);
+                        $('#inpCostFinal').prop('disabled', true);
+                        $.ajax({
+                            type: 'POST',
+                            url: '?c=index&m=queryPrecisionForReferenceIndexController',
+                            data: {
+                                valueReference: $('#reference').val()
+                            }
+                        }).done(function (response) {
+                            $('#resultQueryPresicionForReference').html(response);
+                            $('.custom-control-input').prop('disabled', true);
+                        });
                     });
                 }
             });

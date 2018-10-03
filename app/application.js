@@ -81,6 +81,13 @@ $(function(){
                     data: null,
                 }).done(function (response) {
                     $('#resultQueryOnlyFunction').html( response);
+                    $.ajax({
+                        type: 'POST',
+                        url: '?c=index&m=queryPrecisionForReferenceDefaultIndexController',
+                        data: null
+                    }).done(function (response) {
+                        $('#resultQueryPresicionForReference').html(response);
+                    });
                 });
             });
         } else {
@@ -112,7 +119,7 @@ $(function(){
                     data: null
                 }).done(function (response) {
                     $('#resultQueryPresicionForReference').html(response);
-                })
+                });
             });
        } else {
             $.ajax({

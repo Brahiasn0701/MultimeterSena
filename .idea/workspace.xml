@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/app/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/application.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/indexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/indexController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/preparedSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/preparedSQL.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/index/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/index/index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,12 +51,13 @@
     <session id="1099021408">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="36" />
+          <entry key="project.closed" value="37" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.13" value="4" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.34" value="1" />
@@ -80,7 +80,7 @@
           <entry key="project.open.time.66" value="1" />
           <entry key="project.open.time.68" value="1" />
           <entry key="project.open.time.70" value="1" />
-          <entry key="project.opened" value="40" />
+          <entry key="project.opened" value="41" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.rename.constructor" />
@@ -121,8 +121,8 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="JavaScript" value="8128" />
-          <entry key="PHP" value="14649" />
+          <entry key="JavaScript" value="8245" />
+          <entry key="PHP" value="14652" />
           <entry key="PLAIN_TEXT" value="37" />
           <entry key="SQL" value="69" />
           <entry key="Scratch" value="1888" />
@@ -131,8 +131,8 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cell" value="134" />
-          <entry key="js" value="8130" />
-          <entry key="php" value="14654" />
+          <entry key="js" value="8247" />
+          <entry key="php" value="14657" />
           <entry key="sql" value="1818" />
           <entry key="txt" value="36" />
         </counts>
@@ -145,8 +145,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/indexController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="228" column="46" selection-start-line="228" selection-start-column="36" selection-end-line="228" selection-end-column="46" />
+            <state relative-caret-position="166">
+              <caret line="121" column="61" selection-start-line="121" selection-start-column="20" selection-end-line="121" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -160,20 +160,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="58">
               <caret line="183" column="49" selection-start-line="183" selection-start-column="49" selection-end-line="183" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="112" column="45" lean-forward="true" selection-start-line="112" selection-start-column="45" selection-end-line="112" selection-end-column="45" />
+            <state relative-caret-position="254">
+              <caret line="85" column="89" selection-start-line="85" selection-start-column="89" selection-end-line="85" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -182,7 +182,7 @@
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d6767f72-ec56-4277-a4e0-257fc161df89/console.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="161">
-              <caret line="7" column="182" lean-forward="true" selection-start-line="7" selection-start-column="182" selection-end-line="7" selection-end-column="186" />
+              <caret line="7" column="182" selection-start-line="7" selection-start-column="182" selection-end-line="7" selection-end-column="186" />
             </state>
           </provider>
         </entry>
@@ -207,6 +207,9 @@
       <find>insertFunctionReference</find>
       <find>insertFunctionReferenceIndexController</find>
       <find>queryReferenceForMaker</find>
+      <find>queryFunctionDefaultIndexController</find>
+      <find>queryAllReferences</find>
+      <find>queryPrecisionForReferenceIndexController</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -235,11 +238,11 @@
         <option value="$PROJECT_DIR$/view/all/navbar.php" />
         <option value="$PROJECT_DIR$/view/index/index.php" />
         <option value="$PROJECT_DIR$/view/all/head.php" />
-        <option value="$PROJECT_DIR$/app/application.js" />
         <option value="$PROJECT_DIR$/model/preparedSQL.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/d6767f72-ec56-4277-a4e0-257fc161df89/console.sql" />
-        <option value="$PROJECT_DIR$/controller/indexController.php" />
         <option value="$PROJECT_DIR$/model/index.php" />
+        <option value="$PROJECT_DIR$/controller/indexController.php" />
+        <option value="$PROJECT_DIR$/app/application.js" />
       </list>
     </option>
   </component>
@@ -267,6 +270,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -278,7 +282,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -360,7 +363,8 @@
       <workItem from="1538245462428" duration="20000" />
       <workItem from="1538407388155" duration="1296000" />
       <workItem from="1538408722739" duration="4000000" />
-      <workItem from="1538510410029" duration="1519000" />
+      <workItem from="1538510410029" duration="1572000" />
+      <workItem from="1538525787231" duration="1008000" />
     </task>
     <task id="LOCAL-00001" summary="Diseño Multimetro Sena">
       <created>1532399319097</created>
@@ -481,11 +485,18 @@
       <option name="project" value="LOCAL" />
       <updated>1538412679957</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Multimetro SENA">
+      <created>1538511968314</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1538511968314</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141419000" />
+    <option name="totallyTimeSpent" value="142480000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -500,7 +511,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.21104388" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.17776097" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -746,14 +757,14 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d6767f72-ec56-4277-a4e0-257fc161df89/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
-          <caret line="7" column="182" lean-forward="true" selection-start-line="7" selection-start-column="182" selection-end-line="7" selection-end-column="186" />
+          <caret line="7" column="182" selection-start-line="7" selection-start-column="182" selection-end-line="7" selection-end-column="186" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/application.js">
+    <entry file="file://$PROJECT_DIR$/model/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="112" column="45" lean-forward="true" selection-start-line="112" selection-start-column="45" selection-end-line="112" selection-end-column="45" />
+        <state relative-caret-position="58">
+          <caret line="183" column="49" selection-start-line="183" selection-start-column="49" selection-end-line="183" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -766,15 +777,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/indexController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="228" column="46" selection-start-line="228" selection-start-column="36" selection-end-line="228" selection-end-column="46" />
+        <state relative-caret-position="166">
+          <caret line="121" column="61" selection-start-line="121" selection-start-column="20" selection-end-line="121" selection-end-column="61" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/index.php">
+    <entry file="file://$PROJECT_DIR$/app/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="183" column="49" selection-start-line="183" selection-start-column="49" selection-end-line="183" selection-end-column="49" />
+        <state relative-caret-position="254">
+          <caret line="85" column="89" selection-start-line="85" selection-start-column="89" selection-end-line="85" selection-end-column="89" />
         </state>
       </provider>
     </entry>
