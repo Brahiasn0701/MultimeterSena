@@ -455,6 +455,13 @@ class indexController extends index
                     </div>
                     <?php
                 }
+                if($count === 0){
+                    ?>
+                    <blockquote class="blockquote text-center">
+                        <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                    </blockquote>
+                    <?php
+                }
                 ?>
             </div>
         <?php
@@ -462,7 +469,9 @@ class indexController extends index
             ?>
             <div class="container row justify-content-center">
                 <?php
+                $count = 0;
                 foreach (parent::queryOnlyReference($_REQUEST['valueReference']) as $resultQueryOnlyReference) {
+                    $count++;
                     ?>
                     <div class="card col-md-3 ml-3 mt-5">
                         <img class="card-img-top" src="files/<?php echo $resultQueryOnlyReference->REFERENCE_IMG; ?>" alt="Multimetro Crash">
@@ -482,13 +491,22 @@ class indexController extends index
                 ?>
             </div>
             <?php
+            if($count === 0){
+                ?>
+                <blockquote class="blockquote text-center">
+                    <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                </blockquote>
+                <?php
+            }
         } elseif($_REQUEST['valueMaker'] == 0 and $_REQUEST['valuePriceInitial'] != 0 and $_REQUEST['valuePriceFinal'] != 0){
             $array = array("valuePriceInitial" => $_REQUEST['valuePriceInitial'],
                             "valuePriceFinal" => $_REQUEST['valuePriceFinal']);
             ?>
             <div class="container row justify-content-center">
             <?php
+            $count = 0;
             foreach (parent::queryAllReferenceForPrice($array) as $resultQueryAllReferenceForPrice) {
+                $count++;
                 ?>
                 <div class="card col-md-3 ml-3 mt-5">
                     <img class="card-img-top" src="files/<?php echo $resultQueryAllReferenceForPrice->REFERENCE_IMG; ?>" alt="Multimetro Crash">
@@ -508,6 +526,13 @@ class indexController extends index
             ?>
             </div>
             <?php
+            if($count === 0){
+                ?>
+                <blockquote class="blockquote text-center">
+                    <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                </blockquote>
+                <?php
+            }
         } else if($_REQUEST['valueMaker'] != 0 and $_REQUEST['valuePriceInitial'] != 0 and $_REQUEST['valuePriceFinal'] != 0){
             $array = array("valuePriceInitial" => $_REQUEST['valuePriceInitial'],
                 "valuePriceFinal" => $_REQUEST['valuePriceFinal'],
@@ -515,7 +540,9 @@ class indexController extends index
             ?>
             <div class="container row justify-content-center">
                 <?php
+                $count = 0;
                 foreach (parent::queryReferenceForPriceAndMaker($array) as $resultQueryReferenceForPriceAndMaker) {
+                    $count++;
                     ?>
                     <div class="card col-md-3 ml-3 mt-5">
                         <img class="card-img-top" src="files/<?php echo $resultQueryReferenceForPriceAndMaker->REFERENCE_IMG; ?>" alt="Multimetro Crash">
@@ -530,6 +557,13 @@ class indexController extends index
                             <div class="p-1"></div>
                         </div>
                     </div>
+                    <?php
+                }
+                if($count === 0){
+                    ?>
+                    <blockquote class="blockquote text-center">
+                        <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                    </blockquote>
                     <?php
                 }
                 ?>

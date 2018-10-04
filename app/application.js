@@ -75,6 +75,8 @@ $(function(){
                data: null
             }).done(function (response) {
                 $('#responseQueryReferenceForMaker').html( response);
+                $('#inpCostInitial').prop('disabled', false);
+                $('#inpCostFinal').prop('disabled', false);
                 $.ajax({
                     type: 'POST',
                     url: '?c=index&m=queryFunctionDefaultIndexController',
