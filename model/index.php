@@ -145,27 +145,6 @@ class index extends  database
         }
     }
 
-    public function SuperQueryRobinsonAndresCortes($query,$join,$condicion){
-        try {
-            $stm = parent::conexion()->prepare($query.' '.$join.' '.$condicion);
-            $stm->execute();
-            return $stm->fetchAll(PDO::FETCH_OBJ);
-
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    public function superQueryForMakerAndFunction($query, $join, $condition){
-        try {
-            $stm = parent::conexion()->prepare($query.' '.$join.' '.$condition);
-            $stm->execute();
-            return $stm->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
     public function queryForFunctionAndMaker(array $array){
         try {
             $stm = parent::conexion()->prepare(preparedSQL::queryForFunctionAndMaker);
@@ -191,12 +170,36 @@ class index extends  database
 
     public function queryandres($where,$id){
         try {
-            //echo $where;
+            echo $where;
             $stm = parent::conexion()->prepare("SELECT * FROM reference
                                                          INNER JOIN function_has_reference ON
                                                          reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID
-                                                         WHERE 
-                                                         ".$where." AND reference.maker_MAKER_ID =".$id." GROUP BY REFERENCE_ID");
+                                                         WHERE ".$where." AND reference.maker_MAKER_ID = ".$id." GROUP BY REFERENCE_ID");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryAllReferenceForPrice($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryAllReferenceForPrice);
+            $stm->bindParam(1, $array['valuePriceInitial'], PDO::PARAM_INT);
+            $stm->bindParam(2, $array['valuePriceFinal'], PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e){
+            die($e->getMessage());
+        }
+    }
+
+    public function queryReferenceForPriceAndMaker($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryReferenceForPriceAndMaker);
+            $stm->bindParam(1, $array['valuePriceInitial'], PDO::PARAM_INT);
+            $stm->bindParam(2, $array['valuePriceFinal'], PDO::PARAM_INT);
+            $stm->bindParam(3, $array['valueMaker'], PDO::PARAM_INT);
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {

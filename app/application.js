@@ -157,7 +157,9 @@ $(function(){
             data: {valueMaker : $('#maker').val(),
                     nameMaker : $('#maker option:selected').text(),
                     valueReference : $('#reference').val(),
-                    valueCheckBox: valueCheck}
+                    valueCheckBox: valueCheck,
+                    valuePriceInitial: $('#inpCostInitial').val(),
+                    valuePriceFinal: $('#inpCostFinal').val()}
         }).done(function (response) {
             $('#responseSearch').html(response);
         });

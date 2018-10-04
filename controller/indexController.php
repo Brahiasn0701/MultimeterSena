@@ -31,8 +31,7 @@ class indexController extends index
                         "descriptionReference" => $_POST['referenceDescription'],
                         "imageReference" => $name,
                         "fileUrlReference" => $_POST['doucumentReference'],
-                        "priceReference" => $_POST['inpPriceReference'],
-                        "precisionReference" => $_POST['inpPrecision'],
+                        "priceReference" =>  str_replace(".", "", $_POST['inpPriceReference']),
                         "nameMaker" => $_POST['nameMaker']
         );
         parent::insertReference($array);
@@ -273,7 +272,7 @@ class indexController extends index
                 if($count === 0){
                     ?>
                     <blockquote class="blockquote text-center">
-                        <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                        <h3><p class="m-5">No se encontraron resultados de la Busquedas</p></h3>
                     </blockquote>
                     <?php
                 }
@@ -358,9 +357,45 @@ class indexController extends index
                     <?php
                 }
             } else {
-
+                // var_dump($_REQUEST['valueCheckBox']);
+                $array=$_REQUEST['valueCheckBox'];
+                $count=count($_REQUEST['valueCheckBox']);
+                $sql="";
+                for ($i = 0; $i < $count; $i++) {
+                    $la=$i+1;
+                    if($count<=$la){
+                        $or="";
+                    }else{
+                        $or=" or ";
+                    }
+                    $sql=$sql."function_has_reference.FUNCTION_FUNCTION_ID = ".$array[$i]."".$or  ;
+                }
+                ?>
+                <div class="container row justify-content-center">
+                    <?php
+                    foreach (parent::queryandres($sql, $_REQUEST['valueMaker']) as $resultForFunctionAndMaker) {
+                        $count++;
+                        ?>
+                        <div class="card col-md-3 ml-3 mt-5">
+                            <img class="card-img-top" src="files/<?php echo $resultForFunctionAndMaker->REFERENCE_IMG; ?>" alt="Multimetro Crash">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $resultForFunctionAndMaker->REFERENCE_NAME; ?></h5>
+                                <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
+                                <p class="card-text"><?php echo $resultForFunctionAndMaker->REFERENCE_DESCRIPTION; ?></p>
+                                <p class="lead">Costo <strong><?php echo number_format($resultForFunctionAndMaker->REFERENCE_PRICE,     -1, '.', '.'); ?></strong></p>
+                                <div class="row col">
+                                    <a href="<?php echo $resultForFunctionAndMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
+                                    <div class="p-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+                <?php
             }
-        } elseif($_REQUEST['valueMaker'] != 0 and $_REQUEST['valueReference'] == 0){
+        } elseif($_REQUEST['valueMaker'] != 0 and $_REQUEST['valueReference'] == 0 and $_REQUEST['valuePriceInitial'] == 0 and $_REQUEST['valuePriceFinal'] == 0){
             ?>
             <div class="container row justify-content-center ">
             <?php
@@ -438,6 +473,59 @@ class indexController extends index
                             <p class="lead">Costo <strong><?php echo number_format($resultQueryOnlyReference->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
                             <div class="row justify-content-center">
                                 <a href="<?php echo $resultQueryOnlyReference->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
+                            </div>
+                            <div class="p-1"></div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
+            <?php
+        } elseif($_REQUEST['valueMaker'] == 0 and $_REQUEST['valuePriceInitial'] != 0 and $_REQUEST['valuePriceFinal'] != 0){
+            $array = array("valuePriceInitial" => $_REQUEST['valuePriceInitial'],
+                            "valuePriceFinal" => $_REQUEST['valuePriceFinal']);
+            ?>
+            <div class="container row justify-content-center">
+            <?php
+            foreach (parent::queryAllReferenceForPrice($array) as $resultQueryAllReferenceForPrice) {
+                ?>
+                <div class="card col-md-3 ml-3 mt-5">
+                    <img class="card-img-top" src="files/<?php echo $resultQueryAllReferenceForPrice->REFERENCE_IMG; ?>" alt="Multimetro Crash">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $resultQueryAllReferenceForPrice->REFERENCE_NAME; ?></h5>
+                        <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
+                        <p class="card-text"><?php echo $resultQueryAllReferenceForPrice->REFERENCE_DESCRIPTION; ?></p>
+                        <p class="lead">Costo <strong><?php echo number_format($resultQueryAllReferenceForPrice->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                        <div class="row justify-content-center">
+                            <a href="<?php echo $resultQueryAllReferenceForPrice->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
+                        </div>
+                        <div class="p-1"></div>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
+            </div>
+            <?php
+        } else if($_REQUEST['valueMaker'] != 0 and $_REQUEST['valuePriceInitial'] != 0 and $_REQUEST['valuePriceFinal'] != 0){
+            $array = array("valuePriceInitial" => $_REQUEST['valuePriceInitial'],
+                "valuePriceFinal" => $_REQUEST['valuePriceFinal'],
+                "valueMaker" => $_REQUEST['valueMaker']);
+            ?>
+            <div class="container row justify-content-center">
+                <?php
+                foreach (parent::queryReferenceForPriceAndMaker($array) as $resultQueryReferenceForPriceAndMaker) {
+                    ?>
+                    <div class="card col-md-3 ml-3 mt-5">
+                        <img class="card-img-top" src="files/<?php echo $resultQueryReferenceForPriceAndMaker->REFERENCE_IMG; ?>" alt="Multimetro Crash">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $resultQueryReferenceForPriceAndMaker->REFERENCE_NAME; ?></h5>
+                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
+                            <p class="card-text"><?php echo $resultQueryReferenceForPriceAndMaker->REFERENCE_DESCRIPTION; ?></p>
+                            <p class="lead">Costo <strong><?php echo number_format($resultQueryReferenceForPriceAndMaker->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                            <div class="row justify-content-center">
+                                <a href="<?php echo $resultQueryReferenceForPriceAndMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                             </div>
                             <div class="p-1"></div>
                         </div>
