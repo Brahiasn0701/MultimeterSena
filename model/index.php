@@ -170,7 +170,7 @@ class index extends  database
 
     public function queryandres($where,$id){
         try {
-            echo $where;
+            //echo $where;
             $stm = parent::conexion()->prepare("SELECT * FROM reference
                                                          INNER JOIN function_has_reference ON
                                                          reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID

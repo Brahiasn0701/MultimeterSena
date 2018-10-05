@@ -48,6 +48,7 @@
                 <div  id="">
                     <select name="inpCostInitial" id="inpCostInitial" class="form-control">
                         <option value="0" selected>Selecciona</option>
+                        <option value="30000" >30.000</option>
                         <option value="100000" >100.000</option>
                         <option value="300000" >300.000</option>
                         <option value="500000" >500.000</option>
