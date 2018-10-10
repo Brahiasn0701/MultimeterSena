@@ -13,6 +13,10 @@ $(function(){
         $('#buttonBack').hide();
         $('#contentInsertFunction').hide();
         $('#contentAsignReference').hide();
+        $('#contentUpdateMaker').hide();
+        $('#contentDeleteMaker').hide();
+        $('#contentUpdateFunction').hide();
+        $('#contentDeleteFunction').hide();
         $('#loginEdit').hide();
     });
 
@@ -86,6 +90,118 @@ $(function(){
        }).done(function (response) {
           $('#resultQueryUpdateReference').html(response);
        });
+    });
+
+    $('#slcNewMaker').on('change', function(){
+        $.ajax({
+           type: 'POST',
+           url: '?c=index&m=queryMakerForSelectIndexController',
+           data: {
+               slcMaker: $('#slcNewMaker').val()
+           },
+        }).done(function(response){
+            $('#resultQueryForUpdateMaker').html(response);
+        });
+    });
+
+    $('#btnUpdateMaker').on('click', function(){
+        $.ajax({
+          type: 'POST',
+          url: '?c=index&m=updateMakerIndexController',
+          data: {
+              slcMaker: $('#slcNewMaker').val(),
+              inpNewMaker: $('#inpNewMaker').val()
+          }  
+        }).done(function (response) {
+            $('#contentUpdateMaker').show();
+            $('#resultUpdateMaker').html(response);
+            setTimeout(function () {
+                $('#contentUpdateMaker') .hide("slow");
+            }, 1000);
+            $('#inpNewMaker').val('');
+            $('#slcNewMaker').val('0');
+        });
+    });
+
+
+    /*
+        Eliminaciones del modulo de administracion
+        -----------------------------------------
+        Consultas y Botones para realizar eliminaciones
+        @BrahianSánchez
+     */
+
+    $('#btnDeleteMaker').on('click', function () {
+        if(confirm('¿ Esta seguro de eliminar este fabricante ?') == true){
+            $.ajax({
+               type: 'POST',
+               url: '?c=index&m=deleteMakerIndexController',
+               data: {
+                   slcMaker: $('#slcDeleteMaker').val()
+               }
+            }).done(function (response) {
+                $('#contentDeleteMaker').show();
+                $('#resultDeleteMaker').html(response);
+                setTimeout(function () {
+                    $('#contentDeleteMaker') .hide("slow");
+                }, 1000);
+                $('#slcDeleteMaker').val('0');
+            });
+        } else {
+            $('#slcDeleteMaker').val('0');
+        }
+    });
+
+    $('#slcNewFunction').on('change', function () {
+        $.ajax({
+           type: 'POST',
+           url: '?c=index&m=queryFunctionToUpdateIndexController',
+           data: {
+               slcNewFunction: $('#slcNewFunction').val()
+           }
+        }).done(function (response) {
+            $('#responseQueryUpdateFunction').html(response);
+        });
+    });
+
+    $('#btnUpdateFunctionMultimeter').on('click', function(){
+       $.ajax({
+         type: 'POST',
+         url: '?c=index&m=updateFunctionIndexController',
+         data: {
+             slcNewFunction: $('#slcNewFunction').val(),
+             inpNewFunction: $('#inpNewFunction').val()
+         }
+       }).done(function (response) {
+            $('#contentUpdateFunction').show();
+            $('#resultUpdateFunction').html(response);
+           setTimeout(function () {
+               $('#contentUpdateFunction') .hide("slow");
+           }, 1000);
+           $('#inpNewFunction').val('');
+           $('#slcNewFunction').val('0');
+       });
+    });
+
+    $('#btnDeleteunctionMultimeter').on('click', function () {
+       if(confirm('¿ Esta seguro de eliminar la function ?') == true){
+           $.ajax({
+              type: 'POST',
+              url: '?c=index&m=deleteFunctionIndexController',
+              data: {
+                  slcDeleteFunction: $('#slcDeleteFunction').val()
+              }
+           }).done(function (response) {
+                $('#contentDeleteFunction').show();
+                $('#resultDeleteFunction').html(response);
+               setTimeout(function () {
+                   $('#contentDeleteFunction') .hide("slow");
+               }, 1000);
+               $('#slcDeleteFunction').val('0');
+           });
+       } else {
+           $('#slcDeleteFunction').val('0');
+       }
     });
 
     /*

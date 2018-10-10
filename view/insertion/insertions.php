@@ -153,62 +153,7 @@
             </div> <!-- Fin de la Card encargada de la actualizacion de Referencias -->
         </div>
         <div class="col-md-4 mt-5">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Eliminacion de Referencias</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Formulario Referencias</h6>
-                    <div class="card-text">
-                        <form id="formReference" action="?c=index&m=InsertReferenceIndexController" method="POST" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="referenceName">Nombre de la Referencia</label>
-                                <input type="text" name="referenceName" id="referenceName" class="form-control">
-                                <small class="form-text text-muted">Escribe el nombre de la referencia</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="referenceDescription">Descripcion de la referencia</label>
-                                <textarea name="referenceDescription" rows="10" id="referenceDescription" class="form-control"></textarea>
-                                <small class="form-text text-muted">Escribe la descripcion de la referencia</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="imgReference">Imagen de Referencia</label>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="imgReference" id="imgReference">
-                                    <label class="custom-file-label" for="imgReference">Seleccionar Archivo</label>
-                                </div>
-                                <small class="form-text text-muted">Imagen de la referencia</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="doucumentReference">Documento de la referencia</label>
-                                <input type="text" name="doucumentReference" id="doucumentReference" class="form-control">
-                                <small class="form-text text-muted">Pega la url del archivo</small>
-                            </div>
-                            <div class="form-group">
-                              <label for="inpPriceReference">Precio de referencia</label>
-                              <input type="text" name="inpPriceReference" id="inpPriceReference" class="form-control">
-                              <small class="form-text text-muted">Escribe el precio de la refrencia</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="nameMaker">Nombre del Fabricante</label>
-                                <select name="nameMaker" id="nameMaker" class="form-control">
-                                    <option value="">Fabricante</option>
-                                    <?php
-                                    foreach (self::queryMaker() as $resultMakerAll) {
-                                        ?>
-                                        <option value="<?php echo $resultMakerAll->MAKER_ID; ?>"><?php echo ucwords($resultMakerAll->MAKER_NAME); ?></option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                                <small class="form-text text-muted">Selecciona el Fabricante</small>
-                            </div>
-                            <button type="submit" class="btn btn-outline-primary" id="">Insertar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mt-5">
-            <div class="card">
+            <div class="card"> <!-- Inicio de Card encargada de la insercion de Fabricantes -->
                 <div class="card-body">
                     <h5 class="card-title">Insercion de Fabricantes</h5>
                     <h6 class="card-subtitle mb-3 text-muted">Formulario Fabricantes</h6>
@@ -227,54 +172,79 @@
                     </div>
                     <button class="btn btn-outline-primary" id="btnInsertMaker">Insertar</button>
                 </div>
-            </div>
+            </div> <!-- Fin de la Card encargada de la insercion de Fabricantes -->
         </div>
         <div class="col-md-4 mt-5">
-            <div class="card">
+            <div class="card"> <!-- Inicio de la Card encargada de la actualizacion de Fabricantes -->
                 <div class="card-body">
                     <h5 class="card-title">Actualizacion de Fabricantes</h5>
                     <h6 class="card-subtitle mb-3 text-muted">Formulario Fabricantes</h6>
-                    <!-- <div id="contentInsertMaker">
+                    <div id="contentUpdateMaker">
                         <div class="alert alert-success" role="alert">
-                            <div id="resultInsertMaker">
+                            <div id="resultUpdateMaker">
                             </div>
                         </div>
-                    </div> -->
+                    </div> 
                     <div class="card-text">
                         <div class="form-group">
-                            <label for="Maker">Fabricante</label>
-                            <input type="text" name="Maker" id="Maker" class="form-control">
-                            <small class="form-text text-muted">Escribe el Fabricante</small>
+                            <label for="slcNewMaker">Selecciona Fabricante</label>
+                            <select name="slcNewMaker" id="slcNewMaker" class="form-control">
+                                <option value="0" selected>Selecciona</option>
+                                <?php
+                                    foreach(parent::QueryMaker() as $resultQueryMaker){
+                                ?>
+                                    <option value="<?php echo $resultQueryMaker->MAKER_ID; ?>"><?php echo ucwords($resultQueryMaker->MAKER_NAME); ?></option>
+                                <?php
+                                    }
+                                ?>
+                            </select>
+                            <small class="form-text text-muted">Selecciona el Fabricante</small>
+                        </div>
+                        <div id="resultQueryForUpdateMaker">
+                            <div class="form-group">
+                                <label for="inpNewMaker">Escribe el nuevo fabricante</label>
+                                <input type="text" name="inpNewMaker" id="inpNewMaker" class="form-control">
+                                <small class="form-text text-muted">Escribe el nuevo fabricante</small>
+                            </div>
                         </div>
                     </div>
-                    <button class="btn btn-outline-primary" id="btnInsertMaker">Insertar</button>
+                    <button class="btn btn-outline-primary" id="btnUpdateMaker">Actualizar</button>
                 </div>
-            </div>
+            </div> <!-- Fin de la Card encargada de la actualizacion de Fabricantes -->
         </div>
         <div class="col-md-4 mt-5">
-            <div class="card">
+            <div class="card"> <!-- Inicio de Card encargada de la eliminacion de Fabricantes -->
                 <div class="card-body">
                     <h5 class="card-title">Eliminacion de Fabricantes</h5>
                     <h6 class="card-subtitle mb-3 text-muted">Formulario Fabricantes</h6>
-                    <!-- <div id="contentInsertMaker">
+                    <div id="contentDeleteMaker">
                         <div class="alert alert-success" role="alert">
-                            <div id="resultInsertMaker">
+                            <div id="resultDeleteMaker">
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="card-text">
                         <div class="form-group">
-                            <label for="Maker">Fabricante</label>
-                            <input type="text" name="Maker" id="Maker" class="form-control">
-                            <small class="form-text text-muted">Escribe el Fabricante</small>
+                            <label for="slcDeleteMaker">Selecciona el Fabricante</label>
+                            <select name="slcDeleteMaker" id="slcDeleteMaker" class="form-control">
+                                <option value="0" selected>Selecciona</option>
+                                <?php
+                                    foreach(parent::QueryMaker() as $resultQueryMaker){
+                                ?>
+                                    <option value="<?php echo $resultQueryMaker->MAKER_ID; ?>"><?php echo ucwords($resultQueryMaker->MAKER_NAME); ?></option>
+                                <?php
+                                    }
+                                ?>
+                            </select>
+                            <small class="form-text text-muted">Selecciona el Fabricante</small>
                         </div>
                     </div>
-                    <button class="btn btn-outline-primary" id="btnInsertMaker">Insertar</button>
+                    <button class="btn btn-outline-primary" id="btnDeleteMaker">Eliminar</button>
                 </div>
-            </div>
+            </div> <!-- Fin de la Card encargada de la eliminacion de Fabricantes -->
         </div>
         <div class="col-md-4 mt-5">
-            <div class="card">
+            <div class="card"> <!-- Inicio de Card para añair Funciones -->
                 <div class="card-body">
                     <h5 class="card-title">Funciones</h5>
                     <h6 class="card-subtitle mb-3 text-muted">Formulario para añadir funciones</h6>
@@ -293,51 +263,76 @@
                     </div>
                     <button class="btn btn-outline-primary" id="btnInsertNewFunctionMultimeter">Insertar</button>
                 </div>
-            </div>
+            </div> <!-- Fin de Card encargada de añadir funciones -->
         </div>
         <div class="col-md-4 mt-5">
-            <div class="card">
+            <div class="card"> <!-- Inicio de Card encargada de actualizar funciones -->
                 <div class="card-body">
                     <h5 class="card-title">Funciones</h5>
                     <h6 class="card-subtitle mb-3 text-muted">Formulario para actualizar funciones</h6>
-                    <!-- <div id="contentInsertFunction">
+                    <div id="contentUpdateFunction">
                         <div class="alert alert-success" role="alert">
-                            <div id="resultInsertFunction">
+                            <div id="resultUpdateFunction">
                             </div>
                         </div>
-                    </div> -->
+                    </div> 
                     <div class="card-text">
                         <div class="form-group">
-                            <label for="">Nombre de Funcion</label>
-                            <input type="text" name="inpNameFunctionMultimeter" id="inpNameFunctionMultimeter" class="form-control">
-                            <small class="form-text text-muted">Escribe el nombre de la funcion</small>
+                            <label for="slcNewFunction">Selecciona la Funcion</label>
+                            <select name="slcNewFunction" id="slcNewFunction" class="form-control">
+                                <option value="0" selected>Selecciona</option>
+                                <?php
+                                    foreach(parent::queryFunction() as $resultQueryFunction){
+                                ?>
+                                    <option value="<?php echo $resultQueryFunction->FUNCTION_ID; ?>"><?php echo ucwords($resultQueryFunction->FUNCTION_NAME); ?></option>
+                                <?php
+                                    }
+                                ?>
+                            </select>
+                            <small class="form-text text-muted">Selecciona la funcion</small>
+                        </div>
+                        <div id="responseQueryUpdateFunction">
+                            <div class="form-group">
+                                <label for="">Escribe la nueva funcion</label>
+                                <input type="text" name="inpNewFunction" id="inpNewFunction" class="form-control">
+                                <small class="form-text text-muted">Escribe la nueva funcion</small>
+                            </div>
                         </div>
                     </div>
-                    <button class="btn btn-outline-primary" id="btnInsertNewFunctionMultimeter">Insertar</button>
+                    <button class="btn btn-outline-primary" id="btnUpdateFunctionMultimeter">Actualizar</button>
                 </div>
-            </div>
+            </div> <!-- Fin de Card encargada de actualizar funciones -->
         </div>
         <div class="col-md-4 mt-5">
-            <div class="card">
+            <div class="card"> <!-- Inicio de Card encargada de eliminar funciones -->
                 <div class="card-body">
                     <h5 class="card-title">Funciones</h5>
                     <h6 class="card-subtitle mb-3 text-muted">Formulario para eliminar funciones</h6>
-                    <!-- <div id="contentInsertFunction">
+                    <div id="contentDeleteFunction">
                         <div class="alert alert-success" role="alert">
-                            <div id="resultInsertFunction">
+                            <div id="resultDeleteFunction">
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="card-text">
                         <div class="form-group">
-                            <label for="">Nombre de Funcion</label>
-                            <input type="text" name="inpNameFunctionMultimeter" id="inpNameFunctionMultimeter" class="form-control">
-                            <small class="form-text text-muted">Escribe el nombre de la funcion</small>
+                            <label for="slcDeleteFunction">Selecciona el nombre de Funcion</label>
+                            <select name="slcDeleteFunction" id="slcDeleteFunction" class="form-control">
+                                <option value="0" selected>Selecciona</option>
+                                <?php
+                                    foreach(parent::queryFunction() as $resultQueryFunction){
+                                ?>
+                                    <option value="<?php echo $resultQueryFunction->FUNCTION_ID; ?>"><?php echo ucwords($resultQueryFunction->FUNCTION_NAME); ?></option>
+                                <?php
+                                    }
+                                ?>
+                            </select>
+                            <small class="form-text text-muted">Selecciona el nombre de la funcion</small>
                         </div>
                     </div>
-                    <button class="btn btn-outline-primary" id="btnInsertNewFunctionMultimeter">Insertar</button>
+                    <button class="btn btn-outline-primary" id="btnDeleteunctionMultimeter">Insertar</button>
                 </div>
-            </div>
+            </div> <!-- Fin de Card encargada de eliminar funciones -->
         </div>
         <div class="col-md-4 mt-5">
             <div class="card">

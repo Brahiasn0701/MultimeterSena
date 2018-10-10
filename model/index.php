@@ -84,6 +84,7 @@ class index extends  database
         try {
             $stm = parent::conexion()->prepare(preparedSQL::queryMakersForSelect);
             $stm->bindParam(1, $date, PDO::PARAM_INT);
+            $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
             die($e->getMessage());
@@ -262,6 +263,64 @@ class index extends  database
             $stm->bindParam(6, $array['REFERENCE_PRICE'], PDO::PARAM_INT);
             $stm->bindParam(7, $array['maker_MAKER_ID'], PDO::PARAM_INT);
             $stm->bindParam(8, $array['slcValueForUpdate'], PDO::PARAM_INT);
+            $stm->execute();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function updateMaker($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::updateMaker);
+            $stm->bindParam(1, $array['inpNewMaker'], PDO::PARAM_STR);
+            $stm->bindParam(2, $array['slcMaker'], PDO::PARAM_INT);
+            $stm->execute();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryFunctionToUpdate($data){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryFunctionToUpdate);
+            $stm->bindParam(1, $data, PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e){
+            die($e->getMessage());
+        }
+    }
+
+    public function updateFunction($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::updateFunction);
+            $stm->bindParam(1, $array['inpNewFunction'], PDO::PARAM_STR);
+            $stm->bindParam(2, $array['slcNewFunction'], PDO::PARAM_INT);
+            $stm->execute();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    /*
+     *  Eliminacion para modulo de administradores
+     * @BrahianSánchez
+     */
+
+    public function deleteMaker($data){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::deleteMaker);
+            $stm->bindParam(1, $data, PDO::PARAM_INT);
+            $stm->execute();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function deleteFunction($data){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::deleteFunction);
+            $stm->bindParam(1, $data, PDO::PARAM_INT);
             $stm->execute();
         } catch (Exception $e) {
             die($e->getMessage());

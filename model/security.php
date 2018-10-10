@@ -11,7 +11,7 @@ class security
         if(isset($_SESSION['NAME'])){
 
         } else {
-            header('location:http://localhost/Proyects/MultimeterSena');
+            header('location:https://multimetrosceet.000webhostapp.com/');
         }
     }
 }

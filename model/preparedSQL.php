@@ -37,4 +37,12 @@ final class preparedSQL
                                          WHERE REFERENCE_ID = ?";
     const updateReferenceWithImage = "UPDATE reference SET REFERENCE_NAME = ?, REFERENCE_DESCRIPTION = ?, REFERENCE_IMG = ?, REFERENCE_FILE_URL = ?, REFERENCE_PURCHASE_URL = ?, REFERENCE_PRICE = ?, maker_MAKER_ID = ?
                                          WHERE REFERENCE_ID = ?";
+    const updateMaker = "UPDATE maker SET MAKER_NAME = ? where MAKER_ID = ?";
+    const queryFunctionToUpdate = "SELECT * FROM function WHERE FUNCTION_ID = ?";
+    const updateFunction = "UPDATE function SET FUNCTION_NAME = ? WHERE FUNCTION_ID = ?";
+
+    //Delete modulo Administradores
+    const deleteMaker = "DELETE FROM maker WHERE MAKER_ID = ?";
+    const deleteFunction = "DELETE FROM function WHERE FUNCTION_ID = ?";
+
 }

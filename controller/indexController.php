@@ -36,7 +36,7 @@ class indexController extends index
                         "nameMaker" => $_POST['nameMaker']
         );
         parent::insertReference($array);
-        header('location:?c=index&m=insertions');
+        header('location:https://multimetrosceet.000webhostapp.com/?c=index&m=insertions');
     }
 
     public function insertFunctionIndexController(){
@@ -642,7 +642,6 @@ class indexController extends index
 
     public function updateReference(){
         if($_FILES['NewimgReference']["name"] == null){
-            echo 'Sin valor';
             $array = array("REFERENCE_NAME" => $_POST['NewinpNameReference'],
                 "REFERENCE_DESCRIPTION" => $_POST['referenceDescription'],
                 "REFERENCE_FILE_URL" => $_POST['NewdoucumentReference'],
@@ -651,7 +650,7 @@ class indexController extends index
                 "maker_MAKER_ID" => $_POST['nameMaker'],
                 "slcValueForUpdate" => $_POST['slcNewReferenceName']);
             parent::updateReferenceWithoutImage($array);
-            header('location:?c=index&m=insertions');
+            header('location:https://multimetrosceet.000webhostapp.com/?c=index&m=insertions');
         } else if($_FILES['NewimgReference']["name"] != null) {
             $tmpName = $_FILES['NewimgReference']['tmp_name'];
             $name  = sha1(date('Y-M-D (H:i:s)')).basename($_FILES['NewimgReference']['name']);
@@ -669,7 +668,61 @@ class indexController extends index
             }
             unlink($nameFile);
             parent::updateReferenceWithImage($array);
-            header('location:?c=index&m=insertions');
+            header('location:https://multimetrosceet.000webhostapp.com/?c=index&m=insertions');
         }
     }
+    public function queryMakerForSelectIndexController(){
+        foreach (parent::queryMakersForSelect($_REQUEST['slcMaker']) as $resultQueryMaker) {
+            ?>
+            <div class="form-group">
+                <label for="inpNewMaker">Escribe el nuevo fabricante</label>
+                <input type="text" name="inpNewMaker" id="inpNewMaker" class="form-control" value="<?php  echo ucwords($resultQueryMaker->MAKER_NAME); ?>">
+                <small class="form-text text-muted">Escribe el nuevo fabricante</small>
+            </div>
+            <?php
+        }
+    }
+
+    public function updateMakerIndexController(){
+        $array = array("inpNewMaker" => $_REQUEST['inpNewMaker'],
+                        "slcMaker" => $_REQUEST['slcMaker']);
+        parent::updateMaker($array);
+        echo 'Actualizado correctamente';
+    }
+
+    public function queryFunctionToUpdateIndexController(){
+        foreach (parent::queryFunctionToUpdate($_REQUEST['slcNewFunction']) as $resultQueryFunctionToUpdate){
+            ?>
+            <div class="form-group">
+                <label for="">Escribe la nueva funcion</label>
+                <input type="text" name="inpNewFunction" id="inpNewFunction" class="form-control" value="<?php echo $resultQueryFunctionToUpdate->FUNCTION_NAME; ?>">
+                <small class="form-text text-muted">Escribe la nueva funcion</small>
+            </div>
+            <?php
+        }
+    }
+
+    public function updateFunctionIndexController(){
+        $array = array("slcNewFunction" => $_REQUEST['slcNewFunction'],
+                        "inpNewFunction" => $_REQUEST['inpNewFunction']);
+        parent::updateFunction($array);
+        echo 'Actualizado correctamente';
+    }
+
+    /*
+     *  Eliminaciones en modulo de administrador
+     *  @BrahianSánchez
+     */
+
+    public function deleteMakerIndexController()
+    {
+        parent::deleteMaker($_REQUEST['slcMaker']);
+        echo 'Eliminado correctamente';
+    }
+
+    public function deleteFunctionIndexController(){
+        parent::deleteFunction($_REQUEST['slcDeleteFunction']);
+        echo 'Eliminado correctamente';
+    }
+
 }
