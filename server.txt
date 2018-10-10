@@ -1,0 +1,23 @@
+Contraseña Sitio
+wroaq3lOdu(8ufCYmOTj
+
+Contraseña DB
+ceet2018
+
+Nombre DB
+id7425541_db_multimeter_sena
+
+Usuario DB
+id7425541_ceet
+
+Host
+Localhost
+
+Nombre del Host
+files.000webhost.com
+
+PORT
+21
+
+Usuario
+multimetrosceet

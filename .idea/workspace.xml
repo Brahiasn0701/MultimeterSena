@@ -2,27 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="369266a2-36a8-42a2-a525-d7840e19a6bb" name="Default" comment="Multimetro SENA">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d6767f72-ec56-4277-a4e0-257fc161df89.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d6767f72-ec56-4277-a4e0-257fc161df89.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/brahi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/brahi.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DB/MultimeterSena.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/DB/MultimeterSena.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DB/MultimeterSena.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/DB/MultimeterSena.mwb.bak" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/application.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/indexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/indexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/4f443e826a927da724688a76e34c571f575f970aFluke83V.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/4f443e826a927da724688a76e34c571f575f970aFluke87V.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/73faeced46ab62e13da40cbfc008a74a3c38ef83Fluke87V.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/ae10a785a9dd99ae55af9ace195ecc5d0dd211d1EX570.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/ae10a785a9dd99ae55af9ace195ecc5d0dd211d1Fluke87V.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/ce554077b47b4c491a39469d53c2a8c5b9b41c79Captura de pantalla (14).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/ce554077b47b4c491a39469d53c2a8c5b9b41c79Captura de pantalla (5).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/ce554077b47b4c491a39469d53c2a8c5b9b41c79Captura de pantalla (8).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/e45a6068727370c5b6ee245cf4ba7b8b8001a2a8Fluke83V.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/f84004c63f50e19b5150b5dbc65ad88190f8c6f1812RWGTx7LL._SL1500_.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/model/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/preparedSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/preparedSQL.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/index/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/index/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/insertion/insertions.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/insertion/insertions.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +58,7 @@
     <session id="1099021408">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="45" />
+          <entry key="project.closed" value="46" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.10" value="1" />
@@ -174,7 +158,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/indexController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
+            <state relative-caret-position="815">
               <caret line="671" column="53" selection-start-line="671" selection-start-column="53" selection-end-line="671" selection-end-column="53" />
             </state>
           </provider>
@@ -316,11 +300,6 @@
               <item name="MultimeterSena" type="b2602c69:ProjectViewProjectNode" />
               <item name="MultimeterSena" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="MultimeterSena" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MultimeterSena" type="462c0819:PsiDirectoryNode" />
-              <item name="files" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -415,7 +394,7 @@
       <workItem from="1538967549005" duration="308000" />
       <workItem from="1539117590936" duration="134000" />
       <workItem from="1539117764532" duration="5090000" />
-      <workItem from="1539131836112" duration="8458000" />
+      <workItem from="1539131836112" duration="8540000" />
     </task>
     <task id="LOCAL-00001" summary="Diseño Multimetro Sena">
       <created>1532399319097</created>
@@ -571,11 +550,18 @@
       <option name="project" value="LOCAL" />
       <updated>1538706039493</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Multimetro SENA">
+      <created>1539141141409</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1539141141409</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166392000" />
+    <option name="totallyTimeSpent" value="166474000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -588,9 +574,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.39636913" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.39636913" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -887,7 +872,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/indexController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
+        <state relative-caret-position="815">
           <caret line="671" column="53" selection-start-line="671" selection-start-column="53" selection-end-line="671" selection-end-column="53" />
         </state>
       </provider>

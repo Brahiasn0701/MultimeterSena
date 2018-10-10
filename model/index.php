@@ -2,7 +2,7 @@
 
 class index extends  database
 {
-    public function insertMaker(array $array){
+    public function insertMaker($array){
         try {
             $stm = parent::conexion()->prepare(preparedSQL::insertMaker);
             $stm->bindParam(1, $array['MAKER_NAME'], PDO::PARAM_STR);
@@ -22,7 +22,7 @@ class index extends  database
         }
     }
 
-    public function insertReference(array $array){
+    public function insertReference($array){
         try {
             $stm = parent::conexion()->prepare(preparedSQL::insertReference);
             $stm->bindParam(1, $array['nameReference'], PDO::PARAM_STR);
@@ -68,7 +68,7 @@ class index extends  database
         }
     }
 
-    public function insertFunctionReference(array $array){
+    public function insertFunctionReference($array){
         try {
             $stm = parent::conexion()->prepare(preparedSQL::insertFunctionReference);
             $stm->bindParam(1, $array['nameFunction'], PDO::PARAM_INT);
@@ -101,7 +101,7 @@ class index extends  database
         }
     }
 
-    public function queryReferenceOnlyForAMaker(array $array){
+    public function queryReferenceOnlyForAMaker($array){
         try {
             $stm = parent::conexion()->prepare(preparedSQL::queryReferenceOnlyForAMaker);
             $stm->bindParam(2,$array['valueMaker'], PDO::PARAM_INT);
@@ -146,7 +146,7 @@ class index extends  database
         }
     }
 
-    public function queryForFunctionAndMaker(array $array){
+    public function queryForFunctionAndMaker($array){
         try {
             $stm = parent::conexion()->prepare(preparedSQL::queryForFunctionAndMaker);
             $stm->bindParam(1, $array['valueCheck'], PDO::PARAM_INT);
