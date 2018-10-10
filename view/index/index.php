@@ -1,5 +1,5 @@
 <!-- 
-    dex del buscador de Multimetros
+    diseño del buscador de Multimetros
     ---------------------------------
     Desarrollado por Brahian Sánchez
     Contacto: slbrahianIn@misena.edu.co

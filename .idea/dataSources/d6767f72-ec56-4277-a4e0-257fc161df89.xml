@@ -1161,27 +1161,32 @@ REFERENCE_REFERENCE_ID</ColNames>
       <DataType>varchar(500)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="284" parent="257" name="REFERENCE_PRICE">
+    <column id="284" parent="257" name="REFERENCE_PURCHASE_URL">
       <Position>6</Position>
+      <DataType>varchar(500)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="285" parent="257" name="REFERENCE_PRICE">
+      <Position>7</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="285" parent="257" name="maker_MAKER_ID">
-      <Position>7</Position>
+    <column id="286" parent="257" name="maker_MAKER_ID">
+      <Position>8</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="286" parent="257" name="fk_reference_maker_idx">
+    <index id="287" parent="257" name="fk_reference_maker_idx">
       <ColNames>maker_MAKER_ID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="287" parent="257" name="PRIMARY">
+    <key id="288" parent="257" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>REFERENCE_ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="288" parent="257" name="fk_reference_maker">
+    <foreign-key id="289" parent="257" name="fk_reference_maker">
       <ColNames>maker_MAKER_ID</ColNames>
       <RefSchemaName>db_multimeter_sena</RefSchemaName>
       <RefTableName>maker</RefTableName>

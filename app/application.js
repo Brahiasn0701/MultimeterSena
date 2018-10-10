@@ -1,3 +1,11 @@
+/*
+    Application.JS
+    Aca se encuentra todo lo relacionado con JQuery y Ajax
+
+    Desarrollado por Brahian Sánchez
+    Contacto: slbrahian@misena.edu.co
+ */
+
 $(function(){
     $(document).ready(function(){
         $('#resultSearchCard').hide();
@@ -57,6 +65,26 @@ $(function(){
            $('#slcNameFunction').val('');
            $('#slcReference').val('');
            $('#inpPrecision').val('');
+       });
+    });
+
+
+    /*
+        Actualizaciones modulo de Administradores
+        ---------------------------------------
+        Consultas y boton para realizar actualizaciones
+        @BrahianSánchez
+     */
+
+    $('#slcNewReferenceName').on('change', function(){
+       $.ajax({
+          type: 'POST',
+          url: '?c=index&m=queryReferenceForUpdateIndexController',
+          data: {
+              slcValueForUpdate : $(this).val()
+          }
+       }).done(function (response) {
+          $('#resultQueryUpdateReference').html(response);
        });
     });
 

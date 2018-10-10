@@ -31,6 +31,7 @@ class indexController extends index
                         "descriptionReference" => $_POST['referenceDescription'],
                         "imageReference" => $name,
                         "fileUrlReference" => $_POST['doucumentReference'],
+                        "urlPurchaseLink" => $_POST['inpLinkForPurchase'],
                         "priceReference" =>  str_replace(".", "", $_POST['inpPriceReference']),
                         "nameMaker" => $_POST['nameMaker']
         );
@@ -569,6 +570,106 @@ class indexController extends index
                 ?>
             </div>
             <?php
+        }
+    }
+
+    /*
+        Actualizaciones del modulo de administradores
+        @BrahianSánchez
+    */
+
+    public function queryReferenceForUpdateIndexController(){
+        $array = array("slcValueForUpdate" => $_REQUEST['slcValueForUpdate']);
+        foreach (parent::queryReferenceForUpdate($array) as $resultQueryReferenceForUpdate) {
+            ?>
+            <div class="form-group">
+                <label for="NewinpNameReference">Nuevo nombre de referencia</label>
+                <input type="text" name="NewinpNameReference" id="NewinpNameReference" class="form-control" value="<?php echo $resultQueryReferenceForUpdate->REFERENCE_NAME; ?>">
+                <small class="form-text text-muted">Nuevo nombre de referencia</small>
+            </div>
+            <div class="form-group">
+                <label for="referenceDescription">Descripcion de la referencia</label>
+                <textarea name="referenceDescription" rows="10" id="referenceDescription" class="form-control" maxlength="500"><?php echo $resultQueryReferenceForUpdate->REFERENCE_DESCRIPTION; ?></textarea>
+                <small class="form-text text-muted">Escribe la descripcion de la referencia</small>
+            </div>
+            <div class="form-group">
+                <label for="imgReferencePreShow">Previsualizacion de Imagen</label>
+                <div class="text-left">
+                    <img src="files/<?php echo $resultQueryReferenceForUpdate->REFERENCE_IMG; ?>" alt="Reference Image" class="rounded" width="300">
+                </div>
+                <small class="form-text text-muted">Previsualizacion</small>
+            </div>
+            <div class="form-group">
+                <label for="NewimgReference">Nueva Imagen de Referencia</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="NewimgReference" id="NewimgReference">
+                    <label class="custom-file-label" for="NewimgReference">Seleccionar Archivo</label>
+                </div>
+                <small class="form-text text-muted">Imagen de la referencia</small>
+            </div>
+            <div class="form-group">
+                <label for="NewdoucumentReference">Nuevo Documento de la referencia</label>
+                <input type="text" name="NewdoucumentReference" id="NewdoucumentReference" class="form-control" value="<?php echo $resultQueryReferenceForUpdate->REFERENCE_FILE_URL; ?>">
+                <small class="form-text text-muted">Pega la url del archivo</small>
+            </div>
+            <div class="form group">
+                <label for="NewinpPurchaseLink">Nuevo enlace de compra</label>
+                <input type="text" name="NewinpPurchaseLink" id="NewinpPurchaseLink" class="form-control" value="<?php echo $resultQueryReferenceForUpdate->REFERENCE_PURCHASE_URL; ?>">
+                <small class="form-text text-muted">Nuevo enlace</small>
+            </div>
+            <div class="form-group">
+                <label for="NewinpPriceReference">Nuevo Precio de referencia</label>
+                <input type="text" name="NewinpPriceReference" id="NewinpPriceReference" class="form-control" value="<?php echo number_format($resultQueryReferenceForUpdate->REFERENCE_PRICE, -1, '.', '.'); ?>">
+                <small class="form-text text-muted">Escribe el precio de la refrencia</small>
+            </div>
+            <div class="form-group">
+                <label for="nameMaker">Nombre del Fabricante</label>
+                <select name="nameMaker" id="nameMaker" class="form-control">
+                    <option value="<?php echo $resultQueryReferenceForUpdate->MAKER_ID; ?>" selected ><?php echo $resultQueryReferenceForUpdate->MAKER_NAME; ?></option>
+                    <?php
+                    foreach (parent::queryMakerDiferentsTo($resultQueryReferenceForUpdate->MAKER_ID) as $resultMakerAll) {
+                        ?>
+                        <option value="<?php echo $resultMakerAll->MAKER_ID; ?>"><?php echo ucwords($resultMakerAll->MAKER_NAME); ?></option>
+                        <?php
+                    }
+                    ?>
+                </select>
+                <small class="form-text text-muted">Selecciona el Fabricante</small>
+            </div>
+            <?php
+        }
+    }
+
+    public function updateReference(){
+        if($_FILES['NewimgReference']["name"] == null){
+            echo 'Sin valor';
+            $array = array("REFERENCE_NAME" => $_POST['NewinpNameReference'],
+                "REFERENCE_DESCRIPTION" => $_POST['referenceDescription'],
+                "REFERENCE_FILE_URL" => $_POST['NewdoucumentReference'],
+                "REFERENCE_PURCHASE_URL" => $_POST['NewinpPurchaseLink'],
+                "REFERENCE_PRICE" => str_replace(".", "", $_POST['NewinpPriceReference']),
+                "maker_MAKER_ID" => $_POST['nameMaker'],
+                "slcValueForUpdate" => $_POST['slcNewReferenceName']);
+            parent::updateReferenceWithoutImage($array);
+            header('location:?c=index&m=insertions');
+        } else if($_FILES['NewimgReference']["name"] != null) {
+            $tmpName = $_FILES['NewimgReference']['tmp_name'];
+            $name  = sha1(date('Y-M-D (H:i:s)')).basename($_FILES['NewimgReference']['name']);
+            move_uploaded_file($tmpName, 'files/'.$name);
+            $array = array("REFERENCE_NAME" => $_POST['NewinpNameReference'],
+                "REFERENCE_DESCRIPTION" => $_POST['referenceDescription'],
+                "REFERENCE_IMG" => $name,
+                "REFERENCE_FILE_URL" => $_POST['NewdoucumentReference'],
+                "REFERENCE_PURCHASE_URL" => $_POST['NewinpPurchaseLink'],
+                "REFERENCE_PRICE" => str_replace(".", "", $_POST['NewinpPriceReference']),
+                "maker_MAKER_ID" => $_POST['nameMaker'],
+                "slcValueForUpdate" => $_POST['slcNewReferenceName']);
+            foreach (parent::queryReferenceForUpdate($array) as $resultQueryReferenceUpdate){
+                $nameFile = 'files/'.$resultQueryReferenceUpdate->REFERENCE_IMG;
+            }
+            unlink($nameFile);
+            parent::updateReferenceWithImage($array);
+            header('location:?c=index&m=insertions');
         }
     }
 }

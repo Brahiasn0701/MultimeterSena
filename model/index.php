@@ -29,8 +29,9 @@ class index extends  database
             $stm->bindParam(2, $array['descriptionReference'], PDO::PARAM_STR);
             $stm->bindParam(3, $array['imageReference'], PDO::PARAM_STR);
             $stm->bindParam(4, $array['fileUrlReference'], PDO::PARAM_STR);
-            $stm->bindParam(5, $array['priceReference'], PDO::PARAM_STR);
-            $stm->bindParam(6, $array['nameMaker'], PDO::PARAM_STR);
+            $stm->bindParam(5, $array['urlPurchaseLink'], PDO::PARAM_STR);
+            $stm->bindParam(6, $array['priceReference'], PDO::PARAM_STR);
+            $stm->bindParam(7, $array['nameMaker'], PDO::PARAM_STR);
             $stm->execute();
         } catch (Exception $e){
             die($e->getMessage());
@@ -202,6 +203,66 @@ class index extends  database
             $stm->bindParam(3, $array['valueMaker'], PDO::PARAM_INT);
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    /*
+     *  Actualizacion para modulo de Administradores
+     * @BrahianSánchez
+     */
+
+    public function queryReferenceForUpdate($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryReferenceForUpdate);
+            $stm->bindParam(1, $array['slcValueForUpdate'], PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryMakerDiferentsTo($data){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryMakerDiferentsTo);
+            $stm->bindParam(1, $data, PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function updateReferenceWithoutImage($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::updateReferenceWithoutImage);
+            $stm->bindParam(1, $array['REFERENCE_NAME'], PDO::PARAM_STR);
+            $stm->bindParam(2, $array['REFERENCE_DESCRIPTION'], PDO::PARAM_STR);
+            $stm->bindParam(3, $array['REFERENCE_FILE_URL'], PDO::PARAM_STR);
+            $stm->bindParam(4, $array['REFERENCE_PURCHASE_URL'], PDO::PARAM_STR);
+            $stm->bindParam(5, $array['REFERENCE_PRICE'], PDO::PARAM_INT);
+            $stm->bindParam(6, $array['maker_MAKER_ID'], PDO::PARAM_INT);
+            $stm->bindParam(7, $array['slcValueForUpdate'], PDO::PARAM_INT);
+            $stm->execute();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function updateReferenceWithImage($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::updateReferenceWithImage);
+            $stm->bindParam(1, $array['REFERENCE_NAME'], PDO::PARAM_STR);
+            $stm->bindParam(2, $array['REFERENCE_DESCRIPTION'], PDO::PARAM_STR);
+            $stm->bindParam(3, $array['REFERENCE_IMG'], PDO::PARAM_STR);
+            $stm->bindParam(4, $array['REFERENCE_FILE_URL'], PDO::PARAM_STR);
+            $stm->bindParam(5, $array['REFERENCE_PURCHASE_URL'], PDO::PARAM_STR);
+            $stm->bindParam(6, $array['REFERENCE_PRICE'], PDO::PARAM_INT);
+            $stm->bindParam(7, $array['maker_MAKER_ID'], PDO::PARAM_INT);
+            $stm->bindParam(8, $array['slcValueForUpdate'], PDO::PARAM_INT);
+            $stm->execute();
         } catch (Exception $e) {
             die($e->getMessage());
         }

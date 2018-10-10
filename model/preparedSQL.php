@@ -1,9 +1,16 @@
 <?php
+/*
+ * Querys de todo el programa
+    ---------------------------------
+    Desarrollado por Brahian Sánchez
+    Contacto: slbrahianIn@misena.edu.co
+ */
+
 final class preparedSQL
 {
     //Constantes para realizar el llenado de las tablas auto y no manual
     const insertMaker = "INSERT INTO maker (MAKER_NAME) VALUES (?)";
-    const insertReference = "INSERT INTO reference (REFERENCE_NAME, REFERENCE_DESCRIPTION, REFERENCE_IMG, REFERENCE_FILE_URL, REFERENCE_PRICE, maker_MAKER_ID) VALUES (?,?,?,?,?,?)";
+    const insertReference = "INSERT INTO reference (REFERENCE_NAME, REFERENCE_DESCRIPTION, REFERENCE_IMG, REFERENCE_FILE_URL, REFERENCE_PURCHASE_URL, REFERENCE_PRICE, maker_MAKER_ID) VALUES (?,?,?,?,?,?,?)";
     const QueryMaker = "SELECT * FROM maker";
     const insertFunction = "INSERT INTO function (FUNCTION_NAME) VALUE (?)";
     const queryFunction = "SELECT * FROM function";
@@ -22,4 +29,12 @@ final class preparedSQL
     const queryForAllReferenceFunction = "SELECT * FROM reference INNER JOIN function_has_reference ON reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID WHERE function_has_reference.FUNCTION_FUNCTION_ID = ?";
     const queryAllReferenceForPrice = "SELECT * FROM reference WHERE REFERENCE_PRICE BETWEEN  ? AND ?";
     const queryReferenceForPriceAndMaker = "SELECT * FROM reference where REFERENCE_PRICE BETWEEN ? AND ? AND maker_MAKER_ID = ?";
+
+    //Update modulo Administradores
+    const queryReferenceForUpdate = "SELECT * FROM reference INNER JOIN maker ON reference.maker_MAKER_ID = maker.MAKER_ID WHERE REFERENCE_ID = ?";
+    const queryMakerDiferentsTo = "SELECT * FROM maker WHERE MAKER_ID != ?";
+    const updateReferenceWithoutImage = "UPDATE reference SET REFERENCE_NAME = ?, REFERENCE_DESCRIPTION = ?, REFERENCE_FILE_URL = ?, REFERENCE_PURCHASE_URL = ?, REFERENCE_PRICE = ?, maker_MAKER_ID = ?
+                                         WHERE REFERENCE_ID = ?";
+    const updateReferenceWithImage = "UPDATE reference SET REFERENCE_NAME = ?, REFERENCE_DESCRIPTION = ?, REFERENCE_IMG = ?, REFERENCE_FILE_URL = ?, REFERENCE_PURCHASE_URL = ?, REFERENCE_PRICE = ?, maker_MAKER_ID = ?
+                                         WHERE REFERENCE_ID = ?";
 }
