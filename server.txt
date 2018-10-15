@@ -8,7 +8,7 @@ Nombre DB
 id7425541_db_multimeter_sena
 
 Usuario DB
-id7425541_ceet
+id7425541_ceet	
 
 Host
 Localhost

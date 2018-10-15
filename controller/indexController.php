@@ -26,17 +26,27 @@ class indexController extends index
     public function InsertReferenceIndexController(){
         $tmpName = $_FILES['imgReference']['tmp_name'];
         $name  = sha1(date('Y-M-D')).basename($_FILES['imgReference']['name']);
-        move_uploaded_file($tmpName, 'files/'.$name);
-        $array = array("nameReference" => $_POST['referenceName'],
-                        "descriptionReference" => $_POST['referenceDescription'],
-                        "imageReference" => $name,
-                        "fileUrlReference" => $_POST['doucumentReference'],
-                        "urlPurchaseLink" => $_POST['inpLinkForPurchase'],
-                        "priceReference" =>  str_replace(".", "", $_POST['inpPriceReference']),
-                        "nameMaker" => $_POST['nameMaker']
-        );
-        parent::insertReference($array);
-        header('location:https://multimetrosceet.000webhostapp.com/?c=index&m=insertions');
+        $size = getimagesize($_FILES['imgReference']['tmp_name']);
+        if($size[0] > 350 && $size[1] < 430){
+            move_uploaded_file($tmpName, 'files/'.$name);
+            $array = array("nameReference" => $_POST['referenceName'],
+                "descriptionReference" => $_POST['referenceDescription'],
+                "imageReference" => $name,
+                "fileUrlReference" => $_POST['doucumentReference'],
+                "urlPurchaseLink" => $_POST['inpLinkForPurchase'],
+                "priceReference" =>  str_replace(".", "", $_POST['inpPriceReference']),
+                "nameMaker" => $_POST['nameMaker']
+            );
+            parent::insertReference($array);
+            header('location:?c=index&m=insertions');
+        } else {
+            ?>
+            <script>
+                alert('La imagen no cumple con la dimension establecida (Entre 350Px y 430px)');
+                window.location = 'http://localhost/Proyects/MultimeterSena/?c=index&m=insertions' ;
+            </script>
+            <?php
+        }
     }
 
     public function insertFunctionIndexController(){
@@ -650,25 +660,35 @@ class indexController extends index
                 "maker_MAKER_ID" => $_POST['nameMaker'],
                 "slcValueForUpdate" => $_POST['slcNewReferenceName']);
             parent::updateReferenceWithoutImage($array);
-            header('location:https://multimetrosceet.000webhostapp.com/?c=index&m=insertions');
+            header('location:?c=index&m=insertions');
         } else if($_FILES['NewimgReference']["name"] != null) {
             $tmpName = $_FILES['NewimgReference']['tmp_name'];
             $name  = sha1(date('Y-M-D (H:i:s)')).basename($_FILES['NewimgReference']['name']);
-            move_uploaded_file($tmpName, 'files/'.$name);
-            $array = array("REFERENCE_NAME" => $_POST['NewinpNameReference'],
-                "REFERENCE_DESCRIPTION" => $_POST['referenceDescription'],
-                "REFERENCE_IMG" => $name,
-                "REFERENCE_FILE_URL" => $_POST['NewdoucumentReference'],
-                "REFERENCE_PURCHASE_URL" => $_POST['NewinpPurchaseLink'],
-                "REFERENCE_PRICE" => str_replace(".", "", $_POST['NewinpPriceReference']),
-                "maker_MAKER_ID" => $_POST['nameMaker'],
-                "slcValueForUpdate" => $_POST['slcNewReferenceName']);
-            foreach (parent::queryReferenceForUpdate($array) as $resultQueryReferenceUpdate){
-                $nameFile = 'files/'.$resultQueryReferenceUpdate->REFERENCE_IMG;
+            $size = getimagesize($_FILES['NewimgReference']['tmp_name']);
+            if($size[0] > 350 && $size[1] < 430){
+                move_uploaded_file($tmpName, 'files/'.$name);
+                $array = array("REFERENCE_NAME" => $_POST['NewinpNameReference'],
+                    "REFERENCE_DESCRIPTION" => $_POST['referenceDescription'],
+                    "REFERENCE_IMG" => $name,
+                    "REFERENCE_FILE_URL" => $_POST['NewdoucumentReference'],
+                    "REFERENCE_PURCHASE_URL" => $_POST['NewinpPurchaseLink'],
+                    "REFERENCE_PRICE" => str_replace(".", "", $_POST['NewinpPriceReference']),
+                    "maker_MAKER_ID" => $_POST['nameMaker'],
+                    "slcValueForUpdate" => $_POST['slcNewReferenceName']);
+                foreach (parent::queryReferenceForUpdate($array) as $resultQueryReferenceUpdate){
+                    $nameFile = 'files/'.$resultQueryReferenceUpdate->REFERENCE_IMG;
+                }
+                unlink($nameFile);
+                parent::updateReferenceWithImage($array);
+                header('location:?c=index&m=insertions');
+            } else {
+                ?>
+                <script>
+                    alert('La imagen no cumple con la dimension establecida (Entre 350Px y 430px)');
+                    window.location = 'http://localhost/Proyects/MultimeterSena/?c=index&m=insertions' ;
+                </script>
+                <?php
             }
-            unlink($nameFile);
-            parent::updateReferenceWithImage($array);
-            header('location:https://multimetrosceet.000webhostapp.com/?c=index&m=insertions');
         }
     }
     public function queryMakerForSelectIndexController(){
