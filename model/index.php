@@ -209,6 +209,17 @@ class index extends  database
         }
     }
 
+    public function queryFunctionReferenceForReference($data){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryFunctionReferenceForReference);
+            $stm->bindParam(1, $data, PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     /*
      *  Actualizacion para modulo de Administradores
      * @BrahianSánchez

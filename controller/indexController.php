@@ -269,6 +269,28 @@ class indexController extends index
                                 <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                                 <p class="card-text"><?php echo $resultqueryForAllReferenceFunction->REFERENCE_DESCRIPTION; ?></p>
                                 <p class="lead">Costo <strong><?php echo number_format($resultqueryForAllReferenceFunction->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                                <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                                <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                                    <?php
+                                    $countFunctionReference = 0;
+                                    foreach (parent::queryFunctionReferenceForReference($resultqueryForAllReferenceFunction->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                        $countFunctionReference++;
+                                        ?>
+                                        <div class="custom-control custom-checkbox text-left">
+                                            <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                        </div>
+                                        <?php
+                                    }
+                                    if($countFunctionReference == 0){
+                                        ?>
+                                        <div class="custom-control custom-checkbox text-left">
+                                            <strong>No se han asignado funciones para este multimetro</strong>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                                <small class="form-text text-muted mb-3">Precisión</small>
                                 <div class="row col">
                                     <a href="<?php echo $resultqueryForAllReferenceFunction->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                                     <div class="p-1"></div>
@@ -314,6 +336,28 @@ class indexController extends index
                                 <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                                 <p class="card-text"><?php echo $resultForFunctionAndMaker->REFERENCE_DESCRIPTION; ?></p>
                                 <p class="lead">Costo <strong><?php echo number_format($resultForFunctionAndMaker->REFERENCE_PRICE,     -1, '.', '.'); ?></strong></p>
+                                <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                                <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                                    <?php
+                                    $countFunctionReference = 0;
+                                    foreach (parent::queryFunctionReferenceForReference($resultForFunctionAndMaker->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                        $countFunctionReference++;
+                                        ?>
+                                        <div class="custom-control custom-checkbox text-left">
+                                            <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                        </div>
+                                        <?php
+                                    }
+                                    if($countFunctionReference == 0){
+                                        ?>
+                                        <div class="custom-control custom-checkbox text-left">
+                                            <strong>No se han asignado funciones para este multimetro</strong>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                                <small class="form-text text-muted mb-3">Precisión</small>
                                 <div class="row col">
                                     <a href="<?php echo $resultForFunctionAndMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                                     <div class="p-1"></div>
@@ -348,6 +392,28 @@ class indexController extends index
                                 <p class="lead">Costo
                                     <strong><?php echo number_format($resultForFunctionAndMaker->REFERENCE_PRICE, -1, '.', '.'); ?></strong>
                                 </p>
+                                <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                                <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                                    <?php
+                                    $countFunctionReference = 0;
+                                    foreach (parent::queryFunctionReferenceForReference($resultForFunctionAndMaker->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                        $countFunctionReference++;
+                                        ?>
+                                        <div class="custom-control custom-checkbox text-left">
+                                            <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                        </div>
+                                        <?php
+                                    }
+                                    if($countFunctionReference == 0){
+                                        ?>
+                                        <div class="custom-control custom-checkbox text-left">
+                                            <strong>No se han asignado funciones para este multimetro</strong>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                                <small class="form-text text-muted mb-3">Precisión</small>
                                 <div class="row col">
                                     <a href="<?php echo $resultForFunctionAndMaker->REFERENCE_FILE_URL; ?>"
                                        class="btn btn-primary col">Descargar PDF</a>
@@ -394,6 +460,28 @@ class indexController extends index
                                 <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                                 <p class="card-text"><?php echo $resultForFunctionAndMaker->REFERENCE_DESCRIPTION; ?></p>
                                 <p class="lead">Costo <strong><?php echo number_format($resultForFunctionAndMaker->REFERENCE_PRICE,     -1, '.', '.'); ?></strong></p>
+                                <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                                <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                                    <?php
+                                    $countFunctionReference = 0;
+                                    foreach (parent::queryFunctionReferenceForReference($resultForFunctionAndMaker->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                        $countFunctionReference++;
+                                        ?>
+                                        <div class="custom-control custom-checkbox text-left">
+                                            <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                        </div>
+                                        <?php
+                                    }
+                                    if($countFunctionReference == 0){
+                                        ?>
+                                        <div class="custom-control custom-checkbox text-left">
+                                            <strong>No se han asignado funciones para este multimetro</strong>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                                <small class="form-text text-muted mb-3">Precisión</small>
                                 <div class="row col">
                                     <a href="<?php echo $resultForFunctionAndMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                                     <div class="p-1"></div>
@@ -421,6 +509,28 @@ class indexController extends index
                             <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                             <p class="card-text"><?php echo $resultSearchQueryReferenceForMaker->REFERENCE_DESCRIPTION; ?></p>
                             <p class="lead">Costo <strong><?php echo number_format($resultSearchQueryReferenceForMaker->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                            <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                            <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                                <?php
+                                    $countFunctionReference = 0;
+                                    foreach (parent::queryFunctionReferenceForReference($resultSearchQueryReferenceForMaker->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                        $countFunctionReference++;
+                                        ?>
+                                        <div class="custom-control custom-checkbox text-left">
+                                            <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                        </div>
+                                        <?php
+                                    }
+                                    if($countFunctionReference == 0){
+                                        ?>
+                                        <div class="custom-control custom-checkbox text-left">
+                                            <strong>No se han asignado funciones para este multimetro</strong>
+                                        </div>
+                                        <?php
+                                    }
+                                ?>
+                            </div>
+                            <small class="form-text text-muted mb-3">Precisión</small>
                             <div class="row justify-content-center">
                                 <a href="<?php echo $resultSearchQueryReferenceForMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary">Descargar PDF</a>
                                 <div class="p-1"></div>
@@ -458,6 +568,28 @@ class indexController extends index
                             <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                             <p class="card-text"><?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_DESCRIPTION; ?></p>
                             <p class="lead">Costo <strong><?php echo number_format($resultSearchQueryReferenceOnlyAMaker->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                            <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                            <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                                <?php
+                                $countFunctionReference = 0;
+                                foreach (parent::queryFunctionReferenceForReference($resultSearchQueryReferenceOnlyAMaker->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                    $countFunctionReference++;
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                    </div>
+                                    <?php
+                                }
+                                if($countFunctionReference == 0){
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <strong>No se han asignado funciones para este multimetro</strong>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <small class="form-text text-muted mb-3">Precisión</small>
                             <div class="row justify-content-center">
                                 <a href="<?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                                 <div class="p-1"></div>
@@ -491,6 +623,28 @@ class indexController extends index
                             <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                             <p class="card-text"><?php echo $resultQueryOnlyReference->REFERENCE_DESCRIPTION; ?></p>
                             <p class="lead">Costo <strong><?php echo number_format($resultQueryOnlyReference->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                            <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                            <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                                <?php
+                                $countFunctionReference = 0;
+                                foreach (parent::queryFunctionReferenceForReference($resultQueryOnlyReference->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                    $countFunctionReference++;
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                    </div>
+                                    <?php
+                                }
+                                if($countFunctionReference == 0){
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <strong>No se han asignado funciones para este multimetro</strong>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <small class="form-text text-muted mb-3">Precisión</small>
                             <div class="row justify-content-center">
                                 <a href="<?php echo $resultQueryOnlyReference->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                             </div>
@@ -526,6 +680,28 @@ class indexController extends index
                         <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                         <p class="card-text"><?php echo $resultQueryAllReferenceForPrice->REFERENCE_DESCRIPTION; ?></p>
                         <p class="lead">Costo <strong><?php echo number_format($resultQueryAllReferenceForPrice->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                        <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                        <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                            <?php
+                            $countFunctionReference = 0;
+                            foreach (parent::queryFunctionReferenceForReference($resultQueryAllReferenceForPrice->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                $countFunctionReference++;
+                                ?>
+                                <div class="custom-control custom-checkbox text-left">
+                                    <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                </div>
+                                <?php
+                            }
+                            if($countFunctionReference == 0){
+                                ?>
+                                <div class="custom-control custom-checkbox text-left">
+                                    <strong>No se han asignado funciones para este multimetro</strong>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <small class="form-text text-muted mb-3">Precisión</small>
                         <div class="row justify-content-center">
                             <a href="<?php echo $resultQueryAllReferenceForPrice->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                         </div>
@@ -562,6 +738,28 @@ class indexController extends index
                             <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
                             <p class="card-text"><?php echo $resultQueryReferenceForPriceAndMaker->REFERENCE_DESCRIPTION; ?></p>
                             <p class="lead">Costo <strong><?php echo number_format($resultQueryReferenceForPriceAndMaker->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                            <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                            <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                                <?php
+                                $countFunctionReference = 0;
+                                foreach (parent::queryFunctionReferenceForReference($resultQueryReferenceForPriceAndMaker->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                    $countFunctionReference++;
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                    </div>
+                                    <?php
+                                }
+                                if($countFunctionReference == 0){
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <strong>No se han asignado funciones para este multimetro</strong>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <small class="form-text text-muted mb-3">Precisión</small>
                             <div class="row justify-content-center">
                                 <a href="<?php echo $resultQueryReferenceForPriceAndMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                             </div>

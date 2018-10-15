@@ -19,7 +19,7 @@ final class preparedSQL
 
     //Querys
     const queryMakersForSelect = "SELECT * FROM maker WHERE MAKER_ID = ?";
-    const queryReferenceForMaker = "SELECT * FROM reference  WHERE maker_MAKER_ID= ?";
+    const queryReferenceForMaker = "SELECT * FROM reference WHERE maker_MAKER_ID= ?";
     const queryPrecisionForReference = "SELECT * FROM reference INNER JOIN function_has_reference  INNER JOIN function ON reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID AND function.FUNCTION_ID = function_has_reference.FUNCTION_FUNCTION_ID WHERE REFERENCE_ID = ?";
     const queryReferenceOnlyForAMaker = "SELECT * FROM reference WHERE  REFERENCE_ID = ? and maker_MAKER_ID = ?";
     const queryOnlyReference = "SELECT * FROM reference INNER JOIN maker ON maker.MAKER_ID = reference.maker_MAKER_ID WHERE REFERENCE_ID = ?";
@@ -29,6 +29,7 @@ final class preparedSQL
     const queryForAllReferenceFunction = "SELECT * FROM reference INNER JOIN function_has_reference ON reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID WHERE function_has_reference.FUNCTION_FUNCTION_ID = ?";
     const queryAllReferenceForPrice = "SELECT * FROM reference WHERE REFERENCE_PRICE BETWEEN  ? AND ?";
     const queryReferenceForPriceAndMaker = "SELECT * FROM reference where REFERENCE_PRICE BETWEEN ? AND ? AND maker_MAKER_ID = ?";
+    const queryFunctionReferenceForReference = "SELECT * FROM function_has_reference INNER JOIN function on function_has_reference.FUNCTION_FUNCTION_ID = function.FUNCTION_ID where REFERENCE_REFERENCE_ID = ?";
 
     //Update modulo Administradores
     const queryReferenceForUpdate = "SELECT * FROM reference INNER JOIN maker ON reference.maker_MAKER_ID = maker.MAKER_ID WHERE REFERENCE_ID = ?";
