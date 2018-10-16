@@ -101,19 +101,6 @@
                 <small class="form-text text-muted">Variables de Medida</small> 
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="form-group">
-                <label for="resultQueryPresicionForReference">Presición</label>
-                <div class="card">
-                    <div class="card-body" id="resultQueryPresicionForReference">
-                        <div class="custom-control custom-checkbox">
-                            <b> Precisión por Referencia </b>
-                        </div>
-                    </div>
-                </div>
-                <small class="form-text text-muted">Precisión</small> 
-            </div>
-        </div>
     </div> <!-- Fin de la segunda Columna -->
 
     <!-- Botones para realizar Busqueda e ingresar en modulo Admin -->

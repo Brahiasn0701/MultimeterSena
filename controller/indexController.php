@@ -94,13 +94,6 @@ class indexController extends index
                         $('.custom-control-input').prop('disabled', false);
                         $('#inpCostInitial').prop('disabled', false);
                         $('#inpCostFinal').prop('disabled', false);
-                        $.ajax({
-                            type: 'POST',
-                            url: '?c=index&m=queryPrecisionForReferenceDefaultIndexController',
-                            data: null
-                        }).done(function (response) {
-                            $('#resultQueryPresicionForReference').html(response);
-                        })
                     });
                 } else {
                     $.ajax({
@@ -112,16 +105,6 @@ class indexController extends index
                         $('.custom-control-input').prop('disabled', true);
                         $('#inpCostInitial').prop('disabled', true);
                         $('#inpCostFinal').prop('disabled', true);
-                        $.ajax({
-                            type: 'POST',
-                            url: '?c=index&m=queryPrecisionForReferenceIndexController',
-                            data: {
-                                valueReference: $('#reference').val()
-                            }
-                        }).done(function (response) {
-                            $('#resultQueryPresicionForReference').html(response);
-                            $('.custom-control-input').prop('disabled', true);
-                        });
                     });
                 }
             });
@@ -183,13 +166,6 @@ class indexController extends index
                         $('.custom-control-input').prop('disabled', false);
                         $('#inpCostInitial').prop('disabled', false);
                         $('#inpCostFinal').prop('disabled', false);
-                        $.ajax({
-                            type: 'POST',
-                            url: '?c=index&m=queryPrecisionForReferenceDefaultIndexController',
-                            data: null
-                        }).done(function (response) {
-                            $('#resultQueryPresicionForReference').html(response);
-                        })
                     });
                 } else {
                     $.ajax({
@@ -201,16 +177,6 @@ class indexController extends index
                         $('.custom-control-input').prop('disabled', true);
                         $('#inpCostInitial').prop('disabled', true);
                         $('#inpCostFinal').prop('disabled', true);
-                        $.ajax({
-                            type: 'POST',
-                            url: '?c=index&m=queryPrecisionForReferenceIndexController',
-                            data: {
-                                valueReference: $('#reference').val()
-                            }
-                        }).done(function (response) {
-                            $('#resultQueryPresicionForReference').html(response);
-                            $('.custom-control-input').prop('disabled', true);
-                        });
                     });
                 }
             });
@@ -291,6 +257,10 @@ class indexController extends index
                                     ?>
                                 </div>
                                 <small class="form-text text-muted mb-3">Precisión</small>
+                                <div class="row justify-content-start">
+                                    <label class="lead">Link de Compra </label>
+                                    <p><a href="<?php echo $resultqueryForAllReferenceFunction->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultqueryForAllReferenceFunction->REFERENCE_PURCHASE_URL; ?></a></p>
+                                </div>
                                 <div class="row col">
                                     <a href="<?php echo $resultqueryForAllReferenceFunction->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                                     <div class="p-1"></div>
@@ -358,6 +328,10 @@ class indexController extends index
                                     ?>
                                 </div>
                                 <small class="form-text text-muted mb-3">Precisión</small>
+                                <div class="row justify-content-start">
+                                    <label class="lead">Link de Compra </label>
+                                    <p><a href="<?php echo $resultForFunctionAndMaker->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultForFunctionAndMaker->REFERENCE_PURCHASE_URL; ?></a></p>
+                                </div>
                                 <div class="row col">
                                     <a href="<?php echo $resultForFunctionAndMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                                     <div class="p-1"></div>
@@ -414,6 +388,10 @@ class indexController extends index
                                     ?>
                                 </div>
                                 <small class="form-text text-muted mb-3">Precisión</small>
+                                <div class="row justify-content-start">
+                                    <label class="lead">Link de Compra </label>
+                                    <p><a href="<?php echo $resultForFunctionAndMaker->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultForFunctionAndMaker->REFERENCE_PURCHASE_URL; ?></a></p>
+                                </div>
                                 <div class="row col">
                                     <a href="<?php echo $resultForFunctionAndMaker->REFERENCE_FILE_URL; ?>"
                                        class="btn btn-primary col">Descargar PDF</a>
@@ -482,6 +460,10 @@ class indexController extends index
                                     ?>
                                 </div>
                                 <small class="form-text text-muted mb-3">Precisión</small>
+                                <div class="row justify-content-start">
+                                    <label class="lead">Link de Compra </label>
+                                    <p><a href="<?php echo $resultForFunctionAndMaker->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultForFunctionAndMaker->REFERENCE_PURCHASE_URL; ?></a></p>
+                                </div>
                                 <div class="row col">
                                     <a href="<?php echo $resultForFunctionAndMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                                     <div class="p-1"></div>
@@ -531,6 +513,10 @@ class indexController extends index
                                 ?>
                             </div>
                             <small class="form-text text-muted mb-3">Precisión</small>
+                            <div class="row justify-content-start">
+                                <label class="lead">Link de Compra </label>
+                               <p><a href="<?php echo $resultSearchQueryReferenceForMaker->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultSearchQueryReferenceForMaker->REFERENCE_PURCHASE_URL; ?></a></p>
+                            </div>
                             <div class="row justify-content-center">
                                 <a href="<?php echo $resultSearchQueryReferenceForMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary">Descargar PDF</a>
                                 <div class="p-1"></div>
@@ -590,6 +576,10 @@ class indexController extends index
                                 ?>
                             </div>
                             <small class="form-text text-muted mb-3">Precisión</small>
+                            <div class="row justify-content-start">
+                                <label class="lead">Link de Compra </label>
+                                <p><a href="<?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_PURCHASE_URL; ?></a></p>
+                            </div>
                             <div class="row justify-content-center">
                                 <a href="<?php echo $resultSearchQueryReferenceOnlyAMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                                 <div class="p-1"></div>
@@ -645,6 +635,10 @@ class indexController extends index
                                 ?>
                             </div>
                             <small class="form-text text-muted mb-3">Precisión</small>
+                            <div class="row justify-content-start">
+                                <label class="lead">Link de Compra </label>
+                                <p><a href="<?php echo $resultQueryOnlyReference->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultQueryOnlyReference->REFERENCE_PURCHASE_URL; ?></a></p>
+                            </div>
                             <div class="row justify-content-center">
                                 <a href="<?php echo $resultQueryOnlyReference->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                             </div>
@@ -702,6 +696,10 @@ class indexController extends index
                             ?>
                         </div>
                         <small class="form-text text-muted mb-3">Precisión</small>
+                        <div class="row justify-content-start">
+                            <label class="lead">Link de Compra </label>
+                            <p><a href="<?php echo $resultQueryAllReferenceForPrice->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultQueryAllReferenceForPrice->REFERENCE_PURCHASE_URL; ?></a></p>
+                        </div>
                         <div class="row justify-content-center">
                             <a href="<?php echo $resultQueryAllReferenceForPrice->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                         </div>
@@ -760,6 +758,10 @@ class indexController extends index
                                 ?>
                             </div>
                             <small class="form-text text-muted mb-3">Precisión</small>
+                            <div class="row justify-content-start">
+                                <label class="lead">Link de Compra </label>
+                                <p><a href="<?php echo $resultQueryReferenceForPriceAndMaker->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultQueryReferenceForPriceAndMaker->REFERENCE_PURCHASE_URL; ?></a></p>
+                            </div>
                             <div class="row justify-content-center">
                                 <a href="<?php echo $resultQueryReferenceForPriceAndMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary col">Descargar PDF</a>
                             </div>
