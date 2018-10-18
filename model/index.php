@@ -220,6 +220,46 @@ class index extends  database
         }
     }
 
+    public function queryReferenceForFunctionAndPrecision($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryReferenceForFunctionAndPrecision);
+            $stm->bindParam(1, $array['FUNCTION_ID'], PDO::PARAM_STR);
+            $stm->bindParam(2, $array['FUNCTION_PRECISION'], PDO::PARAM_STR);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryReferenceForFunctionAndPrecisionAndMaker($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryReferenceForFunctionAndPrecisionAndMaker);
+            $stm->bindParam(1, $array['MAKER_ID'], PDO::PARAM_STR);
+            $stm->bindParam(2, $array['FUNCTION_ID'], PDO::PARAM_STR);
+            $stm->bindParam(3, $array['FUNCTION_PRECISION'], PDO::PARAM_STR);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryReferenceForFunctionAndPrecisionMakerAndPrice($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryReferenceForFunctionAndPrecisionMakerAndPrice);
+            $stm->bindParam(1, $array['MAKER_ID'], PDO::PARAM_STR);
+            $stm->bindParam(2, $array['FUNCTION_ID'], PDO::PARAM_STR);
+            $stm->bindParam(3, $array['FUNCTION_PRECISION'], PDO::PARAM_STR);
+            $stm->bindParam(4, $array['PRICE_INITIAL'], PDO::PARAM_INT);
+            $stm->bindParam(5, $array['PRICE_FINAL'], PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     /*
      *  Actualizacion para modulo de Administradores
      * @BrahianSánchez

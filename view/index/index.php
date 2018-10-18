@@ -101,6 +101,26 @@
                 <small class="form-text text-muted">Variables de Medida</small> 
             </div>
         </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="slcPrecision">Precisión</label>
+                <select name="slcPrecision" id="slcPrecision" class="form-control">
+                    <option value="0" selected>Selecciona</option>
+                    <option value="1_0.1">Voltaje AC (0.1)</option>
+                    <option value="1_0.8">Voltaje AC (0.8)</option>
+                    <option value="1_1.0">Voltaje AC (1.0)</option>
+                    <option value="2_0.1">Voltaje DC (0.1)</option>
+                    <option value="2_0.8">Voltaje DC (0.8)</option>
+                    <option value="2_1.0">Voltaje DC (1.0)</option>
+                    <option value="3_0.1">Corriente AC (0.1)</option>
+                    <option value="3_0.8">Corriente AC (0.8)</option>
+                    <option value="3_1.0">Corriente AC (1.0)</option>
+                    <option value="4_0.1">Corriente DC (0.1)</option>
+                    <option value="4_0.8">Corriente DC (0.8)</option>
+                    <option value="4_1.0">Corriente DC (1.0)</option>
+                </select>
+            </div>
+        </div>
     </div> <!-- Fin de la segunda Columna -->
 
     <!-- Botones para realizar Busqueda e ingresar en modulo Admin -->

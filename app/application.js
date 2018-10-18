@@ -259,6 +259,7 @@ $(function(){
                 $('.custom-control-input').prop('disabled', false);
                 $('#inpCostInitial').prop('disabled', false);
                 $('#inpCostFinal').prop('disabled', false);
+                $('#slcPrecision').prop('disabled', false);
             });
        } else {
             $.ajax({
@@ -270,6 +271,7 @@ $(function(){
                 $('.custom-control-input').prop('disabled', true);
                 $('#inpCostInitial').prop('disabled', true);
                 $('#inpCostFinal').prop('disabled', true);
+                $('#slcPrecision').prop('disabled', true);
             });
        }
     });
@@ -288,7 +290,8 @@ $(function(){
                     valueReference : $('#reference').val(),
                     valueCheckBox: valueCheck,
                     valuePriceInitial: $('#inpCostInitial').val(),
-                    valuePriceFinal: $('#inpCostFinal').val()}
+                    valuePriceFinal: $('#inpCostFinal').val(),
+                    valuePrecision: $('#slcPrecision').val()}
         }).done(function (response) {
             $('#responseSearch').html(response);
         });

@@ -30,6 +30,9 @@ final class preparedSQL
     const queryAllReferenceForPrice = "SELECT * FROM reference WHERE REFERENCE_PRICE BETWEEN  ? AND ?";
     const queryReferenceForPriceAndMaker = "SELECT * FROM reference where REFERENCE_PRICE BETWEEN ? AND ? AND maker_MAKER_ID = ?";
     const queryFunctionReferenceForReference = "SELECT * FROM function_has_reference INNER JOIN function on function_has_reference.FUNCTION_FUNCTION_ID = function.FUNCTION_ID where REFERENCE_REFERENCE_ID = ?";
+    const queryReferenceForFunctionAndPrecision = "SELECT * FROM function_has_reference INNER JOIN reference ON function_has_reference.REFERENCE_REFERENCE_ID = reference.REFERENCE_ID WHERE function_has_reference.FUNCTION_FUNCTION_ID = ? AND function_has_reference.FUNCTION_PRECISION = ?";
+    const queryReferenceForFunctionAndPrecisionAndMaker = "SELECT * FROM function_has_reference INNER JOIN reference INNER JOIN maker ON function_has_reference.REFERENCE_REFERENCE_ID = reference.REFERENCE_ID AND maker.MAKER_ID = reference.maker_MAKER_ID WHERE maker.MAKER_ID = ? AND function_has_reference.FUNCTION_FUNCTION_ID = ? AND function_has_reference.FUNCTION_PRECISION = ?";
+    const queryReferenceForFunctionAndPrecisionMakerAndPrice = "SELECT * FROM function_has_reference INNER JOIN reference INNER JOIN maker ON function_has_reference.REFERENCE_REFERENCE_ID = reference.REFERENCE_ID AND maker.MAKER_ID = reference.maker_MAKER_ID WHERE maker.MAKER_ID = ? AND function_has_reference.FUNCTION_FUNCTION_ID = ? AND FUNCTION_PRECISION = ? AND reference.REFERENCE_PRICE BETWEEN ? AND ?";
 
     //Update modulo Administradores
     const queryReferenceForUpdate = "SELECT * FROM reference INNER JOIN maker ON reference.maker_MAKER_ID = maker.MAKER_ID WHERE REFERENCE_ID = ?";
