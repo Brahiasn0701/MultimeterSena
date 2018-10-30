@@ -281,6 +281,31 @@ class index extends  database
         }
     }
 
+    public function queryReferenceForFunctionAndPrice($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryReferenceForFunctionAndPrice);
+            $stm->bindParam(1, $array['FUNCTION_FUNCTION_ID'], PDO::PARAM_INT);
+            $stm->bindParam(2, $array['PRICE_INITIAL'], PDO::PARAM_INT);
+            $stm->bindParam(3, $array['PRICE_FINAL'], PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryReferenceForSomeFunctionAndPrice($where, $priceInitial, $priceFinal){
+        try{
+            $stm = parent::conexion()->prepare("SELECT * FROM reference
+                                                          INNER JOIN function_has_reference ON reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID 
+                                                          WHERE (".$where.") AND reference.REFERENCE_PRICE BETWEEN ".$priceInitial." AND ".$priceFinal." GROUP BY reference.REFERENCE_ID");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     /*
      *  Actualizacion para modulo de Administradores
      * @BrahianSánchez

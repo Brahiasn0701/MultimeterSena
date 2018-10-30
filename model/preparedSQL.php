@@ -32,6 +32,7 @@ final class preparedSQL
     const queryFunctionReferenceForReference = "SELECT * FROM function_has_reference INNER JOIN function on function_has_reference.FUNCTION_FUNCTION_ID = function.FUNCTION_ID where REFERENCE_REFERENCE_ID = ?";
     const queryReferenceForFunctionAndPrecision = "SELECT * FROM reference INNER JOIN function_has_reference ON reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID WHERE function_has_reference.FUNCTION_FUNCTION_ID = ? AND function_has_reference.FUNCTION_PRECISION = ?";
     const queryReferenceForFunctionPrecisionAndMaker = "SELECT * FROM reference INNER JOIN function_has_reference ON reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID WHERE function_has_reference.FUNCTION_FUNCTION_ID = ? AND function_has_reference.FUNCTION_PRECISION = ? AND reference.maker_MAKER_ID = ?";
+    const queryReferenceForFunctionAndPrice = "SELECT * FROM reference INNER JOIN function_has_reference ON reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID WHERE function_has_reference.FUNCTION_FUNCTION_ID = ? AND reference.REFERENCE_PRICE BETWEEN  ? AND ?";
 
     //Update modulo Administradores
     const queryReferenceForUpdate = "SELECT * FROM reference INNER JOIN maker ON reference.maker_MAKER_ID = maker.MAKER_ID WHERE REFERENCE_ID = ?";

@@ -222,7 +222,7 @@ class indexController extends index
 
     public function querySearch()
     {
-        if ($_REQUEST['valueMaker'] == 0 and isset($_REQUEST['measurementVariablesValue']) > 0){
+        if ($_REQUEST['valueMaker'] == 0 and $_REQUEST['valuePriceInitial'] == 0 and $_REQUEST['valuePriceFinal'] == 0 and isset($_REQUEST['measurementVariablesValue']) and !isset($_REQUEST['presicionValueCkeck'])){
             if(strpbrk(',', implode(',',$_REQUEST['measurementVariablesValue'])) === false){
                 ?>
                 <div class="container row justify-content-center">
@@ -356,7 +356,7 @@ class indexController extends index
                     <?php
                 }
             }
-        } elseif($_REQUEST['valueMaker'] != 0 and isset($_REQUEST['measurementVariablesValue']) and !isset($_REQUEST['presicionValueCkeck'])){
+        } elseif($_REQUEST['valueMaker'] != 0 and $_REQUEST['valuePriceInitial'] == 0 and $_REQUEST['valuePriceFinal'] == 0 and  isset($_REQUEST['measurementVariablesValue']) and !isset($_REQUEST['presicionValueCkeck'])){
             if(strpbrk(',', implode(',',$_REQUEST['measurementVariablesValue'])) === false) {
                 ?>
                 <div class="container row justify-content-center">
@@ -496,7 +496,7 @@ class indexController extends index
                 </div>
                 <?php
             }
-        } elseif ($_REQUEST['valueMaker'] == 0 and  $_REQUEST['valueReference'] == 0 and  $_REQUEST['valuePriceFinal'] == 0 and  $_REQUEST['valuePriceInitial'] == 0 and isset($_REQUEST['presicionValueCkeck'])){
+        } elseif ($_REQUEST['valueMaker'] == 0 and  $_REQUEST['valueReference'] == 0 and  $_REQUEST['valuePriceFinal'] == 0 and  $_REQUEST['valuePriceInitial'] == 0 and isset($_REQUEST['presicionValueCkeck']) and !isset($_REQUEST['measurementVariablesValue'])){
             if(strpbrk(',', implode(',',$_REQUEST['presicionValueCkeck'])) === false) {
                 $count = 0;
                 $array = explode("_", $_REQUEST['presicionValueCkeck'][0]);
@@ -838,7 +838,427 @@ class indexController extends index
                 </blockquote>
                 <?php
             }
-        } else  if($_REQUEST['valueMaker'] != 0 and  $_REQUEST['valueReference'] != 0){
+        } elseif($_REQUEST['valueMaker'] == 0 and $_REQUEST['valueReference'] == 0 and $_REQUEST['valuePriceFinal'] == 0 and $_REQUEST['valuePriceInitial'] == 0 and isset($_REQUEST['measurementVariablesValue']) and isset($_REQUEST['presicionValueCkeck'])){
+            if(strpbrk(',', implode(',',$_REQUEST['measurementVariablesValue'])) === false and strpbrk(',', implode(',',$_REQUEST['presicionValueCkeck'])) === false){
+                $array = explode("_", $_REQUEST['presicionValueCkeck'][0]);
+                $arrayDef = array("FUNCTION_FUNCTION_ID" => $_REQUEST['measurementVariablesValue'][0],
+                                "FUNCTION_PRECISION" => $array[2]);
+                ?>
+                 <div class="container row justify-content-center ">
+                <?php
+                $count = 0;
+                foreach (parent::queryReferenceForFunctionAndPrecision($arrayDef) as $resultQueryReferenceForFunctionAndPrecision){
+                    $count++;
+                    ?>
+                    <div class="card col-md-3 ml-3 mt-5">
+                        <img class="card-img-top" src="files/<?php echo $resultQueryReferenceForFunctionAndPrecision->REFERENCE_IMG; ?>" alt="Multimetro Crash">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $resultQueryReferenceForFunctionAndPrecision->REFERENCE_NAME; ?></h5>
+                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
+                            <p class="card-text"><?php echo $resultQueryReferenceForFunctionAndPrecision->REFERENCE_DESCRIPTION; ?></p>
+                            <p class="lead">Costo <strong><?php echo number_format($resultQueryReferenceForFunctionAndPrecision->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                            <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                            <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                                <?php
+                                $countFunctionReference = 0;
+                                foreach (parent::queryFunctionReferenceForReference($resultQueryReferenceForFunctionAndPrecision->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                    $countFunctionReference++;
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                    </div>
+                                    <?php
+                                }
+                                if($countFunctionReference == 0){
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <strong>No se han asignado funciones para este multimetro</strong>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <small class="form-text text-muted mb-3">Precisión</small>
+                            <div class="row justify-content-start">
+                                <label class="lead">Link de Compra </label>
+                                <p><a href="<?php echo $resultQueryReferenceForFunctionAndPrecision->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultQueryReferenceForFunctionAndPrecision->REFERENCE_PURCHASE_URL; ?></a></p>
+                            </div>
+                            <div class="row justify-content-center">
+                                <a href="<?php echo $resultQueryReferenceForFunctionAndPrecision->REFERENCE_FILE_URL; ?>" class="btn btn-primary">Descargar PDF</a>
+                                <div class="p-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                if($count === 0){
+                    ?>
+                    <blockquote class="blockquote text-center">
+                        <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                    </blockquote>
+                    <?php
+                }
+                ?>
+                 </div>
+                <?php
+            } else {
+                //var_dump($_REQUEST['presicionValueCkeck']);
+                //echo '<br>';
+                $count=count($_REQUEST['measurementVariablesValue']);
+                $arrayMeasurement = $_REQUEST['measurementVariablesValue'];
+                $sql="";
+                for ($i = 0; $i < $count; $i++) {
+                    $la=$i+1;
+                    if($count<=$la){
+                        $or="";
+                    }else{
+                        $or=" OR ";
+                    }
+                    $array = explode("_", $_REQUEST['presicionValueCkeck'][$i]);
+                    //var_dump($array);
+                    //echo $i.'<br>';
+                    $sql=$sql."function_has_reference.FUNCTION_FUNCTION_ID = ".$arrayMeasurement[$i]." AND function_has_reference.FUNCTION_PRECISION = ".$array[2].$or;
+                }
+                //echo $sql;
+                ?>
+                <div class="container row justify-content-center ">
+                 <?php
+                $counts = 0;
+                foreach (parent::queryReferenceForFunctionPrecisionAndSomeSelected($sql) as $resultQueryReferenceForFunctionPrecisionAndSomeSelected) {
+                    $counts++;
+                    ?>
+                    <div class="card col-md-3 ml-3 mt-5">
+                        <img class="card-img-top" src="files/<?php echo $resultQueryReferenceForFunctionPrecisionAndSomeSelected->REFERENCE_IMG; ?>" alt="Multimetro Crash">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $resultQueryReferenceForFunctionPrecisionAndSomeSelected->REFERENCE_NAME; ?></h5>
+                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
+                            <p class="card-text"><?php echo $resultQueryReferenceForFunctionPrecisionAndSomeSelected->REFERENCE_DESCRIPTION; ?></p>
+                            <p class="lead">Costo <strong><?php echo number_format($resultQueryReferenceForFunctionPrecisionAndSomeSelected->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                            <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                            <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                                <?php
+                                $countFunctionReference = 0;
+                                foreach (parent::queryFunctionReferenceForReference($resultQueryReferenceForFunctionPrecisionAndSomeSelected->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                    $countFunctionReference++;
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                    </div>
+                                    <?php
+                                }
+                                if($countFunctionReference == 0){
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <strong>No se han asignado funciones para este multimetro</strong>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <small class="form-text text-muted mb-3">Precisión</small>
+                            <div class="row justify-content-start">
+                                <label class="lead">Link de Compra </label>
+                                <p><a href="<?php echo $resultQueryReferenceForFunctionPrecisionAndSomeSelected->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultQueryReferenceForFunctionPrecisionAndSomeSelected->REFERENCE_PURCHASE_URL; ?></a></p>
+                            </div>
+                            <div class="row justify-content-center">
+                                <a href="<?php echo $resultQueryReferenceForFunctionPrecisionAndSomeSelected->REFERENCE_FILE_URL; ?>" class="btn btn-primary">Descargar PDF</a>
+                                <div class="p-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                 if($counts === 0){
+                     ?>
+                     <blockquote class="blockquote text-center">
+                         <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                     </blockquote>
+                     <?php
+                 }
+                ?>
+                </div>
+                <?php
+            }
+        } elseif ($_REQUEST['valueMaker'] != 0 and $_REQUEST['valueReference'] == 0 and $_REQUEST['valuePriceFinal'] == 0 and $_REQUEST['valuePriceInitial'] == 0 and isset($_REQUEST['measurementVariablesValue']) and isset($_REQUEST['presicionValueCkeck'])) {
+            if(strpbrk(',', implode(',',$_REQUEST['measurementVariablesValue'])) === false and strpbrk(',', implode(',',$_REQUEST['presicionValueCkeck'])) === false){
+                $array = explode("_", $_REQUEST['presicionValueCkeck'][0]);
+                $arrayDef = array("FUNCTION_FUNCTION_ID" => $_REQUEST['measurementVariablesValue'][0],
+                    "FUNCTION_PRECISION" => $array[2],
+                    "maker_MAKER_ID" => $_REQUEST['valueMaker']);
+                ?>
+                <div class="container row justify-content-center ">
+                <?php
+                $count = 0;
+                foreach (parent::queryReferenceForFunctionPrecisionAndMaker($arrayDef) as $resultQueryReferenceForFunctionPrecisionAndMaker){
+                    $count++;
+                    ?>
+                    <div class="card col-md-3 ml-3 mt-5">
+                        <img class="card-img-top" src="files/<?php echo $resultQueryReferenceForFunctionPrecisionAndMaker->REFERENCE_IMG; ?>" alt="Multimetro Crash">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $resultQueryReferenceForFunctionPrecisionAndMaker->REFERENCE_NAME; ?></h5>
+                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
+                            <p class="card-text"><?php echo $resultQueryReferenceForFunctionPrecisionAndMaker->REFERENCE_DESCRIPTION; ?></p>
+                            <p class="lead">Costo <strong><?php echo number_format($resultQueryReferenceForFunctionPrecisionAndMaker->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                            <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                            <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                                <?php
+                                $countFunctionReference = 0;
+                                foreach (parent::queryFunctionReferenceForReference($resultQueryReferenceForFunctionPrecisionAndMaker->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                    $countFunctionReference++;
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                    </div>
+                                    <?php
+                                }
+                                if($countFunctionReference == 0){
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <strong>No se han asignado funciones para este multimetro</strong>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <small class="form-text text-muted mb-3">Precisión</small>
+                            <div class="row justify-content-start">
+                                <label class="lead">Link de Compra </label>
+                                <p><a href="<?php echo $resultQueryReferenceForFunctionPrecisionAndMaker->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultQueryReferenceForFunctionPrecisionAndMaker->REFERENCE_PURCHASE_URL; ?></a></p>
+                            </div>
+                            <div class="row justify-content-center">
+                                <a href="<?php echo $resultQueryReferenceForFunctionPrecisionAndMaker->REFERENCE_FILE_URL; ?>" class="btn btn-primary">Descargar PDF</a>
+                                <div class="p-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                if($count === 0){
+                    ?>
+                    <blockquote class="blockquote text-center">
+                        <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                    </blockquote>
+                    <?php
+                }
+                ?>
+                </div>
+                <?php
+            } else {
+                //var_dump($_REQUEST['presicionValueCkeck']);
+                //echo '<br>';
+                $count=count($_REQUEST['measurementVariablesValue']);
+                $arrayMeasurement = $_REQUEST['measurementVariablesValue'];
+                $sql="";
+                for ($i = 0; $i < $count; $i++) {
+                    $la=$i+1;
+                    if($count<=$la){
+                        $or="";
+                    }else{
+                        $or=" OR ";
+                    }
+                    $array = explode("_", $_REQUEST['presicionValueCkeck'][$i]);
+                    //var_dump($array);
+                    //echo $i.'<br>';
+                    $sql=$sql."function_has_reference.FUNCTION_FUNCTION_ID = ".$arrayMeasurement[$i]." AND function_has_reference.FUNCTION_PRECISION = ".$array[2].$or;
+                }
+                //echo $sql;
+                ?>
+                <div class="container row justify-content-center ">
+                <?php
+                $counts = 0;
+                foreach (parent::queryReferenceForFunctionPrecisionMakerAndSomeSelected($sql, $_REQUEST['valueMaker']) as $resultQueryReferenceForFunctionPrecisionMakerAndSomeSelected){
+                    $counts++;
+                    ?>
+                    <div class="card col-md-3 ml-3 mt-5">
+                        <img class="card-img-top" src="files/<?php echo $resultQueryReferenceForFunctionPrecisionMakerAndSomeSelected->REFERENCE_IMG; ?>" alt="Multimetro Crash">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $resultQueryReferenceForFunctionPrecisionMakerAndSomeSelected->REFERENCE_NAME; ?></h5>
+                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
+                            <p class="card-text"><?php echo $resultQueryReferenceForFunctionPrecisionMakerAndSomeSelected->REFERENCE_DESCRIPTION; ?></p>
+                            <p class="lead">Costo <strong><?php echo number_format($resultQueryReferenceForFunctionPrecisionMakerAndSomeSelected->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                            <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                            <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                                <?php
+                                $countFunctionReference = 0;
+                                foreach (parent::queryFunctionReferenceForReference($resultQueryReferenceForFunctionPrecisionMakerAndSomeSelected->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                    $countFunctionReference++;
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                    </div>
+                                    <?php
+                                }
+                                if($countFunctionReference == 0){
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <strong>No se han asignado funciones para este multimetro</strong>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <small class="form-text text-muted mb-3">Precisión</small>
+                            <div class="row justify-content-start">
+                                <label class="lead">Link de Compra </label>
+                                <p><a href="<?php echo $resultQueryReferenceForFunctionPrecisionMakerAndSomeSelected->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultQueryReferenceForFunctionPrecisionMakerAndSomeSelected->REFERENCE_PURCHASE_URL; ?></a></p>
+                            </div>
+                            <div class="row justify-content-center">
+                                <a href="<?php echo $resultQueryReferenceForFunctionPrecisionMakerAndSomeSelected->REFERENCE_FILE_URL; ?>" class="btn btn-primary">Descargar PDF</a>
+                                <div class="p-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                if($counts === 0){
+                    ?>
+                    <blockquote class="blockquote text-center">
+                        <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                    </blockquote>
+                    <?php
+                }
+                ?>
+                </div>
+                <?php
+            }
+        } else if($_REQUEST['valueMaker'] == 0 and $_REQUEST['valueReference'] == 0 and $_REQUEST['valuePriceInitial'] != 0 and $_REQUEST['valuePriceFinal'] != 0 and isset($_REQUEST['measurementVariablesValue']) and !isset($_REQUEST['presicionValueCkeck'])){
+            if(strpbrk(',', implode(',',$_REQUEST['measurementVariablesValue'])) === false) {
+                $array = array("FUNCTION_FUNCTION_ID" => $_REQUEST['measurementVariablesValue'][0],
+                                "PRICE_INITIAL" => $_REQUEST['valuePriceInitial'],
+                                "PRICE_FINAL" => $_REQUEST['valuePriceFinal']);
+                ?>
+                <div class="container row justify-content-center ">
+                <?php
+                $count = 0;
+                foreach (parent::queryReferenceForFunctionAndPrice($array) as $resultQueryReferenceForFunctionAndPrice) {
+                    $count++;
+                    ?>
+                    <div class="card col-md-3 ml-3 mt-5">
+                        <img class="card-img-top" src="files/<?php echo $resultQueryReferenceForFunctionAndPrice->REFERENCE_IMG; ?>" alt="Multimetro Crash">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $resultQueryReferenceForFunctionAndPrice->REFERENCE_NAME; ?></h5>
+                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
+                            <p class="card-text"><?php echo $resultQueryReferenceForFunctionAndPrice->REFERENCE_DESCRIPTION; ?></p>
+                            <p class="lead">Costo <strong><?php echo number_format($resultQueryReferenceForFunctionAndPrice->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                            <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                            <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                                <?php
+                                $countFunctionReference = 0;
+                                foreach (parent::queryFunctionReferenceForReference($resultQueryReferenceForFunctionAndPrice->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                    $countFunctionReference++;
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                    </div>
+                                    <?php
+                                }
+                                if($countFunctionReference == 0){
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <strong>No se han asignado funciones para este multimetro</strong>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <small class="form-text text-muted mb-3">Precisión</small>
+                            <div class="row justify-content-start">
+                                <label class="lead">Link de Compra </label>
+                                <p><a href="<?php echo $resultQueryReferenceForFunctionAndPrice->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultQueryReferenceForFunctionAndPrice->REFERENCE_PURCHASE_URL; ?></a></p>
+                            </div>
+                            <div class="row justify-content-center">
+                                <a href="<?php echo $resultQueryReferenceForFunctionAndPrice->REFERENCE_FILE_URL; ?>" class="btn btn-primary">Descargar PDF</a>
+                                <div class="p-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                if($count === 0){
+                    ?>
+                    <blockquote class="blockquote text-center">
+                        <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                    </blockquote>
+                    <?php
+                }
+                ?>
+                </div>
+                <?php
+            } else {
+                // var_dump($_REQUEST['valueCheckBox']);
+                $array=$_REQUEST['measurementVariablesValue'];
+                $count=count($_REQUEST['measurementVariablesValue']);
+                $sql="";
+                for ($i = 0; $i < $count; $i++) {
+                    $la=$i+1;
+                    if($count<=$la){
+                        $or="";
+                    }else{
+                        $or=" or ";
+                    }
+                    $sql=$sql."function_has_reference.FUNCTION_FUNCTION_ID = ".$array[$i]."".$or;
+                }
+                //echo $sql;
+                ?>
+                <div class="container row justify-content-center ">
+                <?php
+                $counts = 0;
+                foreach (parent::queryReferenceForSomeFunctionAndPrice($sql, $_REQUEST['valuePriceInitial'], $_REQUEST['valuePriceFinal']) as $resultQueryReferenceForSomeFunctionAndPrice) {
+                    $counts++;
+                    ?>
+                    <div class="card col-md-3 ml-3 mt-5">
+                        <img class="card-img-top" src="files/<?php echo $resultQueryReferenceForSomeFunctionAndPrice->REFERENCE_IMG; ?>" alt="Multimetro Crash">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $resultQueryReferenceForSomeFunctionAndPrice->REFERENCE_NAME; ?></h5>
+                            <h6 class="card-subtitle text-muted mb-2">Caracteristicas</h6>
+                            <p class="card-text"><?php echo $resultQueryReferenceForSomeFunctionAndPrice->REFERENCE_DESCRIPTION; ?></p>
+                            <p class="lead">Costo <strong><?php echo number_format($resultQueryReferenceForSomeFunctionAndPrice->REFERENCE_PRICE, -1, '.', '.'); ?></strong></p>
+                            <label for="resultQueryPresicionForReference" class="lead">Presición</label>
+                            <div class="row justify-content-start" id="resultQueryPresicionForReference">
+                                <?php
+                                $countFunctionReference = 0;
+                                foreach (parent::queryFunctionReferenceForReference($resultQueryReferenceForSomeFunctionAndPrice->REFERENCE_ID) as $resultQueryFunctionForReference) {
+                                    $countFunctionReference++;
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <?php echo $resultQueryFunctionForReference->FUNCTION_NAME.'<strong> ('.$resultQueryFunctionForReference->FUNCTION_PRECISION.') </strong>'; ?>
+                                    </div>
+                                    <?php
+                                }
+                                if($countFunctionReference == 0){
+                                    ?>
+                                    <div class="custom-control custom-checkbox text-left">
+                                        <strong>No se han asignado funciones para este multimetro</strong>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <small class="form-text text-muted mb-3">Precisión</small>
+                            <div class="row justify-content-start">
+                                <label class="lead">Link de Compra </label>
+                                <p><a href="<?php echo $resultQueryReferenceForSomeFunctionAndPrice->REFERENCE_PURCHASE_URL; ?>" class="badge badge-info pr-3"><?php echo $resultQueryReferenceForSomeFunctionAndPrice->REFERENCE_PURCHASE_URL; ?></a></p>
+                            </div>
+                            <div class="row justify-content-center">
+                                <a href="<?php echo $resultQueryReferenceForSomeFunctionAndPrice->REFERENCE_FILE_URL; ?>" class="btn btn-primary">Descargar PDF</a>
+                                <div class="p-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                if($counts === 0){
+                    ?>
+                    <blockquote class="blockquote text-center">
+                        <h3><p class="m-5">No se encontraron resultados de la Busqueda</p></h3>
+                    </blockquote>
+                    <?php
+                }
+                ?>
+                </div>
+                <?php
+            }
+        } else if($_REQUEST['valueMaker'] != 0 and  $_REQUEST['valueReference'] != 0){
             ?>
             <div class="container row justify-content-center">
                 <?php
