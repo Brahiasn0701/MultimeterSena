@@ -256,6 +256,31 @@ class index extends  database
         }
     }
 
+    public function queryReferenceForFunctionPrecisionAndMaker($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryReferenceForFunctionPrecisionAndMaker);
+            $stm->bindParam(1, $array['FUNCTION_FUNCTION_ID'], PDO::PARAM_INT);
+            $stm->bindParam(2, $array['FUNCTION_PRECISION'], PDO::PARAM_STR);
+            $stm->bindParam(3, $array['maker_MAKER_ID'], PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryReferenceForFunctionPrecisionMakerAndSomeSelected($where, $id){
+        try {
+            $stm = parent::conexion()->prepare("SELECT * FROM reference 
+                                                INNER JOIN function_has_reference ON reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID 
+                                                WHERE (".$where.") AND reference.maker_MAKER_ID = ".$id." GROUP BY reference.REFERENCE_ID");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     /*
      *  Actualizacion para modulo de Administradores
      * @BrahianSánchez
