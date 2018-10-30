@@ -278,23 +278,31 @@ $(function(){
 
     $('#btnSearch').on("click", function(){
         $('#loginEdit').hide();
-        var valueCheck = [];
+        var presicionValueCkeck = [];
+        var measurementVariablesValue = [];
        $('input:checkbox[class=custom-control-input]:checked').each(function () {
-           valueCheck.push($(this).val());
+           if($(this).val() > 0){
+               measurementVariablesValue.push($(this).val());
+
+           } else if($(this).val().indexOf("_")){
+               presicionValueCkeck.push($(this).val());
+           }
        });
+
         $.ajax({
            type: 'POST',
             url: '?c=index&m=querySearch',
             data: {valueMaker : $('#maker').val(),
                     nameMaker : $('#maker option:selected').text(),
                     valueReference : $('#reference').val(),
-                    valueCheckBox: valueCheck,
+                    measurementVariablesValue: measurementVariablesValue,
+                    presicionValueCkeck: presicionValueCkeck,
                     valuePriceInitial: $('#inpCostInitial').val(),
-                    valuePriceFinal: $('#inpCostFinal').val(),
-                    valuePrecision: $('#slcPrecision').val()}
+                    valuePriceFinal: $('#inpCostFinal').val()}
         }).done(function (response) {
             $('#responseSearch').html(response);
         });
+
     });
 
     $('#btnEdit').on('click', function () {

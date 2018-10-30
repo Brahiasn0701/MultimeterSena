@@ -103,22 +103,60 @@
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label for="slcPrecision">Precisión</label>
-                <select name="slcPrecision" id="slcPrecision" class="form-control">
-                    <option value="0" selected>Selecciona</option>
-                    <option value="1_0.1">Voltaje AC (0.1)</option>
-                    <option value="1_0.8">Voltaje AC (0.8)</option>
-                    <option value="1_1.0">Voltaje AC (1.0)</option>
-                    <option value="2_0.1">Voltaje DC (0.1)</option>
-                    <option value="2_0.8">Voltaje DC (0.8)</option>
-                    <option value="2_1.0">Voltaje DC (1.0)</option>
-                    <option value="3_0.1">Corriente AC (0.1)</option>
-                    <option value="3_0.8">Corriente AC (0.8)</option>
-                    <option value="3_1.0">Corriente AC (1.0)</option>
-                    <option value="4_0.1">Corriente DC (0.1)</option>
-                    <option value="4_0.8">Corriente DC (0.8)</option>
-                    <option value="4_1.0">Corriente DC (1.0)</option>
-                </select>
+                <label for="resultQueryOnlyFunction">Precisión</label>
+                <div class="card">
+                    <div class="card-body" id="resultQueryOnlyFunction">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="-1_1_0.1" class="custom-control-input" value="-1_1_0.1">
+                            <label class="custom-control-label" for="-1_1_0.1">Voltaje AC (0.1)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="-2_1_0.5" class="custom-control-input" value="-2_1_0.5">
+                            <label class="custom-control-label" for="-2_1_0.5">Voltaje AC (0.5)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="-3_1_0.8" class="custom-control-input" value="-3_1_0.8">
+                            <label class="custom-control-label" for="-3_1_0.8">Voltaje AC (0.8)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="-4_2_0.1" class="custom-control-input" value="-4_2_0.1">
+                            <label class="custom-control-label" for="-4_2_0.1">Voltaje DC (0.1)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="-5_2_0.5" class="custom-control-input" value="-5_2_0.5">
+                            <label class="custom-control-label" for="-5_2_0.5">Voltaje DC (0.5)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="-6_2_0.8" class="custom-control-input" value="-6_2_0.8">
+                            <label class="custom-control-label" for="-6_2_0.8">Voltaje DC (0.8)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="-7_3_0.1" class="custom-control-input" value="-7_3_0.1">
+                            <label class="custom-control-label" for="-7_3_0.1">Corriente AC (0.1)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="-8_3_0.5" class="custom-control-input" value="-8_3_0.5">
+                            <label class="custom-control-label" for="-8_3_0.5">Corriente AC (0.5)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="-9_3_0.8" class="custom-control-input" value="-9_3_0.8">
+                            <label class="custom-control-label" for="-9_3_0.8">Corriente AC (0.8)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="-10_4_0.1" class="custom-control-input" value="-10_4_0.1">
+                            <label class="custom-control-label" for="-10_4_0.1">Corriente DC (0.1)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="-11_4_0.5" class="custom-control-input" value="-11_4_0.5">
+                            <label class="custom-control-label" for="-11_4_0.5">Corriente DC (0.5)</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" id="-12_4_0.8" class="custom-control-input" value="-12_4_0.8">
+                            <label class="custom-control-label" for="-12_4_0.8">Corriente DC (0.8)</label>
+                        </div>
+                    </div>
+                </div>
+                <small class="form-text text-muted">Precisión</small> 
             </div>
         </div>
     </div> <!-- Fin de la segunda Columna -->

@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/application.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/indexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/indexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manuales/Manual de Programador.docx" beforeDir="false" afterPath="$PROJECT_DIR$/manuales/Manual de Programador.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/preparedSQL.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/preparedSQL.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/index/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/index/index.php" afterDir="false" />
@@ -34,17 +35,6 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="db_multimeter_sena@localhost" type="feb32156:DbDataSourceImpl" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db_multimeter_sena@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db_multimeter_sena@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="db_multimeter_sena: schema" type="c314c289:MysqlImplModel$Schema" />
-      </path>
     </expand>
     <select />
   </component>
@@ -52,26 +42,30 @@
     <session id="1099021408">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="54" />
+          <entry key="project.closed" value="65" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="2" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="5" />
           <entry key="project.open.time.14" value="2" />
-          <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.15" value="3" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.20" value="1" />
+          <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.44" value="3" />
-          <entry key="project.open.time.45" value="3" />
+          <entry key="project.open.time.45" value="4" />
           <entry key="project.open.time.46" value="1" />
           <entry key="project.open.time.47" value="2" />
           <entry key="project.open.time.48" value="1" />
@@ -80,16 +74,18 @@
           <entry key="project.open.time.51" value="2" />
           <entry key="project.open.time.52" value="2" />
           <entry key="project.open.time.53" value="1" />
-          <entry key="project.open.time.54" value="2" />
+          <entry key="project.open.time.54" value="3" />
           <entry key="project.open.time.55" value="2" />
           <entry key="project.open.time.56" value="2" />
-          <entry key="project.open.time.57" value="1" />
+          <entry key="project.open.time.57" value="2" />
           <entry key="project.open.time.60" value="1" />
+          <entry key="project.open.time.62" value="1" />
           <entry key="project.open.time.64" value="2" />
           <entry key="project.open.time.66" value="1" />
           <entry key="project.open.time.68" value="1" />
           <entry key="project.open.time.70" value="1" />
-          <entry key="project.opened" value="58" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="69" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.rename.constructor" />
@@ -99,13 +95,13 @@
           <entry key="DATABASE/d6767f72-ec56-4277-a4e0-257fc161df89" value="1" />
           <entry key="PNG" value="5" />
           <entry key="SCHEMA:db_multimeter_sena" value="1" />
-          <entry key="css" value="3" />
-          <entry key="js" value="19" />
+          <entry key="css" value="4" />
+          <entry key="js" value="21" />
           <entry key="maker" value="1" />
-          <entry key="php" value="62" />
+          <entry key="php" value="71" />
           <entry key="png" value="5" />
-          <entry key="sql" value="20" />
-          <entry key="txt" value="3" />
+          <entry key="sql" value="21" />
+          <entry key="txt" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -116,13 +112,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="3" />
+          <entry key="CSS" value="4" />
           <entry key="Database Element" value="1" />
           <entry key="Image" value="10" />
-          <entry key="JavaScript" value="15" />
-          <entry key="PHP" value="62" />
-          <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Scratch" value="20" />
+          <entry key="JavaScript" value="17" />
+          <entry key="PHP" value="71" />
+          <entry key="PLAIN_TEXT" value="8" />
+          <entry key="Scratch" value="21" />
           <entry key="UML" value="4" />
         </counts>
       </usages-collector>
@@ -132,20 +128,20 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="4" />
-          <entry key="JavaScript" value="10722" />
-          <entry key="PHP" value="24139" />
+          <entry key="JavaScript" value="11260" />
+          <entry key="PHP" value="26339" />
           <entry key="PLAIN_TEXT" value="37" />
-          <entry key="SQL" value="129" />
-          <entry key="Scratch" value="2881" />
+          <entry key="SQL" value="206" />
+          <entry key="Scratch" value="3178" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cell" value="158" />
+          <entry key="cell" value="161" />
           <entry key="css" value="3" />
-          <entry key="js" value="10724" />
-          <entry key="php" value="24198" />
-          <entry key="sql" value="2793" />
+          <entry key="js" value="11262" />
+          <entry key="php" value="26475" />
+          <entry key="sql" value="3087" />
           <entry key="txt" value="36" />
         </counts>
       </usages-collector>
@@ -155,28 +151,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/indexController.php">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d6767f72-ec56-4277-a4e0-257fc161df89/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="919" column="28" selection-start-line="919" selection-start-column="17" selection-end-line="919" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/application.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="295" column="12" selection-start-line="295" selection-start-column="12" selection-end-line="295" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/model/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="254" column="68" selection-start-line="254" selection-start-column="68" selection-end-line="254" selection-end-column="68" />
+            <state>
+              <caret column="37" lean-forward="true" selection-start-column="37" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -184,26 +162,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/preparedSQL.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="34" column="60" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="60" />
+            <state relative-caret-position="230">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/loginController.php">
+        <entry file="file://$PROJECT_DIR$/app/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+            <state relative-caret-position="6716">
+              <caret line="298" column="39" selection-start-line="298" selection-start-column="20" selection-end-line="298" selection-end-column="39" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/controller/indexController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="392">
+              <caret line="579" column="18" selection-start-line="579" selection-start-column="18" selection-end-line="579" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d6767f72-ec56-4277-a4e0-257fc161df89/console.sql">
+        <entry file="file://$PROJECT_DIR$/model/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="23" selection-start-line="23" selection-end-line="23" selection-end-column="356" />
+            <state relative-caret-position="323">
+              <caret line="250" column="62" selection-start-line="250" selection-start-column="62" selection-end-line="250" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -239,6 +229,7 @@
       <find>Header</find>
       <find>badge</find>
       <find>queryReferenceForFunctionAndPrecision</find>
+      <find>brahian</find>
     </findStrings>
     <dirStrings>
       <dir>C:\xampp\htdocs\Proyects\MultimeterSena\files|</dir>
@@ -274,8 +265,8 @@
         <option value="$PROJECT_DIR$/app/application.js" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/d6767f72-ec56-4277-a4e0-257fc161df89/console.sql" />
         <option value="$PROJECT_DIR$/model/preparedSQL.php" />
-        <option value="$PROJECT_DIR$/controller/indexController.php" />
         <option value="$PROJECT_DIR$/model/index.php" />
+        <option value="$PROJECT_DIR$/controller/indexController.php" />
       </list>
     </option>
   </component>
@@ -290,8 +281,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP On Xampp" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="11" />
+    <option name="y" value="-20" />
     <option name="width" value="656" />
     <option name="height" value="456" />
   </component>
@@ -303,6 +294,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -314,7 +306,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -414,7 +405,18 @@
       <workItem from="1539648950016" duration="1901000" />
       <workItem from="1539719989749" duration="2098000" />
       <workItem from="1539891148360" duration="424000" />
-      <workItem from="1539891624854" duration="6392000" />
+      <workItem from="1539891624854" duration="6479000" />
+      <workItem from="1540257448058" duration="206000" />
+      <workItem from="1540257691869" duration="810000" />
+      <workItem from="1540259426003" duration="788000" />
+      <workItem from="1540322457476" duration="6909000" />
+      <workItem from="1540662459213" duration="1104000" />
+      <workItem from="1540666477333" duration="2401000" />
+      <workItem from="1540686854840" duration="3545000" />
+      <workItem from="1540691967367" duration="1877000" />
+      <workItem from="1540769961806" duration="61000" />
+      <workItem from="1540839531004" duration="4161000" />
+      <workItem from="1540858274425" duration="2281000" />
     </task>
     <task id="LOCAL-00001" summary="Diseño Multimetro Sena">
       <created>1532399319097</created>
@@ -612,11 +614,18 @@
       <option name="project" value="LOCAL" />
       <updated>1539650842990</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Multimetro SENA">
+      <created>1539898311734</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1539898311734</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194810000" />
+    <option name="totallyTimeSpent" value="219040000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -631,7 +640,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.21255673" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.3184569" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -644,10 +653,10 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" weight="0.32885906" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32885906" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32888147" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.327212" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32885906" />
-      <window_info anchor="bottom" id="Database Console" order="13" weight="0.40233722" />
+      <window_info anchor="bottom" id="Database Console" order="10" weight="0.4010067" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32888147" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32550335" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.32885906" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -817,13 +826,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/files/brahian.txt" />
     <entry file="file://$PROJECT_DIR$/files/4f443e826a927da724688a76e34c571f575f970aFluke83V.PNG" />
     <entry file="file://$PROJECT_DIR$/files/73faeced46ab62e13da40cbfc008a74a3c38ef83Fluke87V.PNG" />
@@ -832,38 +834,10 @@
     <entry file="file://$PROJECT_DIR$/files/e45a6068727370c5b6ee245cf4ba7b8b8001a2a8Fluke83V.PNG" />
     <entry file="file://$PROJECT_DIR$/files/ce554077b47b4c491a39469d53c2a8c5b9b41c79Captura de pantalla (5).png" />
     <entry file="file://$PROJECT_DIR$/files/ae10a785a9dd99ae55af9ace195ecc5d0dd211d1EX570.PNG" />
-    <entry file="file://$PROJECT_DIR$/model/preparedLoginSQL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/security.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="13" column="71" selection-start-line="13" selection-start-column="71" selection-end-line="13" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="98" selection-start-line="6" selection-start-column="98" selection-end-line="6" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/core.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -874,48 +848,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d6767f72-ec56-4277-a4e0-257fc161df89/console.sql">
+    <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="23" selection-start-line="23" selection-end-line="23" selection-end-column="356" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/preparedSQL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="34" column="60" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="60" />
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/loginController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
+        <state relative-caret-position="299">
           <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="98" selection-start-line="6" selection-start-column="98" selection-end-line="6" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/preparedLoginSQL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/core.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="295" column="12" selection-start-line="295" selection-start-column="12" selection-end-line="295" selection-end-column="12" />
+        <state relative-caret-position="6716">
+          <caret line="298" column="39" selection-start-line="298" selection-start-column="20" selection-end-line="298" selection-end-column="39" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/indexController.php">
+    <entry file="file://$PROJECT_DIR$/model/preparedSQL.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="919" column="28" selection-start-line="919" selection-start-column="17" selection-end-line="919" selection-end-column="28" />
+        <state relative-caret-position="230">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="254" column="68" selection-start-line="254" selection-start-column="68" selection-end-line="254" selection-end-column="68" />
+        <state relative-caret-position="323">
+          <caret line="250" column="62" selection-start-line="250" selection-start-column="62" selection-end-line="250" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d6767f72-ec56-4277-a4e0-257fc161df89/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="37" lean-forward="true" selection-start-column="37" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/indexController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="579" column="18" selection-start-line="579" selection-start-column="18" selection-end-line="579" selection-end-column="18" />
         </state>
       </provider>
     </entry>

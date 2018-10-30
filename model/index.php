@@ -170,13 +170,25 @@ class index extends  database
         }
     }
 
-    public function queryandres($where,$id){
+    public function queryReferenceForFuncionAndMaker($where,$id){
         try {
-            //echo $where;
             $stm = parent::conexion()->prepare("SELECT * FROM reference
                                                          INNER JOIN function_has_reference ON
                                                          reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID
-                                                         WHERE ".$where." AND reference.maker_MAKER_ID = ".$id." GROUP BY REFERENCE_ID");
+                                                         WHERE (".$where.") AND reference.maker_MAKER_ID = $id GROUP BY REFERENCE_ID");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryReferenceForFunction($where){
+        try {
+            $stm = parent::conexion()->prepare("SELECT * FROM reference
+                                                         INNER JOIN function_has_reference ON
+                                                         reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID
+                                                         WHERE (".$where.") GROUP BY REFERENCE_ID");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
@@ -223,7 +235,7 @@ class index extends  database
     public function queryReferenceForFunctionAndPrecision($array){
         try {
             $stm = parent::conexion()->prepare(preparedSQL::queryReferenceForFunctionAndPrecision);
-            $stm->bindParam(1, $array['FUNCTION_ID'], PDO::PARAM_STR);
+            $stm->bindParam(1, $array['FUNCTION_FUNCTION_ID'], PDO::PARAM_INT);
             $stm->bindParam(2, $array['FUNCTION_PRECISION'], PDO::PARAM_STR);
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
@@ -232,27 +244,11 @@ class index extends  database
         }
     }
 
-    public function queryReferenceForFunctionAndPrecisionAndMaker($array){
+    public function queryReferenceForFunctionPrecisionAndSomeSelected($where){
         try {
-            $stm = parent::conexion()->prepare(preparedSQL::queryReferenceForFunctionAndPrecisionAndMaker);
-            $stm->bindParam(1, $array['MAKER_ID'], PDO::PARAM_STR);
-            $stm->bindParam(2, $array['FUNCTION_ID'], PDO::PARAM_STR);
-            $stm->bindParam(3, $array['FUNCTION_PRECISION'], PDO::PARAM_STR);
-            $stm->execute();
-            return $stm->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    public function queryReferenceForFunctionAndPrecisionMakerAndPrice($array){
-        try {
-            $stm = parent::conexion()->prepare(preparedSQL::queryReferenceForFunctionAndPrecisionMakerAndPrice);
-            $stm->bindParam(1, $array['MAKER_ID'], PDO::PARAM_STR);
-            $stm->bindParam(2, $array['FUNCTION_ID'], PDO::PARAM_STR);
-            $stm->bindParam(3, $array['FUNCTION_PRECISION'], PDO::PARAM_STR);
-            $stm->bindParam(4, $array['PRICE_INITIAL'], PDO::PARAM_INT);
-            $stm->bindParam(5, $array['PRICE_FINAL'], PDO::PARAM_INT);
+            $stm = parent::conexion()->prepare("SELECT * FROM reference 
+                                                INNER JOIN function_has_reference ON reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID 
+                                                WHERE ".$where);
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
