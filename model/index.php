@@ -294,11 +294,89 @@ class index extends  database
         }
     }
 
+    public function queryReferenceForFunctionPrecisionAndPrice($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryReferenceForFunctionPrecisionAndPrice);
+            $stm->bindParam(1, $array['FUNCTION_FUNCTION_ID'], PDO::PARAM_INT);
+            $stm->bindParam(2, $array['FUNCTION_PRECISION'], PDO::PARAM_STR);
+            $stm->bindParam(3, $array['PRICE_INITIAL'], PDO::PARAM_INT);
+            $stm->bindParam(4, $array['PRICE_FINAL'], PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryReferenceForFunctionPrecisionPriceSomeSelected($where, $priceInitial, $priceFinal){
+        try {
+            $stm = parent::conexion()->prepare("SELECT * FROM reference INNER JOIN function_has_reference ON reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID
+                                                WHERE (".$where.") AND reference.REFERENCE_PRICE BETWEEN ".$priceInitial." AND ".$priceFinal." GROUP BY reference.REFERENCE_ID");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryReferenceForFunctionPrecisionMakerAndPrice($array){
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryReferenceForFunctionPrecisionMakerAndPrice);
+            $stm->bindParam(1, $array['FUNCTION_FUNCTION_ID'], PDO::PARAM_INT);
+            $stm->bindParam(2, $array['FUNCTION_PRECISION'], PDO::PARAM_STR);
+            $stm->bindParam(3, $array['maker_MAKER_ID'], PDO::PARAM_INT);
+            $stm->bindParam(4, $array['PRICE_INITIAL'], PDO::PARAM_INT);
+            $stm->bindParam(5, $array['PRICE_FINAL'], PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryReferenceForFunctionPrecisionMakerPriceAndSomeSelected($where, $id, $priceInitial, $priceFinal){
+        try {
+            $stm = parent::conexion()->prepare("SELECT * FROM reference INNER JOIN function_has_reference ON function_has_reference.REFERENCE_REFERENCE_ID = reference.REFERENCE_ID
+                                              WHERE (".$where.") AND reference.maker_MAKER_ID = ".$id." AND reference.REFERENCE_PRICE BETWEEN ".$priceInitial." AND ".$priceFinal." GROUP BY reference.REFERENCE_ID");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e){
+            die($e->getMessage());
+        }
+    }
+
     public function queryReferenceForSomeFunctionAndPrice($where, $priceInitial, $priceFinal){
         try{
             $stm = parent::conexion()->prepare("SELECT * FROM reference
                                                           INNER JOIN function_has_reference ON reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID 
                                                           WHERE (".$where.") AND reference.REFERENCE_PRICE BETWEEN ".$priceInitial." AND ".$priceFinal." GROUP BY reference.REFERENCE_ID");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryReferenceForFunctionPriceAndMaker($array) {
+        try {
+            $stm = parent::conexion()->prepare(preparedSQL::queryReferenceForFunctionPriceAndMaker);
+            $stm->bindParam(1, $array['FUNCTION_FUNCTION_ID'], PDO::PARAM_INT);
+            $stm->bindParam(2, $array['maker_MAKER_ID'], PDO::PARAM_INT);
+            $stm->bindParam(3, $array['PRICE_INITIAL'], PDO::PARAM_INT);
+            $stm->bindParam(4, $array['PRICE_FINAL'], PDO::PARAM_INT);
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function queryReferenceForFunctionAndMakerSomeSelected($where, $id, $priceInitial, $priceFinal){
+        try {
+            $stm = parent::conexion()->prepare("SELECT * FROM reference INNER JOIN function_has_reference 
+                                               ON reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID
+                                               WHERE (".$where.") AND reference.maker_MAKER_ID = ".$id." AND reference.REFERENCE_PRICE BETWEEN ".$priceInitial." AND ".$priceFinal."
+                                               GROUP BY reference.REFERENCE_ID");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
