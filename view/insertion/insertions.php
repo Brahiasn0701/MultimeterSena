@@ -330,7 +330,7 @@
                             <small class="form-text text-muted">Selecciona el nombre de la funcion</small>
                         </div>
                     </div>
-                    <button class="btn btn-outline-primary" id="btnDeleteunctionMultimeter">Insertar</button>
+                    <button class="btn btn-outline-primary" id="btnDeleteunctionMultimeter">Eliminar</button>
                 </div>
             </div> <!-- Fin de Card encargada de eliminar funciones -->
         </div>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="369266a2-36a8-42a2-a525-d7840e19a6bb" name="Default" comment="Multimetro SENA">
-      <change beforePath="$PROJECT_DIR$/controller/indexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/indexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +36,7 @@
     <session id="1099021408">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="69" />
+          <entry key="project.closed" value="70" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.10" value="1" />
@@ -179,7 +179,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/indexController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
+            <state relative-caret-position="3313">
               <caret line="1961" column="26" selection-start-line="1961" selection-start-column="26" selection-end-line="1961" selection-end-column="26" />
             </state>
           </provider>
@@ -419,7 +419,7 @@
       <workItem from="1540923834038" duration="1527000" />
       <workItem from="1540929556692" duration="6948000" />
       <workItem from="1541014266073" duration="293000" />
-      <workItem from="1541014617848" duration="9059000" />
+      <workItem from="1541014617848" duration="9115000" />
     </task>
     <task id="LOCAL-00001" summary="Diseño Multimetro Sena">
       <created>1532399319097</created>
@@ -652,11 +652,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541021951823</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Multimetro SENA">
+      <created>1541028014158</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1541028014158</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="239396000" />
+    <option name="totallyTimeSpent" value="239452000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -669,9 +676,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.17397882" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17397882" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -965,7 +971,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/indexController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
+        <state relative-caret-position="3313">
           <caret line="1961" column="26" selection-start-line="1961" selection-start-column="26" selection-end-line="1961" selection-end-column="26" />
         </state>
       </provider>
