@@ -248,7 +248,7 @@ class index extends  database
         try {
             $stm = parent::conexion()->prepare("SELECT * FROM reference 
                                                 INNER JOIN function_has_reference ON reference.REFERENCE_ID = function_has_reference.REFERENCE_REFERENCE_ID 
-                                                WHERE ".$where);
+                                                WHERE ".$where." GROUP BY reference.REFERENCE_ID");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
